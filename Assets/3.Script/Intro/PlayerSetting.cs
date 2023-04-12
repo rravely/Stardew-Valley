@@ -1,25 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerSetting : MonoBehaviour
 {
-    [SerializeField]private GameObject title;
-    [SerializeField]private GameObject loadingUI;
-    [SerializeField]private GameObject playerSettingUI;
-    [SerializeField]private GameObject playerNameUI;
-    [SerializeField]private GameObject playerFarmNameUI;
+    [SerializeField]private InputField playerName;
+    [SerializeField]private InputField playerFarmName;
 
-    // Update is called once per frame
-    void Update()
-    {
-        // 타이틀 로고가 카메라 화면 밖으로 다 나가면
-        if (title.transform.position.x > 14.9) {
-            loadingUI.SetActive(false); //로딩중 UI 비활성화
-            //player 정보 입력 활성화
-            playerSettingUI.SetActive(true);
-            playerNameUI.SetActive(true);
-            playerFarmNameUI.SetActive(true);
+    private SaveData player;
+    private List<Item> defaultItem;
+
+
+    public void OkButtonClick() {
+        //입력한 값이 있을 때
+        if (playerFarmName != null && playerFarmName != null) {
+            //초기 아이템 리스트 생성
+            defaultItem = new List<Item>();
+            //SaveData 생성
+            player = new SaveData(playerName.text, playerFarmName.text, defaultItem);
+            player.itemsIdArray = new int[5] {0, 1, 2, 3, 4};
+            player.itemsCountArray = new int[5] {1, 1, 1, 1, 1};
+
+            //Json에 저장
+            SaveSystem.Save(player, "Default");
+
+            //씬이동
+            SceneManager.LoadScene("Farm");
         }
     }
+
 }
