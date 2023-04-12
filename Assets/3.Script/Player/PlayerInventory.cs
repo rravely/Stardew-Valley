@@ -4,27 +4,50 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public Item[, ] inventory = new Item[3, 12];
+    public List<Item> inventory = new List<Item>();
 
     public ItemDatabase itemDatabase;
+    public UIInventory inventoryUI;
     public bool activeInventory2Line = false, activeInventory3Line = false;
 
     void Start() {
-        SetDefault();
+        GiveItem(0);
+        GiveItem(1);
+        GiveItem(2);
+        GiveItem(3);
+        GiveItem(4);
     }
 
     void Update() {
-        for (int i = 0; i < 5; i++) {
-            
-        }
+
     }
 
+    public void GiveItem(int Id) 
+    {
+        Item itemToAdd = itemDatabase.GetItem(Id);
+        inventory.Add(itemToAdd);
+        inventoryUI.AddNewItem(itemToAdd); 
+    }
 
-    void SetDefault() {
-        inventory[0, 0] = itemDatabase.GetItem(0);
-        inventory[0, 1] = itemDatabase.GetItem(1);
-        inventory[0, 2] = itemDatabase.GetItem(2);
-        inventory[0, 3] = itemDatabase.GetItem(3);
-        inventory[0, 4] = itemDatabase.GetItem(4);
+    public void GiveItem(string ItemName)
+    {
+        Item itemToAdd = itemDatabase.GetItem(ItemName);
+        inventory.Add(itemToAdd);
+        inventoryUI.AddNewItem(itemToAdd);
+    }
+
+    public Item checkForItem(int Id) 
+    {
+        return inventory.Find(item => item.Id == Id);
+    }
+
+    public void RemoveItem(int Id)
+    {
+        Item itemToRemove = checkForItem(Id);
+        if (itemToRemove != null)
+        {
+            inventory.Remove(itemToRemove);
+            inventoryUI.RemoveItem(itemToRemove);
+        }
     }
 }

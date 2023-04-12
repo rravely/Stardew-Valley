@@ -15,7 +15,7 @@ public class Item
         this.Id = Id;
         this.ItemName = ItemName;
         this.ItemDescription = ItemDescription;
-        this.Icon = Resources.Load<Sprite>("4.Sprites/Item/tool/" + ItemName);
+        this.Icon = Resources.Load<Sprite>("4.Sprite/Item/" + ItemName);
         ItemCount = 1;
     }
 
@@ -24,7 +24,7 @@ public class Item
         this.Id = item.Id;
         this.ItemName = item.ItemName;
         this.ItemDescription = item.ItemDescription;
-        this.Icon = Resources.Load<Sprite>("4.Sprites/Item/tool/" + item.ItemName);
+        this.Icon = Resources.Load<Sprite>("Assets/4.Sprite/Item/" + item.ItemName);
         item.ItemCount = 1;
     }
 }
