@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ButtonEvent : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    private Scroll scroll;
+    public void NewButtonMove(float speed) {
+        gameObject.AddComponent<Scroll>(); //Scroll 컴포넌트를 추가
+        scroll = GetComponent<Scroll>(); //Scroll 컴포넌트 가져오기
+        scroll.Speed = speed;
+        scroll.enabled = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void NewButtonVisible() {
+        gameObject.SetActive(true);
     }
 }
