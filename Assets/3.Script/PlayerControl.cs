@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     string animationState = "player_walk";
     int lastWalkingState = 0;
     private SpriteRenderer spriteRenderer;
+    private float playerPosZ;
     [SerializeField] private Sprite[] playerSprite = new Sprite[4];
     
 
@@ -27,10 +28,16 @@ public class PlayerControl : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
+    void Start()
+    {
+        ChangeZSameAsY();
+    }
+
     // Update is called once per frame
     void Update()
     {
         ChangeDirection();
+        ChangeZSameAsY();
     }
 
     void ChangeDirection() {
@@ -53,13 +60,13 @@ public class PlayerControl : MonoBehaviour
         {
             animator.SetInteger(animationState, (int)PLAYERWALKSTATE.up);
             lastWalkingState = 3;
-            movement2D.MoveTo(new Vector3(0, y, 0f));
+            movement2D.MoveTo(new Vector3(0, y, y));
         }
         else if (y < 0)
         {
             animator.SetInteger(animationState, (int)PLAYERWALKSTATE.down);
             lastWalkingState = 4;
-            movement2D.MoveTo(new Vector3(0, y, 0f));
+            movement2D.MoveTo(new Vector3(0, y, y));
         }
         else if (x.Equals(0) && y.Equals(0))
         {
@@ -84,5 +91,10 @@ public class PlayerControl : MonoBehaviour
                     break;
             }
         }
+    }
+
+    void ChangeZSameAsY() {
+        playerPosZ = transform.position.y;
+        transform.position = new Vector3(transform.position.x, transform.position.y, playerPosZ);
     }
 }
