@@ -7,30 +7,38 @@ public class CameraControl : MonoBehaviour
     private float cameraSpeed = 5.0f;
 
     [SerializeField] private GameObject player;
-    Vector2 tempVector;
 
-    private void Update()
+    [SerializeField] private Vector2 center;
+    [SerializeField] private Vector2 mapSize;
+
+    float height, width, clampX, clampY;
+
+    private void Start()
     {
-        Vector2 dir = player.transform.position - this.transform.position;
-        //Vector2 moveVector = new Vector2(dir.x * cameraSpeed * Time.deltaTime, dir.y * cameraSpeed * Time.deltaTime);
-        //this.transform.Translate(moveVector);
-        if (player.transform.position.x > 5.6 && player.transform.position.y > 3.2) {
-            Vector2 moveVector = new Vector2(0f, 0f);
-            this.transform.Translate(moveVector);
-        }
-        else if (player.transform.position.x > 5.6) {
-            Vector2 moveVector = new Vector2(0f, dir.y * cameraSpeed * Time.deltaTime);
-            this.transform.Translate(moveVector);
-        }
-        else if (player.transform.position.y > 3.2) {
-            Vector2 moveVector = new Vector2(dir.x * cameraSpeed * Time.deltaTime, 0f);
-            this.transform.Translate(moveVector);
-        }
-        else {
-            Vector2 moveVector = new Vector2(dir.x * cameraSpeed * Time.deltaTime, dir.y * cameraSpeed * Time.deltaTime);
-            this.transform.Translate(moveVector);
-        }
-        //Debug.Log(CameraPosX);
-        
+        height = Camera.main.orthographicSize; //카메라의 화면의 높이
+        width = height * Screen.width / Screen.height; //디스플레이 비율에 맞게 카메라 화면의 너비 계산
+    }
+
+    void LimitCameraArea()
+    {
+        transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * cameraSpeed);
+        float lx = mapSize.x - width;
+        float clampX = Mathf.Clamp(transform.position.x, -lx + center.x, lx + center.x);
+
+        float ly = mapSize.y - height;
+        float clampY = Mathf.Clamp(transform.position.y, -ly + center.y, ly + center.y);
+
+        transform.position = new Vector3(clampX, clampY, -10f);
+    }
+
+    void FixedUpdate()
+    {
+        LimitCameraArea();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(center, mapSize * 2);
     }
 }

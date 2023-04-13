@@ -9,8 +9,9 @@ public static class ItemDatabase
             new Item(1, "Pickaxe", "Used to smash rocks and mine."),
             new Item(2, "Axe", "Used to chop wood."),
             new Item(3, "Wateringcan", "Used to water your crops."),
-            new Item(4, "Scythe", "Used to cut down grass and plants.")
-
+            new Item(4, "Scythe", "Used to cut down grass and plants."),
+            new Item(5, "Wood", "A sturdy, yet flexible plant material with a wide variety of uses."),
+            new Item(6, "Stone", "A common material with many uses in crafting and building.")
 
 
             };

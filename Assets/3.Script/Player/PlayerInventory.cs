@@ -13,7 +13,6 @@ public class PlayerInventory : MonoBehaviour
 
     void Start() {
         //현재 플레이어의 savedata를 가지고 와서 저장
-        Debug.Log(gameManager.inventory[2].isFull);
         int itemCount = 0;
         for (int i = 0; i < gameManager.inventory.Length; i++) {
             if (gameManager.inventory[i].isFull) {
@@ -30,8 +29,14 @@ public class PlayerInventory : MonoBehaviour
             if (gameManager.inventory[i].isFull) {
                 inventoryUI.UpdateSlot(i, gameManager.inventory[i].item);
             }
-            
         }
+
+        //마우스로 선택하면 아이템 들기
+        
+        //아이템을 든 상태로 다른 아이템을 누르면 교체, 빈 슬롯을 누르면 그곳에 두기
+        
+
+        
     }
 
 
