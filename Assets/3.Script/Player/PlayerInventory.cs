@@ -10,20 +10,20 @@ public class PlayerInventory : MonoBehaviour
 
     public SaveData player;
     public UIInventory inventoryUI;
-    public bool activeInventory2Line = false, activeInventory3Line = false;
+    private bool isHold = false; //마우스로 선택하고 있는지
 
     void Start() {
         //현재 플레이어의 savedata를 가지고 와서 저장
         player = gameManager.player;
-        Debug.Log(player.saveInventory.Count);
-        for (int i = 0; i < player.saveInventory.Count; i++)
-        {
-            inventoryUI.AddNewItem(player.saveInventory[i]);
-        }
+        Debug.Log("현재 플레이어의 인벤토리에 들어있는 아이템 수:" + player.saveInventory.Count);
+        
     }
 
     void Update() {
-        
+        for (int i = 0; i < player.saveInventory.Count; i++)
+        {
+            inventoryUI.UpdateSlot(i, player.saveInventory[i]);
+        }
         
     }
 
