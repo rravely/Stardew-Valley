@@ -899,11 +899,10 @@ MonoBehaviour:
   player:
     name: 
     farmName: 
+    isFullArray: 
     itemsIdArray: 
     itemsCountArray: 
   inventoryUI: {fileID: 797587018}
-  activeInventory2Line: 0
-  activeInventory3Line: 0
 --- !u!114 &461164822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -916,6 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48cee35c2673e4a229589f1e7a5df699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1312280118}
 --- !u!1 &522293459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1151,6 +1151,7 @@ MonoBehaviour:
   slotPanel: {fileID: 1310482888}
   currentUIItemsCount: 0
   numberOfSlots: 12
+  numberOfFullSlots: 0
 --- !u!114 &797587019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4137,6 +4138,7 @@ MonoBehaviour:
   player:
     name: 
     farmName: 
+    isFullArray: 
     itemsIdArray: 
     itemsCountArray: 
 --- !u!4 &1312280119

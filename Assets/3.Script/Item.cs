@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct InventoryItem
+{
+    public bool isFull;
+    public Item item;
+}
+
 public class Item
 {
     public int Id;

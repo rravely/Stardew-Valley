@@ -5,13 +5,21 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public SaveData player; //플레이어의 정보를 저장
+    
+    public InventoryItem[] inventory = new InventoryItem[36];
     private Item tempItem;
     void Awake()
     {
         //플레이어 정보 불러오기
         player = SaveSystem.Load("Default"); 
+        for (int i = 0; i < player.isFullArray.Length; i++) {
+            inventory[i].isFull = player.isFullArray[i];
+            inventory[i].item = ItemDatabase.GetItem(player.itemsIdArray[i]);
+            inventory[i].item.ItemCount = player.itemsCountArray[i];
+        }
         Debug.Log("현재 플레이어: " + player.name);
 
+        /*
         //아이템 정보 배열을 아이템 리스트로 바꾸기
         for (int i = 0; i < player.itemsIdArray.Length; i++)
         {
@@ -22,6 +30,7 @@ public class GameManager : MonoBehaviour
             }
             player.saveInventory.Add(tempItem);
         }
+        */
     }
 
     // Update is called once per frame

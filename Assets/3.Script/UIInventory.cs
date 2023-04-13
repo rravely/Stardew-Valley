@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-struct Items {
-    bool isEmpty;
-    UIItem uiItem;
-}
+
 public class UIInventory : MonoBehaviour
 {
     public List<UIItem> uiItems = new List<UIItem>();

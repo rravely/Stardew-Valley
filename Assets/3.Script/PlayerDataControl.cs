@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class PlayerDataControl : MonoBehaviour
 {
+    [SerializeField]private GameManager gameManager;
     private SaveData playerData;
-    private string playerName = "모카";
-    private string farmName = "라떼";
+    //private string playerName = "모카";
+    //private string farmName = "라떼";
     //private List<Item> inventory = new List<Item>();
-    private List<Item> currentInventory = new List<Item>();
+    private InventoryItem[] currentInventory = new InventoryItem[36];
 
     public void SavePlayerData() {
-        currentInventory = GetComponent<PlayerInventory>().inventory;
-        playerData = new SaveData(playerName, farmName, currentInventory);
+        //playerData = new SaveData(playerName, farmName, currentInventory);
+        playerData = gameManager.player;
         SaveSystem.Save(playerData, "Default");
-        Debug.Log(currentInventory.Count);
-        for (int i = 0; i < currentInventory.Count; i++) {
-            Debug.Log(currentInventory[i].ItemName);
+        //Debug.Log(currentInventory.Length);
+        for (int i = 0; i < currentInventory.Length; i++) {
+            Debug.Log(currentInventory[i].item.ItemName);
         }
     }
 }

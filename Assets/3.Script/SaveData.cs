@@ -8,21 +8,23 @@ public class SaveData
 {
     public string name;
     public string farmName;
-    public List<Item> saveInventory = new List<Item>();
-    public int[] itemsIdArray;
-    public int[] itemsCountArray;
+    
+    public InventoryItem[] inventoryItems = new InventoryItem[36];
+    
+    public bool[] isFullArray = new bool [36];
+    public int[] itemsIdArray = new int[36];
+    public int[] itemsCountArray = new int[36];
+    
 
-    public SaveData(string name, string farmName, List<Item> saveInventory)
+    //public SaveItemArray[] saveItemArrays = new SaveItemArray[36];
+
+    public SaveData(string name, string farmName, bool[] isFullArray, int[] itemsIdArray, int[]itemsCountArray)
     {
         this.name = name;
         this.farmName = farmName;
-        this.saveInventory = saveInventory;
-        itemsIdArray = new int[saveInventory.Count];
-        itemsCountArray = new int[saveInventory.Count];
-        for (int i = 0; i < saveInventory.Count; i++) {
-            itemsIdArray[i] = saveInventory[i].Id;
-            itemsCountArray[i] = saveInventory[i].ItemCount;
-        }
+        this.isFullArray = isFullArray;
+        this.itemsIdArray = itemsIdArray;
+        this.itemsCountArray = itemsCountArray;
     }
 
     
