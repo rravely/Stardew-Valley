@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerDataControl : MonoBehaviour
 {
     private SaveData playerData;
-    private string playerName = "player";
-    private string farmName = "player_farm";
+    private string playerName = "모카";
+    private string farmName = "라떼";
     //private List<Item> inventory = new List<Item>();
     private List<Item> currentInventory = new List<Item>();
 

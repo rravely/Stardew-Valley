@@ -34,6 +34,7 @@ public static class SaveSystem
 
         string saveFile = File.ReadAllText(saveFilePath);
         SaveData saveData = JsonUtility.FromJson<SaveData>(saveFile);
+
         return saveData;
     }
 }

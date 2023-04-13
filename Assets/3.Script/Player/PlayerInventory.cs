@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class PlayerInventory : MonoBehaviour
 {
-    public List<Item> inventory = new List<Item>();
+    public List<Item> inventory;
 
+    [SerializeField]private GameManager gameManager;
+
+    public SaveData player;
     public ItemDatabase itemDatabase;
     public UIInventory inventoryUI;
     public bool activeInventory2Line = false, activeInventory3Line = false;
 
     void Start() {
-        GiveItem(0);
-        GiveItem(1);
-        GiveItem(2);
-        GiveItem(3);
-        GiveItem(4);
+        //현재 플레이어의 savedata를 가지고 와서 저장
+        player = gameManager.player;
+
+        Debug.Log(player.name);
     }
 
-    void Update() {
-
-    }
 
     public void GiveItem(int Id) 
     {
         Item itemToAdd = itemDatabase.GetItem(Id);
         inventory.Add(itemToAdd);
+        //Debug.Log(itemToAdd.ItemName);
         inventoryUI.AddNewItem(itemToAdd); 
     }
 

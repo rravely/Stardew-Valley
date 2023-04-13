@@ -12,7 +12,13 @@ public class ItemDatabase : MonoBehaviour
     }
 
     public Item GetItem(int Id) {
-        return items.Find(item => item.Id == Id);
+        for (int i = 0; i < items.Count; i++) {
+            if (items[i].Id.Equals(Id)) {
+                return items[i];
+            }
+        }
+        return items[0];
+        //return items.Find(item => item.Id == Id);
     }
 
     public Item GetItem(string ItemName) {
