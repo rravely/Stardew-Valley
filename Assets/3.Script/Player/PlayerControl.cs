@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float playerPosZ;
     [SerializeField] private Sprite[] playerSprite = new Sprite[4];
+    private int playerDirection = 0;
     
 
     enum PLAYERWALKSTATE{
@@ -20,6 +21,13 @@ public class PlayerControl : MonoBehaviour
         up = 3,
         down = 4
     }
+    enum PLAYERWORKSTATE {
+        axe = 0,
+        hoe = 1,
+        pickaxe = 2,
+        wateringcan = 3
+    }
+
   
     void Awake()
     {
@@ -49,6 +57,7 @@ public class PlayerControl : MonoBehaviour
             animator.SetInteger(animationState, (int)PLAYERWALKSTATE.right);
             lastWalkingState = 1;
             movement2D.MoveTo(new Vector3(x, 0, 0f));
+            
         }
         else if (x < 0)
         {
@@ -70,7 +79,7 @@ public class PlayerControl : MonoBehaviour
         }
         else if (x.Equals(0) && y.Equals(0))
         {
-            animator.SetInteger(animationState, (int)PLAYERWALKSTATE.idle);
+            //animator.SetInteger(animationState, (int)PLAYERWALKSTATE.idle);
             switch (lastWalkingState)
             {
                 case 1:
@@ -97,4 +106,14 @@ public class PlayerControl : MonoBehaviour
         playerPosZ = transform.position.y;
         transform.position = new Vector3(transform.position.x, transform.position.y, playerPosZ);
     }
+
+    void Working() {
+        if (Input.GetMouseButtonDown(0)) //마우스 누르면
+        {
+            
+        } 
+    }
+
+    
+
 }

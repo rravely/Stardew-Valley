@@ -7,30 +7,32 @@ public struct InventoryItem
     public bool isFull;
     public Item item;
 }
-
-public class Item
+[CreateAssetMenu(menuName = "Scriptable object/Item")]
+public class Item : ScriptableObject
 {
-    public int Id;
-    public string ItemName;
-    public string ItemDescription;
-    public int ItemCount;
-    public Sprite Icon;
+    public int id;
+    public string itemName;
+    public string itemDescription;
+    public Sprite icon;
+    public bool stackable = true;
 
-    public Item(int Id, string ItemName, string ItemDescription)
+
+    public Item(int id, string itemName, string itemDescription)
     {
-        this.Id = Id;
-        this.ItemName = ItemName;
-        this.ItemDescription = ItemDescription;
-        this.Icon = Resources.Load<Sprite>("4.Sprite/Item/" + ItemName);
-        ItemCount = 1;
+        this.id = id;
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.icon = Resources.Load<Sprite>("4.Sprite/Item/" + itemName);
+        //itemCount = 1;
     }
 
     public Item(Item item)
     {
-        this.Id = item.Id;
-        this.ItemName = item.ItemName;
-        this.ItemDescription = item.ItemDescription;
-        this.Icon = Resources.Load<Sprite>("Assets/4.Sprite/Item/" + item.ItemName);
-        item.ItemCount = 1;
+        this.id = item.id;
+        this.itemName = item.itemName;
+        this.itemDescription = item.itemDescription;
+        this.icon = Resources.Load<Sprite>("Assets/4.Sprite/Item/" + item.itemName);
+        //item.itemCount = 1;
     }
+    
 }

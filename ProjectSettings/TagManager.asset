@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Title
+  - selected
+  - toolbar
   layers:
   - Default
   - TransparentFX
@@ -47,6 +49,9 @@ TagManager:
     locked: 0
   - name: Middleground
     uniqueID: 740441577
+    locked: 0
+  - name: House
+    uniqueID: 1637371499
     locked: 0
   - name: Foreground
     uniqueID: 2074047431

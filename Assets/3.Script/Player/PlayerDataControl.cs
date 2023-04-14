@@ -17,7 +17,7 @@ public class PlayerDataControl : MonoBehaviour
         SaveSystem.Save(playerData, "Default");
         //Debug.Log(currentInventory.Length);
         for (int i = 0; i < currentInventory.Length; i++) {
-            Debug.Log(currentInventory[i].item.ItemName);
+            Debug.Log(currentInventory[i].item.itemName);
         }
     }
 }
