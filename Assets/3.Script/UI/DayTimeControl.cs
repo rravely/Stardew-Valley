@@ -9,7 +9,7 @@ public class DayTimeControl : MonoBehaviour
     [SerializeField] private Text date;
     [SerializeField] private Text time;
     private int currentTime = 0;
-    private int currentDay = 1;
+    [HideInInspector]public int currentDay = 1;
     private string[] day = new string[7]; //요일
 
     void Update() {

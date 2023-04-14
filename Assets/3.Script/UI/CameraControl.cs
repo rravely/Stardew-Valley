@@ -8,8 +8,13 @@ public class CameraControl : MonoBehaviour
 
     [SerializeField] private GameObject player;
 
+    [Header("Farm")]
     [SerializeField] private Vector2 center;
     [SerializeField] private Vector2 mapSize;
+
+    [Header("House")]
+    [SerializeField] private Vector3 houseCenter;
+
 
     float height, width, clampX, clampY;
 
@@ -19,7 +24,7 @@ public class CameraControl : MonoBehaviour
         width = height * Screen.width / Screen.height; //디스플레이 비율에 맞게 카메라 화면의 너비 계산
     }
 
-    void LimitCameraArea()
+    void LimitCameraAreaFarm()
     {
         transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * cameraSpeed);
         float lx = mapSize.x - width;
@@ -31,9 +36,19 @@ public class CameraControl : MonoBehaviour
         transform.position = new Vector3(clampX, clampY, -10f);
     }
 
+    void LimitCameraAreaHouse() {
+        transform.position = houseCenter;
+    }
+
     void FixedUpdate()
     {
-        LimitCameraArea();
+        if (player.transform.position.y < center.y + mapSize.y / 2) { //farm에 위치해 있으면
+            LimitCameraAreaFarm();
+        }
+        else if (player.transform.position.y > center.y + mapSize.y / 2) {
+            LimitCameraAreaHouse();
+        }
+        
     }
 
     private void OnDrawGizmos()
