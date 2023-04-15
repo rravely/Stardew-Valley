@@ -94,7 +94,8 @@ MonoBehaviour:
   item: {fileID: 0}
   image: {fileID: 8131597966930049638}
   countText: {fileID: 2156459384237789777}
-  canvas: {fileID: 0}
+  toolbar: {fileID: 0}
+  playerControl: {fileID: 0}
   clicked: 0
   parentAfterDrag: {fileID: 0}
   currentParent: {fileID: 0}

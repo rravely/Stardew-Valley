@@ -13,7 +13,7 @@ public class PlayerControl : MonoBehaviour
     private SpriteRenderer spriteRenderer; 
     private float playerPosZ; //플레이어와 건물 사이의 z 위치 비교를 위해
     private float deltaX, deltaY, slope;
-    public Camera camera;
+    public Camera cam;
     
 
     enum PLAYERIDLESTATE{right = 1, left = 2, up = 3, down = 4}
@@ -30,7 +30,6 @@ public class PlayerControl : MonoBehaviour
     {
         movement2D = transform.GetComponent<Movement2D>();
         animator = transform.GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()
@@ -77,7 +76,6 @@ public class PlayerControl : MonoBehaviour
         }
         else if (x.Equals(0) && y.Equals(0))
         {
-            //animator.SetInteger(animationState, (int)PLAYERWALKSTATE.idle);
             switch (playerDirection)
             {
                 case 1:
@@ -111,8 +109,8 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && selectedToolId != -1) //마우스가 눌리고 선택된 아이템이 도구라면
         {
             //방향 구하기
-            deltaX = camera.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
-            deltaY = camera.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
+            deltaX = cam.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
+            deltaY = cam.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
             slope = deltaY / deltaX;
 
             if ((deltaX > 0 && slope > 0 && slope < 1) || (deltaX > 0 && slope < 0 && slope > -1)) //right
@@ -123,7 +121,7 @@ public class PlayerControl : MonoBehaviour
             {
                 workDirection = 2;
             }
-            else if (deltaY > 0) //up
+            else if (deltaY >= 0) //up
             {
                 workDirection = 3;
             }
