@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Wateringcan
   m_EditorClassIdentifier: 
   id: 3
-  itemName: "\uBB3C\uBFCC\uB9AC"
+  itemName: "\uBB3C\uBFCC\uB9AC\uAC1C"
   itemDescription: 
   icon: {fileID: 21300000, guid: 0a07e8db7d7ed49ec86e5c3bb3511b13, type: 3}
   stackable: 0
+  isTool: 1

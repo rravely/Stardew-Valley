@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
-    private Movement2D movement2D;
+    private Movement2D movement2D; //플레이어 이동
     private Animator animator;
     string animationState = "player_walk";
-    int lastWalkingState = 0;
-    private SpriteRenderer spriteRenderer;
-    private float playerPosZ;
-    [SerializeField] private Sprite[] playerSprite = new Sprite[4];
-    private int playerDirection = 0;
+    int lastWalkingState = 0; //이전에 걸어간 상태
+    private SpriteRenderer spriteRenderer; 
+    private float playerPosZ; //플레이어와 건물 사이의 z 위치 비교를 위해
+    [SerializeField] private Sprite[] playerSprite = new Sprite[4]; //방향에 따라 가만히 있는 sprite
+    private int playerDirection = 0; //플레이어가 움직이는 방향
+    [HideInInspector] public int selectedToolId = -1; //플레이어가 선택한 도구 (-1은 아직 선택 x)
     
 
     enum PLAYERWALKSTATE{
@@ -107,13 +108,21 @@ public class PlayerControl : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, playerPosZ);
     }
 
-    void Working() {
-        if (Input.GetMouseButtonDown(0)) //마우스 누르면
-        {
-            
-        } 
+    void Working(int selectedToolId) {
+        switch (selectedToolId) {
+            case 0: // 도끼
+                break;
+            case 1: //괭이
+                break;
+            case 2: //곡괭이
+                break;
+            case 3: //물뿌리개
+                break;
+            case 4: //낫
+                break;
+        }
     }
 
-    
+
 
 }

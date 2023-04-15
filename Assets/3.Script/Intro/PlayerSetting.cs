@@ -30,7 +30,7 @@ public class PlayerSetting : MonoBehaviour
                 defaultItemsCountArray[i] = 0;
             }
             //SaveData 생성
-            player = new SaveData(playerName.text, playerFarmName.text, defaultIsFullArray, defaultItemsIdArray, defaultItemsCountArray);
+            player = new SaveData(playerName.text, playerFarmName.text);
 
             //Json에 저장
             SaveSystem.Save(player, "Default");

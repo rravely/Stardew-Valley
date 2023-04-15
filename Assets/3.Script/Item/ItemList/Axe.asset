@@ -17,3 +17,4 @@ MonoBehaviour:
   itemDescription: 
   icon: {fileID: 21300000, guid: bf067b0fc73d6408aa671d6386473f22, type: 3}
   stackable: 0
+  isTool: 1

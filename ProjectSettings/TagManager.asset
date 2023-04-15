@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Title
   - selected
-  - toolbar
+  - InventoryManager
+  - Toolbar
   layers:
   - Default
   - TransparentFX

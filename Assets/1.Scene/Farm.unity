@@ -2009,6 +2009,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: caf479d5fd0244ddaa0cef86f93f6d4e, type: 3}
   - {fileID: 21300000, guid: c20f90be4603b4b21a245a8e4b8a946b, type: 3}
   - {fileID: 21300000, guid: f44439910ca3e44a7a7f73cc834a996b, type: 3}
+  selectedToolId: -1
 --- !u!114 &461164816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3324,7 +3325,7 @@ GameObject:
   - component: {fileID: 797587020}
   m_Layer: 5
   m_Name: Toolbar
-  m_TagString: toolbar
+  m_TagString: Toolbar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23303,13 +23304,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 746c2df3f97fd43e2b871671811bdd2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 0}
+  itemToPickup:
+  - {fileID: 11400000, guid: 30d0d62f2b7954b9da04268bcd000cb4, type: 2}
+  - {fileID: 11400000, guid: f128042a0625c457f9b82968bfeb4554, type: 2}
+  - {fileID: 11400000, guid: ddd04f99bf340423a8facd991fe61c3c, type: 2}
+  - {fileID: 11400000, guid: 5d054a3b0b9674d7e853f18632e372f8, type: 2}
+  - {fileID: 11400000, guid: 8ac7a1b9dc3ef4d04b017157f5517e76, type: 2}
   player:
     name: 
     farmName: 
-    isFullArray: 
-    itemsIdArray: 
-    itemsCountArray: 
 --- !u!4 &1312280119
 Transform:
   m_ObjectHideFlags: 0
@@ -47174,7 +47177,7 @@ GameObject:
   - component: {fileID: 2096731416}
   m_Layer: 0
   m_Name: InventoryManager
-  m_TagString: Untagged
+  m_TagString: InventoryManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

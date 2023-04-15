@@ -2,11 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct InventoryItem
-{
-    public bool isFull;
-    public Item item;
-}
 [CreateAssetMenu(menuName = "Scriptable object/Item")]
 public class Item : ScriptableObject
 {
@@ -15,6 +10,7 @@ public class Item : ScriptableObject
     public string itemDescription;
     public Sprite icon;
     public bool stackable = true;
+    public bool isTool = false;
 
 
     public Item(int id, string itemName, string itemDescription)

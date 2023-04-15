@@ -4,31 +4,34 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]private InventoryManager inventoryManager;
+    private InventoryManager inventoryManager;
+    public Item[] itemToPickup; //초기 저장할 아이템 끌어다 두기
     public SaveData player; //플레이어의 정보를 저장
+     
     
-    public InventoryItem[] inventory = new InventoryItem[36];
     private Item tempItem;
     void Awake()
     {
         //플레이어 정보 불러오기
         player = SaveSystem.Load("Default"); 
-        for (int i = 0; i < player.isFullArray.Length; i++) {
-            inventory[i].isFull = player.isFullArray[i];
-            //inventory[i].item = ItemDatabase.GetItem(player.itemsIdArray[i]);
-            //inventory[i].item.itemCount = player.itemsCountArray[i];
-        }
         Debug.Log("현재 플레이어: " + player.name);
     }
 
     void Start()
     {
-        //임시로 아이템 생성
+        inventoryManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
+        //임시로 아이템 생성(시작하면 5개의 도구 생기게)
+        for (int i = 0; i < 5; i++) {
+            bool addResult = inventoryManager.AddItem(itemToPickup[i]);
+        }
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
+
+    
 }

@@ -45,7 +45,7 @@ public class InventoryManager : MonoBehaviour
         
     }
 
-    public bool AddItem(Item item) 
+    public bool AddItem(Item item) //아이템 추가
     {
         //같은 아이템이 있고 그 아이템이 stackble하다면 count만 늘린다
         for (int i = 0; i < inventorySlots.LongLength; i++)
@@ -71,7 +71,7 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    void SpawnItem(Item item, InventorySlot slot) 
+    void SpawnItem(Item item, InventorySlot slot) //아이템 생성
     {
         GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
         SlotItem slotItem = newItemGo.GetComponent<SlotItem>();
