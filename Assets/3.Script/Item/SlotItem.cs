@@ -43,8 +43,15 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
 
     public void OnPointerClick(PointerEventData eventData) { //아이템이 선택되면
-        if (eventData.button == PointerEventData.InputButton.Left){
-            playerControl.selectedToolId = item.id; //플레이어가 선택한 아이템 갱신
+        if (eventData.button == PointerEventData.InputButton.Left) {
+            if (item.isTool) //선택된 아이템이 도구라면
+            {
+                playerControl.selectedToolId = item.id; //플레이어가 선택한 아이템 갱신
+            }
+            else 
+            {
+                playerControl.selectedToolId = -1;
+            }
             clicked = true;
         }
     }
