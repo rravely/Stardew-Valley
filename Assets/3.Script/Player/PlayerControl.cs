@@ -6,24 +6,18 @@ public class PlayerControl : MonoBehaviour
 {
     private Movement2D movement2D; //플레이어 이동
     private Animator animator;
-    private string animationState = "player_walk";
+    private string playerState = "player_state";
     [HideInInspector]public int playerDirection = 0; //플레이어가 움직이는 방향
     [HideInInspector]public int workDirection = 0; //플레이어 일하는 방향
     [HideInInspector] public int selectedToolId = -1; //플레이어가 선택한 도구 (-1은 아직 선택 x)
     private SpriteRenderer spriteRenderer; 
     private float playerPosZ; //플레이어와 건물 사이의 z 위치 비교를 위해
-    [SerializeField] private Sprite[] playerSprite = new Sprite[4]; //방향에 따라 가만히 있는 sprite
     private float deltaX, deltaY, slope;
     public Camera camera;
     
 
-    enum PLAYERWALKSTATE{
-        idle = 0,
-        right = 1,
-        left = 2,
-        up = 3,
-        down = 4
-    }
+    enum PLAYERIDLESTATE{right = 1, left = 2, up = 3, down = 4}
+    enum PLAYERWALKSTATE{right = 5, left = 6, up = 7, down = 8}
     enum PLAYERWORKSTATE {
         axe = 0,
         hoe = 1,
@@ -58,26 +52,26 @@ public class PlayerControl : MonoBehaviour
 
         if (x > 0) //right
         {
-            animator.SetInteger(animationState, (int)PLAYERWALKSTATE.right);
+            animator.SetInteger(playerState, (int)PLAYERWALKSTATE.right);
             playerDirection = 1;
             movement2D.MoveTo(new Vector3(x, 0, 0f));
             
         }
         else if (x < 0) // left
         {
-            animator.SetInteger(animationState, (int)PLAYERWALKSTATE.left);
+            animator.SetInteger(playerState, (int)PLAYERWALKSTATE.left);
             playerDirection = 2;
             movement2D.MoveTo(new Vector3(x, 0, 0f));
         }
         else if (y > 0) //up
         {
-            animator.SetInteger(animationState, (int)PLAYERWALKSTATE.up);
+            animator.SetInteger(playerState, (int)PLAYERWALKSTATE.up);
             playerDirection = 3;
             movement2D.MoveTo(new Vector3(0, y, y));
         }
         else if (y < 0) //down
         {
-            animator.SetInteger(animationState, (int)PLAYERWALKSTATE.down);
+            animator.SetInteger(playerState, (int)PLAYERWALKSTATE.down);
             playerDirection = 4;
             movement2D.MoveTo(new Vector3(0, y, y));
         }
@@ -87,19 +81,19 @@ public class PlayerControl : MonoBehaviour
             switch (playerDirection)
             {
                 case 1:
-                    spriteRenderer.sprite = playerSprite[0];
+                    animator.SetInteger(playerState, (int)PLAYERIDLESTATE.right);
                     movement2D.MoveTo(new Vector3(0, 0, 0f));
                     break;
                 case 2:
-                    spriteRenderer.sprite = playerSprite[1];
+                    animator.SetInteger(playerState, (int)PLAYERIDLESTATE.left);
                     movement2D.MoveTo(new Vector3(0, 0, 0f));
                     break;
                 case 3:
-                    spriteRenderer.sprite = playerSprite[2];
+                    animator.SetInteger(playerState, (int)PLAYERIDLESTATE.up);
                     movement2D.MoveTo(new Vector3(0, 0, 0f));
                     break;
                 case 4:
-                    spriteRenderer.sprite = playerSprite[3];
+                    animator.SetInteger(playerState, (int)PLAYERIDLESTATE.down);
                     movement2D.MoveTo(new Vector3(0, 0, 0f));
                     break;
             }
@@ -111,20 +105,6 @@ public class PlayerControl : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, playerPosZ);
     }
 
-    void Working(int selectedToolId) {
-        switch (selectedToolId) {
-            case 0: // 도끼
-                break;
-            case 1: //괭이
-                break;
-            case 2: //곡괭이
-                break;
-            case 3: //물뿌리개
-                break;
-            case 4: //낫
-                break;
-        }
-    }
 
     void MouseClickForWork()
     {
@@ -137,25 +117,19 @@ public class PlayerControl : MonoBehaviour
 
             if ((deltaX > 0 && slope > 0 && slope < 1) || (deltaX > 0 && slope < 0 && slope > -1)) //right
             {
-                //그 자리에 서서 플레이어 오른쪽 애니메이션
-                //오른쪽 방향의 오브젝트와 충돌중이면 그 오브젝트 파괴하고 아이템 얻기
                 workDirection = 1;
-                Debug.Log("right");
             }
             else if ((deltaX < 0 && slope > 0 && slope < 1) || (deltaX < 0 && slope < 0 && slope > -1)) //left
             {
                 workDirection = 2;
-                Debug.Log("left");
             }
             else if (deltaY > 0) //up
             {
                 workDirection = 3;
-                Debug.Log("Up");
             }
             else //down
             {
                 workDirection = 4;
-                Debug.Log("Down");
             }
         }
     }

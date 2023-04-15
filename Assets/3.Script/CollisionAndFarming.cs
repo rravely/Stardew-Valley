@@ -29,27 +29,31 @@ public class CollisionAndFarming : MonoBehaviour
                     {
                         inventoryManager.AddItem(item);
                         playerControl.workDirection = 0;
+                        Destroy(gameObject);
                     }
                     break;
                 case 2: //left
-                    if (player.transform.position.x > transform.position.x) //플레이어의 위치가 이 오브젝트보다 왼쪽에 있으면
+                    if (player.transform.position.x > transform.position.x) //플레이어의 위치가 이 오브젝트보다 오른쪽에 있으면
                     {
                         inventoryManager.AddItem(item);
                         playerControl.workDirection = 0;
+                        Destroy(gameObject);
                     }
                     break;
                 case 3: //up
-                    if (player.transform.position.y < transform.position.y) //플레이어의 위치가 이 오브젝트보다 왼쪽에 있으면
+                    if (player.transform.position.y < transform.position.y) //플레이어의 위치가 이 오브젝트보다 아래쪽에 있으면
                     {
                         inventoryManager.AddItem(item);
                         playerControl.workDirection = 0;
+                        Destroy(gameObject);
                     }
                     break;
                 case 4: //down
-                    if (player.transform.position.y > transform.position.y) //플레이어의 위치가 이 오브젝트보다 왼쪽에 있으면
+                    if (player.transform.position.y > transform.position.y) //플레이어의 위치가 이 오브젝트보다 위쪽에 있으면
                     {
                         inventoryManager.AddItem(item);
                         playerControl.workDirection = 0;
+                        Destroy(gameObject);
                     }
                     break;
             }
