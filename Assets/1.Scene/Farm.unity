@@ -1770,8 +1770,8 @@ GameObject:
   - component: {fileID: 461164815}
   - component: {fileID: 461164817}
   - component: {fileID: 461164819}
-  - component: {fileID: 461164820}
   - component: {fileID: 461164822}
+  - component: {fileID: 461164823}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1859,12 +1859,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDirection: 0
+  workDirection: 0
   selectedToolId: -1
   playerSprite:
   - {fileID: 21300000, guid: 2cd5395c1bd3847848673a9e0d722903, type: 3}
   - {fileID: 21300000, guid: caf479d5fd0244ddaa0cef86f93f6d4e, type: 3}
   - {fileID: 21300000, guid: c20f90be4603b4b21a245a8e4b8a946b, type: 3}
   - {fileID: 21300000, guid: f44439910ca3e44a7a7f73cc834a996b, type: 3}
+  camera: {fileID: 1168814850}
 --- !u!114 &461164816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1877,7 +1879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6673d1f73d4854434a8c18bcff89437f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 0.7
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!95 &461164817
 Animator:
@@ -1921,7 +1923,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &461164820
+--- !u!114 &461164822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461164812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cee35c2673e4a229589f1e7a5df699, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 1312280118}
+--- !u!58 &461164823
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1937,19 +1952,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.06
---- !u!114 &461164822
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461164812}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48cee35c2673e4a229589f1e7a5df699, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameManager: {fileID: 1312280118}
 --- !u!1 &488752796
 GameObject:
   m_ObjectHideFlags: 0
@@ -45380,7 +45382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5355836918f14c58a89dd733d56f850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1168814850}
+  item: {fileID: 11400000, guid: 5b266eba889ef4783903b5f721ff4fc3, type: 2}
 --- !u!114 &1736586660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -46524,7 +46526,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.41}
+  m_Offset: {x: 0, y: -0.4}
   serializedVersion: 2
   m_Radius: 0.1
 --- !u!114 &2015020532
@@ -46539,7 +46541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5355836918f14c58a89dd733d56f850, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1168814850}
+  item: {fileID: 11400000, guid: 5b266eba889ef4783903b5f721ff4fc3, type: 2}
 --- !u!114 &2015020533
 MonoBehaviour:
   m_ObjectHideFlags: 0
