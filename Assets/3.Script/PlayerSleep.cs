@@ -11,10 +11,11 @@ public class PlayerSleep : MonoBehaviour
         if (collision.transform.CompareTag("Player")) //침대와 플레이어 충돌 -> sleep
         {
             //화면 어두워지고
-
             
-            //날짜 하루 +1
+            
+            //날짜 하루 +1, 시간 0
             dayControl.currentDay++;
+            dayControl.currentTime = 0;
 
             //HP와 Energy 충전
 

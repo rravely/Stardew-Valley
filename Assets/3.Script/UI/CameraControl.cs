@@ -42,10 +42,10 @@ public class CameraControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (player.transform.position.y < center.y + mapSize.y / 2) { //farm에 위치해 있으면
+        if (player.transform.position.y < center.y + mapSize.y) { //farm에 위치해 있으면
             LimitCameraAreaFarm();
         }
-        else if (player.transform.position.y > center.y + mapSize.y / 2) {
+        else if (player.transform.position.y > center.y + mapSize.y) {
             LimitCameraAreaHouse();
         }
         

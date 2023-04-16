@@ -18,12 +18,7 @@ public class PlayerControl : MonoBehaviour
 
     enum PLAYERIDLESTATE{right = 1, left = 2, up = 3, down = 4}
     enum PLAYERWALKSTATE{right = 5, left = 6, up = 7, down = 8}
-    enum PLAYERWORKSTATE {
-        axe = 0,
-        hoe = 1,
-        pickaxe = 2,
-        wateringcan = 3
-    }
+    enum PLAYERWORKSTATE {axe = 0, hoe = 1, pickaxe = 2, wateringcan = 3}
 
   
     void Awake()

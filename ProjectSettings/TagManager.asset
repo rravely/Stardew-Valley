@@ -8,6 +8,7 @@ TagManager:
   - selected
   - InventoryManager
   - Toolbar
+  - DroppedItem
   layers:
   - Default
   - TransparentFX
