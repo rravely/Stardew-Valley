@@ -113,26 +113,43 @@ public class PlayerControl : MonoBehaviour
             if ((deltaX > 0 && slope > 0 && slope < 1) || (deltaX > 0 && slope < 0 && slope > -1)) //right
             {
                 workDirection = 1;
-                animator.SetInteger(playerWork, (int)PLAYERWORKSTATE.right);
+                animator.SetInteger(playerState, (int)PLAYERWORKSTATE.right);
+                //animator.SetTrigger("work_right");
             }
             else if ((deltaX < 0 && slope > 0 && slope < 1) || (deltaX < 0 && slope < 0 && slope > -1)) //left
             {
                 workDirection = 2;
-                animator.SetInteger(playerWork, (int)PLAYERWALKSTATE.left);
+                animator.SetInteger(playerState, (int)PLAYERWORKSTATE.left);
             }
             else if (deltaY >= 0) //up
             {
                 workDirection = 3;
-                animator.SetInteger(playerWork, (int)PLAYERWALKSTATE.up);
+                animator.SetInteger(playerState, (int)PLAYERWORKSTATE.up);
             }
             else //down
             {
                 workDirection = 4;
-                animator.SetInteger(playerWork, (int)PLAYERWALKSTATE.down);
+                animator.SetInteger(playerState, (int)PLAYERWORKSTATE.down);
             }
         }
     }
 
-
+    void PlayerIDLE() {
+        switch (workDirection) 
+        {
+            case 1: 
+                animator.SetInteger(playerState, (int)PLAYERIDLESTATE.right);
+                break;
+            case 2:
+                animator.SetInteger(playerState, (int)PLAYERIDLESTATE.left);
+                break;
+            case 3:
+                animator.SetInteger(playerState, (int)PLAYERIDLESTATE.up);
+                break;
+            case 4:
+                animator.SetInteger(playerState, (int)PLAYERIDLESTATE.down);
+                break;
+        }
+    }
 
 }

@@ -18,7 +18,7 @@ public class CollisionAndFarming : MonoBehaviour
     //플레이어 애니메이션
     private Animator playerAnimator;
     private string playerState = "player_state";
-    
+    enum PLAYERIDLESTATE{right = 1, left = 2, up = 3, down = 4}
     
 
     void Start() {
@@ -44,6 +44,7 @@ public class CollisionAndFarming : MonoBehaviour
                     {
                         //playerControl.workDirection = 0;
                         animator.SetBool("isRemoved", true);
+                        playerAnimator.SetInteger(playerState, (int)PLAYERIDLESTATE.right);
                     }
                     break;
                 case 2: //left
@@ -51,6 +52,7 @@ public class CollisionAndFarming : MonoBehaviour
                     {
                         //playerControl.workDirection = 0;
                         animator.SetBool("isRemoved", true);
+                        playerAnimator.SetInteger(playerState, (int)PLAYERIDLESTATE.left);
                     }
                     break;
                 case 3: //up
@@ -58,6 +60,7 @@ public class CollisionAndFarming : MonoBehaviour
                     {
                         //playerControl.workDirection = 0;
                         animator.SetBool("isRemoved", true);
+                        playerAnimator.SetInteger(playerState, (int)PLAYERIDLESTATE.up);
                     }
                     break;
                 case 4: //down
@@ -65,6 +68,7 @@ public class CollisionAndFarming : MonoBehaviour
                     {
                         //playerControl.workDirection = 0;
                         animator.SetBool("isRemoved", true);
+                        playerAnimator.SetInteger(playerState, (int)PLAYERIDLESTATE.down);
                     }
                     break;
             }
