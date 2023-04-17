@@ -8,12 +8,16 @@ public class CameraControl : MonoBehaviour
 
     [SerializeField] private GameObject player;
 
-    [Header("Farm")]
+    [Header("HouseEntry")]
     [SerializeField] private Vector2 center;
     [SerializeField] private Vector2 mapSize;
 
     [Header("House")]
     [SerializeField] private Vector3 houseCenter;
+
+    [Header("Town")]
+    [SerializeField] private Vector2 townCenter; 
+    [SerializeField] private Vector2 townMapSize;
 
 
     float height, width, clampX, clampY;
@@ -40,13 +44,26 @@ public class CameraControl : MonoBehaviour
         transform.position = houseCenter;
     }
 
+    void LimitCameraAreaTown() {
+        transform.position = Vector3.Lerp(transform.position, player.transform.position, Time.deltaTime * cameraSpeed);
+        float lx = townMapSize.x - width;
+        float clampX = Mathf.Clamp(transform.position.x, -lx + townCenter.x, lx + townCenter.x);
+
+        float ly = townMapSize.y - height;
+        float clampY = Mathf.Clamp(transform.position.y, -ly + townCenter.y, ly + townCenter.y);
+        transform.position = new Vector3(clampX, clampY, -10f);
+    }
+
     void FixedUpdate()
     {
-        if (player.transform.position.y < center.y + mapSize.y) { //farm에 위치해 있으면
+        if (player.transform.position.y < center.y + mapSize.y && player.transform.position.x < center.x + mapSize.x) { //farm에 위치해 있으면
             LimitCameraAreaFarm();
         }
-        else if (player.transform.position.y > center.y + mapSize.y) {
+        else if (player.transform.position.y > center.y + mapSize.y) { //house에 위치해 있으면
             LimitCameraAreaHouse();
+        }
+        else if (player.transform.position.x > center.x + mapSize.x) { //town에 위치해 있으면
+            LimitCameraAreaTown();
         }
         
     }
@@ -54,6 +71,6 @@ public class CameraControl : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(center, mapSize * 2);
+        Gizmos.DrawWireCube(townCenter, townMapSize * 2);
     }
 }
