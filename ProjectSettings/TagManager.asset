@@ -9,6 +9,7 @@ TagManager:
   - InventoryManager
   - Toolbar
   - DroppedItem
+  - Tool
   layers:
   - Default
   - TransparentFX

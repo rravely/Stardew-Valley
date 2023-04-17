@@ -12,6 +12,7 @@ public class CollisionAndFarming : MonoBehaviour
     private InventoryManager inventoryManager;
     private Transform droppedItem;
     //[SerializeField]private Item item;
+    [SerializeField]private int SpawnItemCount = 1;
     [SerializeField]private GameObject spawnItemPrefab;
     [SerializeField]private List<int> toolId;
 
@@ -19,6 +20,10 @@ public class CollisionAndFarming : MonoBehaviour
     private Animator playerAnimator;
     private string playerState = "player_state";
     enum PLAYERIDLESTATE{right = 1, left = 2, up = 3, down = 4}
+
+    //플레이어 도구 애니메이션
+    private Animator toolAnimator;
+    private string[] toolName = new string[5] {"Axe", "Hoe", "Pickaxe", "Wateringcan", "Scythe"};
     
 
     void Start() {
@@ -28,13 +33,14 @@ public class CollisionAndFarming : MonoBehaviour
         playerAnimator = player.GetComponent<Animator>();
         inventoryManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
         droppedItem = GameObject.FindWithTag("DroppedItem").transform;
+        toolAnimator = GameObject.FindWithTag("Tool").GetComponent<Animator>();
     }
 
     void Update() {
     }
 
     void OnCollisionStay2D(Collision2D collision) {
-        //플레이어랑 충돌하고 플레이어가 선택한 도구가 해당 작물과 상호작용할 수 있으면
+        //플레이어랑 충돌하고 플레이어가 선택한 도구가 해당 작물과 상호작용
         if (collision.transform.CompareTag("Player") && toolId.Contains(playerControl.selectedToolId)) 
         {
             switch (playerControl.workDirection) //플레이어가 일하는 방향이
@@ -77,8 +83,12 @@ public class CollisionAndFarming : MonoBehaviour
 
     void DestroyObject() {
         Destroy(gameObject); //이 오브젝트 파괴하고
-        GameObject spawnItem = Instantiate(spawnItemPrefab, transform.position, Quaternion.identity); //아이템 바닥에 생성
+        float x = transform.position.x + 0.01f * Random.Range(0, 10);
+        float y = transform.position.y + 0.01f * Random.Range(0, 10);
+        for (int i = 0; i < SpawnItemCount; i++) {
+        GameObject spawnItem = Instantiate(spawnItemPrefab, new Vector3(x, y, transform.position.z), Quaternion.identity); //아이템 바닥에 생성
         spawnItem.transform.SetParent(droppedItem); //생성한 아이템이 DroppedItem에 상속되도록
+        }
         playerControl.workDirection = 0;
     }
 

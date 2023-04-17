@@ -7,10 +7,14 @@ public class PlayerControl : MonoBehaviour
     private Movement2D movement2D; //플레이어 이동
     private Animator animator;
     private string playerState = "player_state";
-    private string playerWork = "player_work";
     [HideInInspector]public int playerDirection = 0; //플레이어가 움직이는 방향
     [HideInInspector]public int workDirection = 0; //플레이어 일하는 방향
-    [HideInInspector] public int selectedToolId = -1; //플레이어가 선택한 도구 (-1은 아직 선택 x)
+    [HideInInspector]public int selectedToolId = -1; //플레이어가 선택한 도구 (-1은 아직 선택 x)
+
+    //tool control
+    private Animator toolAnimator;
+    private string[] toolName = new string[5] {"Axe", "Hoe", "Pickaxe", "Wateringcan", "Scythe"};
+
     private SpriteRenderer spriteRenderer; 
     private float playerPosZ; //플레이어와 건물 사이의 z 위치 비교를 위해
     private float deltaX, deltaY, slope;
@@ -32,6 +36,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         ChangeZSameAsY();
+        toolAnimator = GameObject.FindWithTag("Tool").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -110,31 +115,38 @@ public class PlayerControl : MonoBehaviour
             deltaY = cam.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
             slope = deltaY / deltaX;
 
-            if ((deltaX > 0 && slope > 0 && slope < 1) || (deltaX > 0 && slope < 0 && slope > -1)) //right
+            if (Input.mousePosition.y > 114) {
+                if ((deltaX > 0 && slope > 0 && slope < 1) || (deltaX > 0 && slope < 0 && slope > -1)) //right
             {
                 workDirection = 1;
                 animator.SetInteger(playerState, (int)PLAYERWORKSTATE.right);
-                //animator.SetTrigger("work_right");
+                toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.right);
+
             }
             else if ((deltaX < 0 && slope > 0 && slope < 1) || (deltaX < 0 && slope < 0 && slope > -1)) //left
             {
                 workDirection = 2;
                 animator.SetInteger(playerState, (int)PLAYERWORKSTATE.left);
+                toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.left);
             }
             else if (deltaY >= 0) //up
             {
                 workDirection = 3;
                 animator.SetInteger(playerState, (int)PLAYERWORKSTATE.up);
+                toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.up);
             }
             else //down
             {
                 workDirection = 4;
                 animator.SetInteger(playerState, (int)PLAYERWORKSTATE.down);
+                toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.down);
+            }
             }
         }
     }
 
     void PlayerIDLE() {
+        toolAnimator.SetInteger(toolName[selectedToolId], 5);
         switch (workDirection) 
         {
             case 1: 
