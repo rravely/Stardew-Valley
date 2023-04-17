@@ -137,7 +137,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -158,7 +158,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -179,7 +179,7 @@ TextureImporter:
         width: 23
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -200,7 +200,7 @@ TextureImporter:
         width: 24
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -208,6 +208,153 @@ TextureImporter:
       bones: []
       spriteID: cba13646424994bfeafa2ac873a184d1
       internalID: 645536473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Stardew Valley - Animations_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 592
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 415c3230c2c2041a592ad82a212b461f
+      internalID: -672581269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Stardew Valley - Animations_5
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 592
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb8ad385113f64f73a1d9b186c11788b
+      internalID: 297399182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Stardew Valley - Animations_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 592
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cf754285123a471c83c09e20347e900
+      internalID: 1792242878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Stardew Valley - Animations_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 592
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbd57912d2f984bad8f1f1bd7557d508
+      internalID: -1941656382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Stardew Valley - Animations_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 592
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 685af40eb53394342b436b4ad624dfe8
+      internalID: -179327830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Stardew Valley - Animations_9
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 592
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086d3019722c34862bfad7ee4ace1f2c
+      internalID: 330360977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC Computer - Stardew Valley - Animations_10
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 592
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9427bee89ac4499196c6acb9827f5b8
+      internalID: -1674561269
       vertices: []
       indices: 
       edges: []
@@ -225,8 +372,15 @@ TextureImporter:
     nameFileIdTable:
       PC Computer - Stardew Valley - Animations_0: 1523124159
       PC Computer - Stardew Valley - Animations_1: 916974158
+      PC Computer - Stardew Valley - Animations_10: -1674561269
       PC Computer - Stardew Valley - Animations_2: -124007115
       PC Computer - Stardew Valley - Animations_3: 645536473
+      PC Computer - Stardew Valley - Animations_4: -672581269
+      PC Computer - Stardew Valley - Animations_5: 297399182
+      PC Computer - Stardew Valley - Animations_6: 1792242878
+      PC Computer - Stardew Valley - Animations_7: -1941656382
+      PC Computer - Stardew Valley - Animations_8: -179327830
+      PC Computer - Stardew Valley - Animations_9: 330360977
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

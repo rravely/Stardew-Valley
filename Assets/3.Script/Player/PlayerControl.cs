@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
     private Movement2D movement2D; //플레이어 이동
     private Animator animator;
     private string playerState = "player_state";
+    private string playerWork = "player_work";
     [HideInInspector]public int playerDirection = 0; //플레이어가 움직이는 방향
     [HideInInspector]public int workDirection = 0; //플레이어 일하는 방향
     [HideInInspector] public int selectedToolId = -1; //플레이어가 선택한 도구 (-1은 아직 선택 x)
@@ -112,22 +113,22 @@ public class PlayerControl : MonoBehaviour
             if ((deltaX > 0 && slope > 0 && slope < 1) || (deltaX > 0 && slope < 0 && slope > -1)) //right
             {
                 workDirection = 1;
-                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.right);
+                animator.SetInteger(playerWork, (int)PLAYERWORKSTATE.right);
             }
             else if ((deltaX < 0 && slope > 0 && slope < 1) || (deltaX < 0 && slope < 0 && slope > -1)) //left
             {
                 workDirection = 2;
-                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.left);
+                animator.SetInteger(playerWork, (int)PLAYERWALKSTATE.left);
             }
             else if (deltaY >= 0) //up
             {
                 workDirection = 3;
-                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.up);
+                animator.SetInteger(playerWork, (int)PLAYERWALKSTATE.up);
             }
             else //down
             {
                 workDirection = 4;
-                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.down);
+                animator.SetInteger(playerWork, (int)PLAYERWALKSTATE.down);
             }
         }
     }
