@@ -18,7 +18,8 @@ public class PlayerControl : MonoBehaviour
 
     enum PLAYERIDLESTATE{right = 1, left = 2, up = 3, down = 4}
     enum PLAYERWALKSTATE{right = 5, left = 6, up = 7, down = 8}
-    enum PLAYERWORKSTATE {axe = 0, hoe = 1, pickaxe = 2, wateringcan = 3}
+    enum PLAYERWORKSTATE{right = 9, left = 10, up = 11, down = 12}
+    //enum PLAYERWORKSTATE {axe = 0, hoe = 1, pickaxe = 2, wateringcan = 3}
 
   
     void Awake()
@@ -111,18 +112,22 @@ public class PlayerControl : MonoBehaviour
             if ((deltaX > 0 && slope > 0 && slope < 1) || (deltaX > 0 && slope < 0 && slope > -1)) //right
             {
                 workDirection = 1;
+                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.right);
             }
             else if ((deltaX < 0 && slope > 0 && slope < 1) || (deltaX < 0 && slope < 0 && slope > -1)) //left
             {
                 workDirection = 2;
+                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.left);
             }
             else if (deltaY >= 0) //up
             {
                 workDirection = 3;
+                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.up);
             }
             else //down
             {
                 workDirection = 4;
+                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.down);
             }
         }
     }

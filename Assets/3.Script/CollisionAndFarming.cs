@@ -18,7 +18,7 @@ public class CollisionAndFarming : MonoBehaviour
     //플레이어 애니메이션
     private Animator playerAnimator;
     private string playerState = "player_state";
-    enum PLAYERWORKSTATE{right = 9, left = 10, up = 11, down = 12}
+    
     
 
     void Start() {
@@ -42,32 +42,28 @@ public class CollisionAndFarming : MonoBehaviour
                 case 1: //right
                     if (player.transform.position.x < transform.position.x) //플레이어의 위치가 이 오브젝트보다 왼쪽에 있으면
                     {
-                        playerControl.workDirection = 0;
-                        playerAnimator.SetInteger(playerState, (int)PLAYERWORKSTATE.right);
+                        //playerControl.workDirection = 0;
                         animator.SetBool("isRemoved", true);
                     }
                     break;
                 case 2: //left
                     if (player.transform.position.x > transform.position.x) //플레이어의 위치가 이 오브젝트보다 오른쪽에 있으면
                     {
-                        playerControl.workDirection = 0;
-                        playerAnimator.SetInteger(playerState, (int)PLAYERWORKSTATE.left);
+                        //playerControl.workDirection = 0;
                         animator.SetBool("isRemoved", true);
                     }
                     break;
                 case 3: //up
                     if (player.transform.position.z < transform.position.z) //플레이어의 위치가 이 오브젝트보다 아래쪽에 있으면
                     {
-                        playerControl.workDirection = 0;
-                        playerAnimator.SetInteger(playerState, (int)PLAYERWORKSTATE.up);
+                        //playerControl.workDirection = 0;
                         animator.SetBool("isRemoved", true);
                     }
                     break;
                 case 4: //down
                     if (player.transform.position.z > transform.position.z) //플레이어의 위치가 이 오브젝트보다 위쪽에 있으면
                     {
-                        playerControl.workDirection = 0;
-                        playerAnimator.SetInteger(playerState, (int)PLAYERWORKSTATE.down);
+                        //playerControl.workDirection = 0;
                         animator.SetBool("isRemoved", true);
                     }
                     break;
@@ -79,6 +75,7 @@ public class CollisionAndFarming : MonoBehaviour
         Destroy(gameObject); //이 오브젝트 파괴하고
         GameObject spawnItem = Instantiate(spawnItemPrefab, transform.position, Quaternion.identity); //아이템 바닥에 생성
         spawnItem.transform.SetParent(droppedItem); //생성한 아이템이 DroppedItem에 상속되도록
+        playerControl.workDirection = 0;
     }
 
     
