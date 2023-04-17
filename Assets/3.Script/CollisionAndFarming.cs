@@ -8,17 +8,24 @@ public class CollisionAndFarming : MonoBehaviour
     private GameObject player;
     private PlayerControl playerControl;
     private Animator animator;
+    
     private InventoryManager inventoryManager;
     private Transform droppedItem;
     //[SerializeField]private Item item;
     [SerializeField]private GameObject spawnItemPrefab;
     [SerializeField]private List<int> toolId;
+
+    //플레이어 애니메이션
+    private Animator playerAnimator;
+    private string playerState = "player_state";
+    enum PLAYERWORKSTATE{right = 9, left = 10, up = 11, down = 12}
     
 
     void Start() {
         player = GameObject.FindWithTag("Player");
         playerControl = player.GetComponent<PlayerControl>();
         animator = gameObject.GetComponent<Animator>();
+        playerAnimator = player.GetComponent<Animator>();
         inventoryManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
         droppedItem = GameObject.FindWithTag("DroppedItem").transform;
     }
@@ -36,6 +43,7 @@ public class CollisionAndFarming : MonoBehaviour
                     if (player.transform.position.x < transform.position.x) //플레이어의 위치가 이 오브젝트보다 왼쪽에 있으면
                     {
                         playerControl.workDirection = 0;
+                        playerAnimator.SetInteger(playerState, (int)PLAYERWORKSTATE.right);
                         animator.SetBool("isRemoved", true);
                     }
                     break;
@@ -43,6 +51,7 @@ public class CollisionAndFarming : MonoBehaviour
                     if (player.transform.position.x > transform.position.x) //플레이어의 위치가 이 오브젝트보다 오른쪽에 있으면
                     {
                         playerControl.workDirection = 0;
+                        playerAnimator.SetInteger(playerState, (int)PLAYERWORKSTATE.left);
                         animator.SetBool("isRemoved", true);
                     }
                     break;
@@ -50,6 +59,7 @@ public class CollisionAndFarming : MonoBehaviour
                     if (player.transform.position.z < transform.position.z) //플레이어의 위치가 이 오브젝트보다 아래쪽에 있으면
                     {
                         playerControl.workDirection = 0;
+                        playerAnimator.SetInteger(playerState, (int)PLAYERWORKSTATE.up);
                         animator.SetBool("isRemoved", true);
                     }
                     break;
@@ -57,6 +67,7 @@ public class CollisionAndFarming : MonoBehaviour
                     if (player.transform.position.z > transform.position.z) //플레이어의 위치가 이 오브젝트보다 위쪽에 있으면
                     {
                         playerControl.workDirection = 0;
+                        playerAnimator.SetInteger(playerState, (int)PLAYERWORKSTATE.down);
                         animator.SetBool("isRemoved", true);
                     }
                     break;
@@ -65,9 +76,9 @@ public class CollisionAndFarming : MonoBehaviour
     }
 
     void DestroyObject() {
-        Destroy(gameObject);
-        GameObject spawnItem = Instantiate(spawnItemPrefab, transform.position, Quaternion.identity);
-        spawnItem.transform.SetParent(droppedItem);
+        Destroy(gameObject); //이 오브젝트 파괴하고
+        GameObject spawnItem = Instantiate(spawnItemPrefab, transform.position, Quaternion.identity); //아이템 바닥에 생성
+        spawnItem.transform.SetParent(droppedItem); //생성한 아이템이 DroppedItem에 상속되도록
     }
 
     
