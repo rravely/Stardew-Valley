@@ -846,9 +846,9 @@ TextureImporter:
       name: spring_town_34
       rect:
         serializedVersion: 2
-        x: 176
+        x: 177
         y: 640
-        width: 16
+        width: 14
         height: 64
       alignment: 9
       pivot: {x: 0.49872112, y: 0.123330116}
@@ -914,7 +914,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -922,6 +922,384 @@ TextureImporter:
       bones: []
       spriteID: 1565acf4039ef4d55bc6fa2f45a80abc
       internalID: -1284853096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1008
+        width: 127
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7633652b0746495cb824fda6a0cdf21
+      internalID: -1248695529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_39
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 562
+        width: 76
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18b3a284fdf56439d8a6d4edb67fff5b
+      internalID: -968552432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_40
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 528
+        width: 63
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c55abc4c4e064321a7a21f27aa5478d
+      internalID: -759808894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_41
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 511
+        width: 157
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 784194e161d6e4908ba1ed24a44dd4ae
+      internalID: -1769651881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_42
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 608
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be6468a39ecb6466d9473b6daf3e3dc5
+      internalID: 1625486925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_43
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 719
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f6474d38867c4206b7d97684a6d5e2a
+      internalID: 1312135602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_44
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 687
+        width: 34
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b0216df5dbc74882b63a4ddd7aa29be
+      internalID: 413013834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_45
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 640
+        width: 47
+        height: 37
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c1d17f4a89a5412aae22f5e1d46ee3a
+      internalID: 1714952845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_46
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 592
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 343e9bce32b0f47229b9e3f2443738e1
+      internalID: 1294114410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_47
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 1105
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d6683bd03722439d89992cf5a187002
+      internalID: 215800388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_48
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 1105
+        width: 15
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ca5c2574719c4c2490024f1ba060c6a
+      internalID: 2111151535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_49
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 992
+        width: 48
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c03664a634c04a7ea527affb6341d32
+      internalID: -423101130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_50
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 977
+        width: 30
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11ee9eaf06ded45c5a98fad27d7ed68e
+      internalID: -901282597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_51
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1138
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 125c47d3c92f4410399a2c3a71d3c40a
+      internalID: -797222143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_52
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 832
+        width: 112
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a0bef4e152a84327a988d964ae96da4
+      internalID: 1626051429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_53
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 592
+        width: 31
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ae9a46bc45d84d61bc543a120bbd0a0
+      internalID: 1682701210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_54
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 592
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 235d4ade780014fbdbc96c9017c8b03c
+      internalID: 294469621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spring_town_55
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 351
+        width: 128
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f16ddc89b64547febfb8bdffa4b37a3
+      internalID: 1614184314
       vertices: []
       indices: 
       edges: []
@@ -969,8 +1347,26 @@ TextureImporter:
       spring_town_35: 1025220493
       spring_town_36: 567534562
       spring_town_37: -1284853096
+      spring_town_38: -1248695529
+      spring_town_39: -968552432
       spring_town_4: -1148976309
+      spring_town_40: -759808894
+      spring_town_41: -1769651881
+      spring_town_42: 1625486925
+      spring_town_43: 1312135602
+      spring_town_44: 413013834
+      spring_town_45: 1714952845
+      spring_town_46: 1294114410
+      spring_town_47: 215800388
+      spring_town_48: 2111151535
+      spring_town_49: -423101130
       spring_town_5: 266095681
+      spring_town_50: -901282597
+      spring_town_51: -797222143
+      spring_town_52: 1626051429
+      spring_town_53: 1682701210
+      spring_town_54: 294469621
+      spring_town_55: 1614184314
       spring_town_6: -1136187868
       spring_town_7: -895724356
       spring_town_8: -577448068
