@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Hoe
   m_EditorClassIdentifier: 
   id: 1
-  itemName: "\uAD2D\uC774"
-  itemDescription: 
+  itemName: "\uD638\uBBF8"
+  itemDescription: "\uB545\uC744 \uD30C\uACE0 \uBC2D\uC744 \uAC08 \uB54C \uC0AC\uC6A9\uD569\uB2C8\uB2E4."
+  cost: 0
   icon: {fileID: 21300000, guid: 9286eebbbb6ac4c048ec8b2472115c2c, type: 3}
   stackable: 0
   isTool: 1

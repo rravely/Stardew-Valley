@@ -16,5 +16,7 @@ MonoBehaviour:
   itemName: "\uCCA0\uAD11\uC11D"
   itemDescription: "\uC8FC\uAD34\uB85C \uC81C\uB828\uD560 \uC218 \uC788\uB294 \uADF8\uB7ED\uC800\uB7ED
     \uD754\uD55C \uAD11\uC11D."
+  cost: 10
   icon: {fileID: 21300000, guid: 55a17d389a8044c5d9a0cb8ab9018100, type: 3}
   stackable: 1
+  isTool: 0

@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   itemName: "\uBB3C\uBFCC\uB9AC\uAC1C"
-  itemDescription: 
+  itemDescription: "\uC791\uBB3C\uC5D0 \uBB3C\uC744 \uC904 \uB54C \uC0AC\uC6A9\uB429\uB2C8\uB2E4.
+    \uBB3C\uC774 \uC788\uB294 \uACF3 \uC5B4\uB514\uC5D0\uC11C\uB77C\uB3C4 \uB2E4\uC2DC
+    \uCC44\uC6B8 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  cost: 0
   icon: {fileID: 21300000, guid: 0a07e8db7d7ed49ec86e5c3bb3511b13, type: 3}
   stackable: 0
   isTool: 1

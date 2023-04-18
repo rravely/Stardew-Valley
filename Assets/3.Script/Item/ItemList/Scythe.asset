@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   itemName: "\uB0AB"
-  itemDescription: 
+  itemDescription: "\uC800\uC7A5\uACE0\uAC00 \uC788\uB2E4\uBA74 \uC794\uB514\uB97C
+    \uC798\uB77C\uC11C \uAC74\uCD08\uB97C \uB9CC\uB4E4 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+  cost: 0
   icon: {fileID: 21300000, guid: 481516a1128cd4a8c8628ebcd0f295d6, type: 3}
   stackable: 0
   isTool: 1
