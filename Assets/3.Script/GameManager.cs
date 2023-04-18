@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
         //플레이어 정보 불러오기
         player = SaveSystem.Load("Default"); 
         Debug.Log("현재 플레이어: " + player.name);
+        Debug.Log("플레이어 소지금 " + player.playerMoney);
     }
 
     void Start()

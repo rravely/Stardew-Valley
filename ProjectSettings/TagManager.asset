@@ -10,6 +10,7 @@ TagManager:
   - Toolbar
   - DroppedItem
   - Tool
+  - DayTime
   layers:
   - Default
   - TransparentFX

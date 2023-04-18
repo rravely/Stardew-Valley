@@ -20,7 +20,5 @@ public class ShopItem : MonoBehaviour
         itemCost.text = item.cost.ToString();
     }
 
-    void Update() {
-        
-    }
+    
 }

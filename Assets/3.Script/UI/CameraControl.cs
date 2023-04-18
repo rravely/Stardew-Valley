@@ -19,6 +19,10 @@ public class CameraControl : MonoBehaviour
     [SerializeField] private Vector2 townCenter; 
     [SerializeField] private Vector2 townMapSize;
 
+    [Header("Shop")]
+    [SerializeField] private Vector3 shopCenter;
+
+
 
     float height, width, clampX, clampY;
 
@@ -54,16 +58,23 @@ public class CameraControl : MonoBehaviour
         transform.position = new Vector3(clampX, clampY, -10f);
     }
 
+    void LimitCameraAreaShop() {
+        transform.position = shopCenter;
+    }
+
     void FixedUpdate()
     {
-        if (player.transform.position.y < center.y + mapSize.y && player.transform.position.x < center.x + mapSize.x) { //farm에 위치해 있으면
+        if (player.transform.position.y < center.y + mapSize.y * 0.5f && player.transform.position.x < center.x + mapSize.x * 0.5f) { //farm에 위치해 있으면
             LimitCameraAreaFarm();
         }
-        else if (player.transform.position.y > center.y + mapSize.y) { //house에 위치해 있으면
+        else if (player.transform.position.y > center.y + mapSize.y * 0.5f && player.transform.position.x < center.x + mapSize.x * 0.5f) { //house에 위치해 있으면
             LimitCameraAreaHouse();
         }
-        else if (player.transform.position.x > center.x + mapSize.x) { //town에 위치해 있으면
+        else if (player.transform.position.x > center.x + mapSize.x * 0.5f && player.transform.position.y < townCenter.y + townMapSize.y * 0.5f) { //town에 위치해 있으면
             LimitCameraAreaTown();
+        }
+        else if (player.transform.position.x > center.x + mapSize.x * 0.5f && player.transform.position.y > townCenter.y + townMapSize.y * 0.5f) { //shop에 위치
+            LimitCameraAreaShop();
         }
         
     }

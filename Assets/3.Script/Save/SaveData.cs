@@ -8,6 +8,7 @@ public class SaveData
 {
     public string name;
     public string farmName;
+    public int playerMoney = 500;
     
     //public bool[] isFullArray = new bool [36];
     //public int[] itemsIdArray = new int[36];
