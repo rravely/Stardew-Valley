@@ -29,11 +29,7 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         toolbar = GameObject.FindWithTag("Toolbar").transform;
         playerControl = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 
-        //mouse enter
-        itemInfoUI = GameObject.FindWithTag("ItemInfo");
-        itemInfoName = GameObject.FindWithTag("ItemInfoName").GetComponent<Text>();
-        itemInfoDes = GameObject.FindWithTag("ItemInfoDes").GetComponent<Text>();
-        itemCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        
     }
     public void InitialiseItem(Item newItem)
     {
@@ -56,6 +52,12 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
+        //mouse enter
+        itemInfoUI = GameObject.FindWithTag("ItemInfo");
+        itemInfoName = GameObject.FindWithTag("ItemInfoName").GetComponent<Text>();
+        itemInfoDes = GameObject.FindWithTag("ItemInfoDes").GetComponent<Text>();
+        itemCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
+        
         itemInfoUI.SetActive(true);
         itemInfoUI.transform.position = new Vector3(itemCamera.ScreenToWorldPoint(Input.mousePosition).x + 0.5f, itemCamera.ScreenToWorldPoint(Input.mousePosition).y + 0.5f, 0f);
         itemInfoName.text = item.itemName;

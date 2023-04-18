@@ -24,6 +24,9 @@ public class CollisionAndFarming : MonoBehaviour
     //플레이어 도구 애니메이션
     private Animator toolAnimator;
     private string[] toolName = new string[5] {"Axe", "Hoe", "Pickaxe", "Wateringcan", "Scythe"};
+
+    //Map Info
+    private FarmMap farmMap;
     
 
     void Start() {
@@ -34,6 +37,7 @@ public class CollisionAndFarming : MonoBehaviour
         inventoryManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
         droppedItem = GameObject.FindWithTag("DroppedItem").transform;
         toolAnimator = GameObject.FindWithTag("Tool").GetComponent<Animator>();
+        farmMap = GameObject.FindWithTag("Farm").GetComponent<FarmMap>();
     }
 
     void Update() {
