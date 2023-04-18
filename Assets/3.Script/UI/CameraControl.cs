@@ -64,16 +64,16 @@ public class CameraControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (player.transform.position.y < center.y + mapSize.y * 0.5f && player.transform.position.x < center.x + mapSize.x * 0.5f) { //farm에 위치해 있으면
+        if (player.transform.position.y < center.y + mapSize.y && player.transform.position.x < center.x + mapSize.x) { //farm에 위치해 있으면
             LimitCameraAreaFarm();
         }
-        else if (player.transform.position.y > center.y + mapSize.y * 0.5f && player.transform.position.x < center.x + mapSize.x * 0.5f) { //house에 위치해 있으면
+        else if (player.transform.position.y > center.y + mapSize.y && player.transform.position.x < center.x + mapSize.x ) { //house에 위치해 있으면
             LimitCameraAreaHouse();
         }
-        else if (player.transform.position.x > center.x + mapSize.x * 0.5f && player.transform.position.y < townCenter.y + townMapSize.y * 0.5f) { //town에 위치해 있으면
+        else if (player.transform.position.x > center.x + mapSize.x  && player.transform.position.y < townCenter.y + townMapSize.y ) { //town에 위치해 있으면
             LimitCameraAreaTown();
         }
-        else if (player.transform.position.x > center.x + mapSize.x * 0.5f && player.transform.position.y > townCenter.y + townMapSize.y * 0.5f) { //shop에 위치
+        else if (player.transform.position.x > center.x + mapSize.x  && player.transform.position.y > townCenter.y + townMapSize.y ) { //shop에 위치
             LimitCameraAreaShop();
         }
         

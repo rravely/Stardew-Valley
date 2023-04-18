@@ -4,23 +4,36 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
+public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Item item; 
     public Image image; 
     public Text countText;
     public Transform toolbar;
     public PlayerControl playerControl;
+
+    //for click, drag events
     [HideInInspector] public bool clicked = false;
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public Transform currentParent;
     [HideInInspector] public int count = 1;
+
+    //for mouse enter event
+    private GameObject itemInfoUI;
+    private Text itemInfoName, itemInfoDes;
+    private Camera itemCamera;
 
     void Start() 
     {
         //마우스 커서의 위치를 잡기 위하여 toolbar를 가져온다. 
         toolbar = GameObject.FindWithTag("Toolbar").transform;
         playerControl = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+
+        //mouse enter
+        itemInfoUI = GameObject.FindWithTag("ItemInfo");
+        itemInfoName = GameObject.FindWithTag("ItemInfoName").GetComponent<Text>();
+        itemInfoDes = GameObject.FindWithTag("ItemInfoDes").GetComponent<Text>();
+        itemCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
     }
     public void InitialiseItem(Item newItem)
     {
@@ -41,6 +54,18 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         }
         
     }
+
+    public void OnPointerEnter(PointerEventData eventData) {
+        itemInfoUI.SetActive(true);
+        itemInfoUI.transform.position = new Vector3(itemCamera.ScreenToWorldPoint(Input.mousePosition).x + 0.5f, itemCamera.ScreenToWorldPoint(Input.mousePosition).y + 0.5f, 0f);
+        itemInfoName.text = item.itemName;
+        itemInfoDes.text = item.itemDescription;
+    }
+
+    public void OnPointerExit(PointerEventData eventData) {
+        itemInfoUI.SetActive(false);
+    }
+
 
     public void OnPointerClick(PointerEventData eventData) { //아이템이 선택되면
         if (eventData.button == PointerEventData.InputButton.Left) {

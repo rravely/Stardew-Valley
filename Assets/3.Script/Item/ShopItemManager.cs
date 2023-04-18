@@ -67,6 +67,7 @@ public class ShopItemManager : MonoBehaviour
                         }
                         else{ //플레이어의 소지금이 충분하지 않으면
                             noMoneyUI.SetActive(true);
+                            isHold = false;
                             StartCoroutine("DisplayNoMoneyUI_co");
                         }
                     }

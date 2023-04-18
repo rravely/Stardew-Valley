@@ -11,6 +11,9 @@ TagManager:
   - DroppedItem
   - Tool
   - DayTime
+  - ItemInfoName
+  - ItemInfoDes
+  - ItemInfo
   layers:
   - Default
   - TransparentFX
