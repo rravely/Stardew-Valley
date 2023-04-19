@@ -15,6 +15,9 @@ public class PlayerControl : MonoBehaviour
     private Animator toolAnimator;
     private string[] toolName = new string[5] {"Axe", "Hoe", "Pickaxe", "Wateringcan", "Scythe"};
 
+    //After player animation 
+    public bool isAnimationEnd = false;
+
     //to compare resources position and player
     FarmMap farmMap;
     FarmManager farmManager;
@@ -120,8 +123,8 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator PlayerWorkAnimation_co() {
         yield return new WaitForSeconds(0.51f);
-
-        if (Input.mousePosition.y > 114) //인벤토리 창보다 위
+        Debug.Log(Input.mousePosition.y);
+        if (Input.mousePosition.y > 125) //인벤토리 창보다 위
         {
             if (selectedToolId.Equals(3)) {
                 switch (playerDirection) {
@@ -189,8 +192,8 @@ public class PlayerControl : MonoBehaviour
     void CheckNearResources() //플레이어가 마우스를 선택했을 때 주변에 자원이 있는지 체크
     {
         //현재 플레이어의 좌표 구하기
-        int playerX = (int)((transform.position.x - 1.875f) / 0.15f);
-        int playerY = -(int)((transform.position.y - 4.72f) / 0.15f);
+        int playerX = (int)((transform.position.x - 1.95f) / 0.15f);
+        int playerY = -(int)((transform.position.y - 4.675f) / 0.15f);
         switch (playerDirection)
         {
             case 1:
@@ -220,21 +223,20 @@ public class PlayerControl : MonoBehaviour
             else if(farmMap.farmResData[posY, posX].Equals(0) && selectedToolId.Equals(1)) //아무것도 없는 땅이고 잡은 도구가 호미라면
             {
                 //땅파기
-                farmManager.SpawnHoeDirt((posX + 1) * 0.15f + 1.8f, -(posY+ 1) * 0.15f + 4.72f);
+                farmManager.ChangeHoeDirt(transform.position, playerDirection);
 
                 //땅팠다고 저장
                 farmMap.farmResData[posY, posX] = 5;
-                //Debug.Log("플레이어 위치: " + playerY + ", " + playerX + ". 호미질한 위치: " + playerY + ", " + posX);
             }
             else if(farmMap.farmResData[posY, posX].Equals(5) && selectedToolId.Equals(3)) //호미질 된 땅에 물뿌리개 사용했다면
             {
-                
+                //물 준 땅으로 바꾸기
+                farmManager.ChangeWateringDirt(transform.position, playerDirection);
             }
         }
     }
 
-    void CheckEmptyGround() //물뿌리개를 이용했을 때 이용한 땅이 비어있는지 확인하고 비어있으면 farmManager한테 넘겨주기
-    {
-
+    void CheckAnimationEnd() {
+        isAnimationEnd = true;
     }
 }

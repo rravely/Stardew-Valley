@@ -57,16 +57,13 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
-        
-        
-        itemInfoUI.SetActive(true);
         itemInfoUI.transform.position = new Vector3(itemCamera.ScreenToWorldPoint(Input.mousePosition).x + 0.5f, itemCamera.ScreenToWorldPoint(Input.mousePosition).y + 0.5f, 0f);
         itemInfoName.text = item.itemName;
         itemInfoDes.text = item.itemDescription;
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        itemInfoUI.SetActive(false);
+        itemInfoUI.transform.position = new Vector3(0f, -1000f, 0f);
     }
 
 
