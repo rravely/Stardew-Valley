@@ -15,11 +15,12 @@ public class PlayerControl : MonoBehaviour
     private Animator toolAnimator;
     private string[] toolName = new string[5] {"Axe", "Hoe", "Pickaxe", "Wateringcan", "Scythe"};
 
+    //to compare resources position and player
+    FarmMap farmMap;
+    FarmManager farmManager;
+
     private SpriteRenderer spriteRenderer; 
     private float playerPosZ; //플레이어와 건물 사이의 z 위치 비교를 위해
-    private float deltaX, deltaY, slope;
-    public Camera cam;
-    
 
     enum PLAYERIDLESTATE{right = 1, left = 2, up = 3, down = 4}
     enum PLAYERWALKSTATE{right = 5, left = 6, up = 7, down = 8}
@@ -38,6 +39,8 @@ public class PlayerControl : MonoBehaviour
     {
         ChangeZSameAsY();
         toolAnimator = GameObject.FindWithTag("Tool").GetComponent<Animator>();
+        farmMap = GameObject.FindWithTag("Farm").GetComponent<FarmMap>();
+        farmManager = GameObject.FindWithTag("Farm").GetComponent<FarmManager>();
     }
 
     // Update is called once per frame
@@ -117,10 +120,6 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator PlayerWorkAnimation_co() {
         yield return new WaitForSeconds(0.51f);
-        //방향 구하기
-        deltaX = cam.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
-        deltaY = cam.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
-        slope = deltaY / deltaX;
 
         if (Input.mousePosition.y > 114) //인벤토리 창보다 위
         {
@@ -187,7 +186,55 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    void ChangeResourcesState() {
-        
+    void CheckNearResources() //플레이어가 마우스를 선택했을 때 주변에 자원이 있는지 체크
+    {
+        //현재 플레이어의 좌표 구하기
+        int playerX = (int)((transform.position.x - 1.875f) / 0.15f);
+        int playerY = -(int)((transform.position.y - 4.72f) / 0.15f);
+        switch (playerDirection)
+        {
+            case 1:
+                PlayerFarming(playerX + 1, playerY);
+                break;
+            case 2:
+                Debug.Log(playerX + ", " + playerY);
+                PlayerFarming(playerX - 1, playerY);
+                break;
+            case 3:
+                PlayerFarming(playerX, playerY - 1);
+                break;
+            case 4:
+                PlayerFarming(playerX, playerY + 1);
+                break;
+        }
+    }
+
+    void PlayerFarming(int posX, int posY) 
+    {
+        if (farmMap.farmMap[posY, posX].Equals(0)) 
+        {
+            if (farmMap.farmResData[posY, posX] > 0 && farmMap.farmResData[posY, posX] < 5) //나뭇가지, 돌, 잡초, 나무
+            {
+                        
+            }
+            else if(farmMap.farmResData[posY, posX].Equals(0) && selectedToolId.Equals(1)) //아무것도 없는 땅이고 잡은 도구가 호미라면
+            {
+                //땅파기
+                farmManager.SpawnHoeDirt((posX + 1) * 0.15f + 1.8f, -(posY+ 1) * 0.15f + 4.72f);
+
+                //땅팠다고 저장
+                farmMap.farmResData[posY, posX] = 5;
+                //Debug.Log("플레이어 위치: " + playerY + ", " + playerX + ". 호미질한 위치: " + playerY + ", " + posX);
+            }
+            else if(farmMap.farmResData[posY, posX].Equals(5) && selectedToolId.Equals(3)) //호미질 된 땅에 물뿌리개 사용했다면
+            {
+                
+            }
+        }
+    }
+
+    void CheckEmptyGround() //물뿌리개를 이용했을 때 이용한 땅이 비어있는지 확인하고 비어있으면 farmManager한테 넘겨주기
+    {
+
     }
 }

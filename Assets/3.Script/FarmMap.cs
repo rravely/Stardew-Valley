@@ -36,10 +36,17 @@ public class FarmMap : MonoBehaviour
     public int[,] farmResData = new int[26, 43];
 
     [SerializeField]private List<GameObject> resPrefabList = new List<GameObject>();
-    [SerializeField]private Transform parentFarm;
 
     void start() {
         //MakeRandomMap();
+    }
+
+    public void MakeGroundData() {
+        for (int i = 0; i < 26; i++) {
+            for (int j = 0; j < 43; j++) {
+                farmResData[i, j] = 0;
+            }
+        }
     }
 
     public void MakeRandomMap() {
@@ -50,8 +57,8 @@ public class FarmMap : MonoBehaviour
                     float y = 4.72f - i * 0.15f;
                     int objNum = Random.Range(0, resPrefabList.Count);
                     farmResData[i, j] = objNum + 1; //어떤 객체 존재하는지 저장하기
-                    GameObject obj = Instantiate(resPrefabList[objNum], new Vector3(x, y, 0f), Quaternion.identity);
-                    obj.transform.SetParent(parentFarm);
+                    GameObject obj = Instantiate(resPrefabList[objNum], new Vector3(x, y + 0.075f, 0f), Quaternion.identity);
+                    obj.transform.SetParent(this.transform);
                 }
                 else {
                     farmResData[i, j] = -1; // 빈공간 ~
