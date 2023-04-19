@@ -110,12 +110,19 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && selectedToolId != -1) //마우스가 눌리고 선택된 아이템이 도구라면
         {
-            //방향 구하기
-            deltaX = cam.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
-            deltaY = cam.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
-            slope = deltaY / deltaX;
+            StartCoroutine("PlayerWorkAnimation_co");
+        }
+    }
 
-            if (Input.mousePosition.y > 114) {
+    IEnumerator PlayerWorkAnimation_co() {
+        yield return new WaitForSeconds(0.51f);
+        //방향 구하기
+        deltaX = cam.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
+        deltaY = cam.ScreenToWorldPoint(Input.mousePosition).y - transform.position.y;
+        slope = deltaY / deltaX;
+
+        if (Input.mousePosition.y > 114) //인벤토리 창보다 위
+        {
                 if ((deltaX > 0 && slope > 0 && slope < 1) || (deltaX > 0 && slope < 0 && slope > -1)) //right
             {
                 workDirection = 1;
@@ -141,9 +148,9 @@ public class PlayerControl : MonoBehaviour
                 animator.SetInteger(playerState, (int)PLAYERWORKSTATE.down);
                 toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.down);
             }
-            }
         }
-    }
+    } 
+
 
     void PlayerIDLE() {
         toolAnimator.SetInteger(toolName[selectedToolId], 5);

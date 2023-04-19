@@ -20,7 +20,7 @@ public class ShopItemManager : MonoBehaviour
     [SerializeField]Camera shopCamera;
 
     //shop item list
-    [SerializeField]private InventoryManager inventoryManager = new InventoryManager();
+    [SerializeField]private InventoryManager inventoryManager;
     [SerializeField]private List<Item> shopItemList = new List<Item>();
 
     //no Money
