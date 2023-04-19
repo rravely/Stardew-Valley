@@ -9,7 +9,7 @@ public class PlayerControl : MonoBehaviour
     private string playerState = "player_state";
     [HideInInspector]public int playerDirection = 0; //플레이어가 움직이는 방향
     [HideInInspector]public int workDirection = 0; //플레이어 일하는 방향
-    [HideInInspector]public int selectedToolId = -1; //플레이어가 선택한 도구 (-1은 아직 선택 x)
+    [HideInInspector]public int selectedToolId = 0; //플레이어가 선택한 도구 (-1은 아직 선택 x)
 
     //tool control
     private Animator toolAnimator;
@@ -24,6 +24,7 @@ public class PlayerControl : MonoBehaviour
     enum PLAYERIDLESTATE{right = 1, left = 2, up = 3, down = 4}
     enum PLAYERWALKSTATE{right = 5, left = 6, up = 7, down = 8}
     enum PLAYERWORKSTATE{right = 9, left = 10, up = 11, down = 12}
+    enum PLAYERWATERSTATE{right = 13, left = 14, up = 15, down = 16}
     //enum PLAYERWORKSTATE {axe = 0, hoe = 1, pickaxe = 2, wateringcan = 3}
 
   
@@ -123,30 +124,45 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.mousePosition.y > 114) //인벤토리 창보다 위
         {
-                if ((deltaX > 0 && slope > 0 && slope < 1) || (deltaX > 0 && slope < 0 && slope > -1)) //right
-            {
-                workDirection = 1;
-                animator.SetInteger(playerState, (int)PLAYERWORKSTATE.right);
-                toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.right);
-
+            if (selectedToolId.Equals(3)) {
+                switch (playerDirection) {
+                    case 1:
+                        animator.SetInteger(playerState, (int)PLAYERWATERSTATE.right);
+                        toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.right);
+                        break;
+                    case 2:
+                        animator.SetInteger(playerState, (int)PLAYERWATERSTATE.left);
+                        toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.left);
+                        break;
+                    case 3:
+                        animator.SetInteger(playerState, (int)PLAYERWATERSTATE.up);
+                        toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.up);
+                        break;
+                    case 4:
+                        animator.SetInteger(playerState, (int)PLAYERWATERSTATE.down);
+                        toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.down);
+                        break;
+                }
             }
-            else if ((deltaX < 0 && slope > 0 && slope < 1) || (deltaX < 0 && slope < 0 && slope > -1)) //left
-            {
-                workDirection = 2;
-                animator.SetInteger(playerState, (int)PLAYERWORKSTATE.left);
-                toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.left);
-            }
-            else if (deltaY >= 0) //up
-            {
-                workDirection = 3;
-                animator.SetInteger(playerState, (int)PLAYERWORKSTATE.up);
-                toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.up);
-            }
-            else //down
-            {
-                workDirection = 4;
-                animator.SetInteger(playerState, (int)PLAYERWORKSTATE.down);
-                toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.down);
+            else {
+                switch (playerDirection) {
+                    case 1:
+                        animator.SetInteger(playerState, (int)PLAYERWORKSTATE.right);
+                        toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.right);
+                        break;
+                    case 2:
+                        animator.SetInteger(playerState, (int)PLAYERWORKSTATE.left);
+                        toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.left);
+                        break;
+                    case 3:
+                        animator.SetInteger(playerState, (int)PLAYERWORKSTATE.up);
+                        toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.up);
+                        break;
+                    case 4:
+                        animator.SetInteger(playerState, (int)PLAYERWORKSTATE.down);
+                        toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.down);
+                        break;
+                }
             }
         }
     } 
@@ -171,4 +187,7 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    void ChangeResourcesState() {
+        
+    }
 }
