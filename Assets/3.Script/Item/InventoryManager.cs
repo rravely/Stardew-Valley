@@ -8,9 +8,9 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot[] inventorySlots; 
     public GameObject inventoryItemPrefab;
     public GameObject selectedSquare, itemInSlot;
+    [HideInInspector]public int selectedSlot = 0;
     private int maxStackedItems = 9;
-    private int selectedSlot = -1;
-
+    
     private PlayerControl playerControl;
 
     void Start() {
@@ -45,8 +45,6 @@ public class InventoryManager : MonoBehaviour
         if (itemInSlot != null) {
             inventorySlots[newValue].Selected();
             selectedSlot = newValue;
-            Debug.Log("선택한 슬롯: " + itemInSlot.item.id);
-            Debug.Log(playerControl);
             playerControl.selectedToolId = itemInSlot.item.id;
         }
         

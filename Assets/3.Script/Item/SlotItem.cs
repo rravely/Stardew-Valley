@@ -36,6 +36,14 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         itemCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         itemInfoUI.transform.position = new Vector3(0f,-1000f,0f);
     }
+
+    void Update() {
+        if (count.Equals(0) && item.isTool.Equals(false)) { //만약 count 수가 1보다 작으면 파괴
+            Destroy(gameObject);
+        }
+    }
+    
+    
     public void InitialiseItem(Item newItem)
     {
         //새로운 아이템이 들어오면 sprite 설정
@@ -108,4 +116,5 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         image.raycastTarget = true;
 
     }
+
 }

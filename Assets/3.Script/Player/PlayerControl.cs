@@ -25,6 +25,9 @@ public class PlayerControl : MonoBehaviour
     FarmManager farmManager;
     [SerializeField]private Tilemap dirtTileMap;
 
+    //for selected slot item update
+    private InventoryManager inventoryManager;
+
     private SpriteRenderer spriteRenderer; 
     private float playerPosZ; //플레이어와 건물 사이의 z 위치 비교를 위해
 
@@ -45,6 +48,8 @@ public class PlayerControl : MonoBehaviour
         toolAnimator = GameObject.FindWithTag("Tool").GetComponent<Animator>();
         farmMap = GameObject.FindWithTag("Farm").GetComponent<FarmMap>();
         farmManager = GameObject.FindWithTag("Farm").GetComponent<FarmManager>();
+
+        inventoryManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
     }
 
     // Update is called once per frame
@@ -137,8 +142,8 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(0.51f);
         if (Input.mousePosition.y > 125) //인벤토리 창보다 위
         {
-            isLock = true;
             if (selectedToolId.Equals(3)) { //물뿌리개 사용
+                //isLock = true;
                 switch (playerDirection) {
                     case 1:
                         animator.SetInteger(playerState, (int)PLAYERWATERSTATE.right);
@@ -266,6 +271,11 @@ public class PlayerControl : MonoBehaviour
                 farmManager.PlayerSeeding(transform.position, playerDirection);
                 //FarmMap의 seedGrowing 변경
                 farmMap.seedGrowing[posY, posX] = 1;
+                //씨앗 개수 줄이기
+                //InventoryManager로부터 선택된 슬롯을 가져오고 그 슬롯의 자식 객체인 아이템의 count 변수 가져와서 줄이기! 
+                SlotItem slotItem = inventoryManager.inventorySlots[inventoryManager.selectedSlot].GetComponentInChildren<SlotItem>();
+                slotItem.count -= 1;
+                slotItem.RefreshCount();
             }
         }
     }
