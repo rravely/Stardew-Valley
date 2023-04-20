@@ -10,7 +10,7 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public Image image; 
     public Text countText;
     public Transform toolbar;
-    public PlayerControl playerControl;
+    //public PlayerControl playerControl;
 
     //for click, drag events
     [HideInInspector] public bool clicked = false;
@@ -27,7 +27,7 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         //마우스 커서의 위치를 잡기 위하여 toolbar를 가져온다. 
         toolbar = GameObject.FindWithTag("Toolbar").transform;
-        playerControl = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
+        //playerControl = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 
         //mouse enter 
         itemInfoUI = GameObject.FindWithTag("ItemInfo");

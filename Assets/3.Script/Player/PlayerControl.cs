@@ -28,6 +28,9 @@ public class PlayerControl : MonoBehaviour
     //for selected slot item update
     private InventoryManager inventoryManager;
 
+    //parsnip add
+    [SerializeField]private Item parsnipItem;
+
     private SpriteRenderer spriteRenderer; 
     private float playerPosZ; //플레이어와 건물 사이의 z 위치 비교를 위해
 
@@ -244,6 +247,7 @@ public class PlayerControl : MonoBehaviour
     //파밍 조건
     void PlayerFarming(int posX, int posY) //매개변수는 맵 좌표
     {
+        Debug.Log(farmMap.seedGrowing[posY, posX]);
         if (farmMap.farmMap[posY, posX].Equals(0)) 
         {
             if (farmMap.farmResData[posY, posX] > 0 && farmMap.farmResData[posY, posX] < 5) //나뭇가지, 돌, 잡초, 나무
@@ -258,6 +262,21 @@ public class PlayerControl : MonoBehaviour
                 //땅팠다고 저장
                 farmMap.farmResData[posY, posX] = 5;
             }
+            else if (farmMap.seedGrowing[posY, posX].Equals(5)) //파스닙 열리면
+            {
+                Debug.Log("수확하기");
+                //땅 정보 초기화
+                farmMap.seedGrowing[posY, posX] = 0; //씨 정보 사라짐
+                
+                //tool은 empty
+                toolAnimator.SetInteger(toolName[selectedToolId], 5);
+
+                //파스닙 얻기
+                inventoryManager.AddItem(parsnipItem);
+
+                //파스닙 얻은 자리 seedTileMap 리셋
+                farmManager.ResetDirt(transform.position, playerDirection);
+            }
             else if(farmMap.farmResData[posY, posX].Equals(5) && selectedToolId.Equals(3)) //호미질 된 땅에 물뿌리개 사용했다면
             {
                 //물 준 땅으로 바꾸기
@@ -269,15 +288,17 @@ public class PlayerControl : MonoBehaviour
             {
                 //씨앗 땅으로 바꾸기
                 farmManager.PlayerSeeding(transform.position, playerDirection);
-                //farmMap.farmResData[posY, posX] = 7; //심었음 표시
+
                 //FarmMap의 seedGrowing 변경
                 farmMap.seedGrowing[posY, posX] = 1;
+
                 //씨앗 개수 줄이기
                 //InventoryManager로부터 선택된 슬롯을 가져오고 그 슬롯의 자식 객체인 아이템의 count 변수 가져와서 줄이기! 
                 SlotItem slotItem = inventoryManager.inventorySlots[inventoryManager.selectedSlot].GetComponentInChildren<SlotItem>();
                 slotItem.count -= 1;
                 slotItem.RefreshCount();
             }
+            
         }
     }
 

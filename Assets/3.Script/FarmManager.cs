@@ -78,7 +78,7 @@ public class FarmManager : MonoBehaviour
         playerPos = new Vector3(x, y, y);
 
         //seed tile map 갱신
-        Vector3Int playerPosInt = dirtTileMap.LocalToCell(playerPos); //Vector3Int로 변환
+        Vector3Int playerPosInt = seedTileMap.LocalToCell(playerPos); //Vector3Int로 변환
         switch (direction) {
             case 1: //right
                 seedTileMap.SetTile(playerPosInt + new Vector3Int(-2, -1, 0), seedTile[0]);
@@ -98,7 +98,7 @@ public class FarmManager : MonoBehaviour
     public void GrowningCrops() {
         for (int i = 0; i < 26; i++) {
             for (int j = 0; j < 43; j++) {
-                if (farmMap.seedGrowing[i, j] > 0) {
+                if (farmMap.seedGrowing[i, j] > 0 && farmMap.farmResData[i, j].Equals(6)) { //작물이 있고 물 준 상태면
                     farmMap.seedGrowing[i, j]++; //1 증가
 
                     //좌표에 맞는 위치
@@ -114,7 +114,7 @@ public class FarmManager : MonoBehaviour
         ChangeWaterDirtToHoeDirt();
     }
 
-    public void ChangeWaterDirtToHoeDirt() {
+    private void ChangeWaterDirtToHoeDirt() {
         for (int i = 0; i < 26; i++) {
             for (int j = 0; j < 43; j++) {
                 if (farmMap.farmResData[i, j].Equals(6)) { //물 준 땅이면
@@ -128,6 +128,29 @@ public class FarmManager : MonoBehaviour
                     dirtTileMap.SetTile(mapCellPos, hoeDirt);
                 }
             }
+        }
+    }
+
+    public void ResetDirt(Vector3 playerPos, int direction) {
+        float x = playerPos.x;
+        float y = playerPos.y - 0.1f; //다리 쪽으로 바꾸기
+        playerPos = new Vector3(x, y, y);
+
+        //seed tile map 갱신
+        Vector3Int playerPosInt = seedTileMap.LocalToCell(playerPos); //Vector3Int로 변환
+        switch (direction) {
+            case 1: //right
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-2, -1, 0), null);
+                break;
+            case 2:
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-4, -1, 0), null);
+                break;
+            case 3:
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-3, 0, 0), null);
+                break;
+            case 4:
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-3, -2, 0), null);
+                break;
         }
     }
 }

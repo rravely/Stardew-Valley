@@ -16,6 +16,8 @@ public class PlayerSleep : MonoBehaviour
 
     string playerAnswer = "";
 
+    private FarmManager farmManager;
+
     private bool askSleepUiActivate = false;
     private GameObject toolbar;
     
@@ -24,6 +26,8 @@ public class PlayerSleep : MonoBehaviour
         toolbar = GameObject.FindWithTag("Toolbar");
         yes = Yes.GetComponent<Text>();
         no = No.GetComponent<Text>();
+
+        farmManager = GameObject.FindWithTag("Farm").GetComponent<FarmManager>();
 
     }
 
@@ -69,6 +73,10 @@ public class PlayerSleep : MonoBehaviour
                 UIAskSleep.SetActive(false);
                 player.SetActive(true);
                 askSleepUiActivate = false;
+
+                //작물 자라기
+                farmManager.GrowningCrops();
+
             }
             else if (playerAnswer.Equals("no")) 
             {

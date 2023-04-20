@@ -11,6 +11,7 @@ public class Shop : MonoBehaviour
     [SerializeField]private GameObject UI;
     [SerializeField]private Text day, time, money;
     [SerializeField]private Text playerMoney;
+    private PlayerControl playerControl;
     //private Text playerMoney;
 
     void Start() {
@@ -23,12 +24,14 @@ public class Shop : MonoBehaviour
             playerMoney.text = gameManager.player.playerMoney.ToString();
             shop.gameObject.SetActive(true);
             UI.SetActive(false);
+            player.SetActive(false);
             day.gameObject.SetActive(false);
             time.gameObject.SetActive(false);
             money.gameObject.SetActive(false); 
 
             //여기서 player.SetActive(false); 를 하면 slotitem이 player를 찾지 못한다. 
             player.transform.position = new Vector3(13f, 9.08f);
+            
 
         }
         if (shop.activeSelf) //shop인 동안
@@ -48,15 +51,6 @@ public class Shop : MonoBehaviour
             money.gameObject.SetActive(true);
             player.transform.position = new Vector2(13.68f, 3.82f); //잡화점 문앞 위치 
         }
-    }
-
-    void SetActiveShop(bool t)
-    {
-        shop.gameObject.SetActive(t);
-        UI.SetActive(!t);
-        player.SetActive(!t);
-        day.gameObject.SetActive(!t);
-        time.gameObject.SetActive(!t);
     }
     
 }

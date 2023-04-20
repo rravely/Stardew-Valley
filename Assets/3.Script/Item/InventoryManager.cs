@@ -20,25 +20,39 @@ public class InventoryManager : MonoBehaviour
 
 
     void Update() {
-        if (Input.inputString != null) {
-            Debug.Log(Input.inputString);
-            bool isNumber = int.TryParse(Input.inputString, out int number);
-            if (isNumber && number > 0 && number < 10) {
-                ChangeSelectedSlot(number - 1);
-            } else if (Input.GetKeyDown(KeyCode.Alpha0)) {
-                ChangeSelectedSlot(9);
-            } else if (Input.GetKeyDown(KeyCode.Minus)) {
-                ChangeSelectedSlot(10);
-            } else if (Input.GetKeyDown(KeyCode.Plus)) {
-                ChangeSelectedSlot(11);
-            }
-        } 
+        //if (Input.inputString != null) {
+        //bool isNumber = int.TryParse(Input.inputString, out int number);
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            ChangeSelectedSlot(0);
+        } else if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            ChangeSelectedSlot(1);
+        } else if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            ChangeSelectedSlot(2);
+        } else if (Input.GetKeyDown(KeyCode.Alpha4)) {
+            ChangeSelectedSlot(3);
+        } else if (Input.GetKeyDown(KeyCode.Alpha5)) {
+            ChangeSelectedSlot(4);
+        } else if (Input.GetKeyDown(KeyCode.Alpha6)) {
+            ChangeSelectedSlot(5);
+        } else if (Input.GetKeyDown(KeyCode.Alpha7)) {
+            ChangeSelectedSlot(6);
+        } else if (Input.GetKeyDown(KeyCode.Alpha8)) {
+            ChangeSelectedSlot(7);
+        } else if (Input.GetKeyDown(KeyCode.Alpha9)) {
+            ChangeSelectedSlot(8);
+        } else if (Input.GetKeyDown(KeyCode.Alpha0)) {
+            ChangeSelectedSlot(9);
+        } else if (Input.GetKeyDown(KeyCode.Minus)) {
+            ChangeSelectedSlot(10);
+        } else if (Input.GetKeyDown(KeyCode.Plus)) {
+            ChangeSelectedSlot(11);
+        }
     }
     
 
     void ChangeSelectedSlot(int newValue)
     {
-        if (selectedSlot >= 0) {
+        if (selectedSlot >= 0 && inventorySlots[selectedSlot] != null) {
             inventorySlots[selectedSlot].Deselected();
         }
         InventorySlot slot = inventorySlots[newValue];

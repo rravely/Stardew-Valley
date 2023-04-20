@@ -41,7 +41,7 @@ public class DayTimeControl : MonoBehaviour
             time.text = hour + " : " + ((currentTime % 6) * 10 == 0 ? "00" : currentTime % 6 * 10) + " 오후";
         }
 
-        switch (currentDay / 7) {
+        switch (currentDay % 7) {
             case 0:
                 date.text = "일, " + currentDay;
                 break;

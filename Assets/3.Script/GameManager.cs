@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private InventoryManager inventoryManager;
-    public Item[] itemToPickup; //초기 저장할 아이템 끌어다 두기
+    public List<Item> itemToPickup; //초기 저장할 아이템 끌어다 두기
     public SaveData player; //플레이어의 정보를 저장
      
     
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     {
         inventoryManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
         //임시로 아이템 생성(시작하면 5개의 도구 생기게)
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < itemToPickup.Count; i++) {
             bool addResult = inventoryManager.AddItem(itemToPickup[i]);
         }
         
