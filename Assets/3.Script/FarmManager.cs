@@ -24,7 +24,7 @@ public class FarmManager : MonoBehaviour
         playerPos = new Vector3(x, y, y);
 
         Vector3Int playerPosInt = dirtTileMap.LocalToCell(playerPos); //Vector3Int로 변환
-        Debug.Log(playerPosInt.x + "," + playerPosInt.y);
+        //Debug.Log(playerPosInt.x + "," + playerPosInt.y);
         
         switch (direction) {
             case 1: //right
@@ -51,16 +51,16 @@ public class FarmManager : MonoBehaviour
         Vector3Int playerPosInt = dirtTileMap.LocalToCell(playerPos); //Vector3Int로 변환
         switch (direction) {
             case 1: //right
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-2, -2, 0), waterDirt);
+                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-2, -1, 0), waterDirt);
                 break;
             case 2:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-4, -2, 0), waterDirt);
+                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-4, -1, 0), waterDirt);
                 break;
             case 3:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, -1, 0), waterDirt);
+                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, 0, 0), waterDirt);
                 break;
             case 4:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, -3, 0), waterDirt);
+                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, -2, 0), waterDirt);
                 break;
         }
     }

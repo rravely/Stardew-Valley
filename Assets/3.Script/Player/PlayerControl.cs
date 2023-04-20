@@ -251,7 +251,7 @@ public class PlayerControl : MonoBehaviour
             else if(farmMap.farmResData[posY, posX].Equals(5) && selectedToolId.Equals(3)) //호미질 된 땅에 물뿌리개 사용했다면
             {
                 //물 준 땅으로 바꾸기
-                //farmManager.ChangeWateringDirt(transform.position, playerDirection);
+                farmManager.ChangeWateringDirt(transform.position, playerDirection);
                 //물준 땅으로 변경
                 farmMap.farmResData[posY, posX] = 6;
             }
