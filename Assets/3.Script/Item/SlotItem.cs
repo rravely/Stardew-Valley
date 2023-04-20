@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Item item; 
     public Image image; 
@@ -12,11 +12,14 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public Transform toolbar;
     //public PlayerControl playerControl;
 
-    //for click, drag events
+    //for click, drag events in inventory
     [HideInInspector] public bool clicked = false;
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public Transform currentParent;
     [HideInInspector] public int count = 1;
+
+    //for drag events in shop
+    private Shop shop;
 
     //for mouse enter event
     private GameObject itemInfoUI;
@@ -35,6 +38,9 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         itemInfoDes = GameObject.FindWithTag("ItemInfoDes").GetComponent<Text>();
         itemCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         itemInfoUI.transform.position = new Vector3(0f,-1000f,0f);
+
+        //for drag in shop
+        shop = GameObject.FindWithTag("Town").GetComponent<Shop>();
     }
 
     void Update() {
@@ -74,25 +80,6 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         itemInfoUI.transform.position = new Vector3(0f, -1000f, 0f);
     }
 
-    
-    public void OnPointerClick(PointerEventData eventData) { //아이템이 선택되면
-    /*
-        if (eventData.button == PointerEventData.InputButton.Left) {
-            Debug.Log("선택된 도구 id: " + playerControl.selectedToolId);
-            if (item.isTool) //선택된 아이템이 도구라면
-            {
-                playerControl.selectedToolId = item.id; //플레이어가 선택한 아이템 갱신
-            }
-            else 
-            {
-                playerControl.selectedToolId = item.id; //파스닙 씨앗 처리를 위해..
-                //playerControl.selectedToolId = -1;
-            }
-            clicked = true;
-        }
-        */
-    }
-
     public void OnBeginDrag(PointerEventData eventData) //드래그 시작
     {
         parentAfterDrag = transform.parent; //drag한 곳에 슬롯이 없으면 다시 되돌아와야 하기 때문에 현재 slot을 저장
@@ -111,10 +98,15 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        transform.GetChild(0).GetComponent<Text>().enabled = true; //드래그를 놓으면 아이템 개수 다시 보이기
-        transform.SetParent(parentAfterDrag); //다시 부모 객체 설정
-        image.raycastTarget = true;
-
+        if (shop.isPlayerInShop.Equals(false)) {
+            transform.GetChild(0).GetComponent<Text>().enabled = true; //드래그를 놓으면 아이템 개수 다시 보이기
+            transform.SetParent(parentAfterDrag); //다시 부모 객체 설정
+            image.raycastTarget = true;
+        }
+        else {
+            shop.itemCount = count;
+            shop.itemCost = item.cost;
+        }
     }
 
 }

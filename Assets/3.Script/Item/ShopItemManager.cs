@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ShopItemManager : MonoBehaviour
+public class ShopItemManager : MonoBehaviour, IDropHandler
 {
     //for player info
     [SerializeField]private GameManager gameManager;
@@ -26,10 +27,14 @@ public class ShopItemManager : MonoBehaviour
     //no Money
     [SerializeField]private GameObject noMoneyUI;
 
+    //for sell item
+    private Shop shop;
+
 
     void Start() {
         isHold = false;
         gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
+        shop = GameObject.FindWithTag("Town").GetComponent<Shop>();
     }
 
     void Update() {
@@ -47,6 +52,7 @@ public class ShopItemManager : MonoBehaviour
         itemCountView.text = itemCount.ToString();
     }
 
+    //아이템 사기
     private void BuyItems() {
         if (Input.GetKeyDown(KeyCode.Return)) //엔터 누르면 구매
         {
@@ -76,10 +82,17 @@ public class ShopItemManager : MonoBehaviour
         }
     }
 
+    public void OnDrop(PointerEventData eventData) {
+        gameManager.player.playerMoney += eventData.pointerDrag.GetComponent<SlotItem>().count * eventData.pointerDrag.GetComponent<SlotItem>().item.cost;
+        Destroy(eventData.pointerDrag);
+    }
+
+    //플레이어 돈 갱신
     private void UpdatePlayerMoney() {
         playerMoney.text = gameManager.player.playerMoney.ToString();
     }
 
+    //알림창 꺼지기
     IEnumerator DisplayNoMoneyUI_co() {
         yield return new WaitForSeconds( 2f );
         noMoneyUI.SetActive(false);
