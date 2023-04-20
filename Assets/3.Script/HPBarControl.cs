@@ -11,6 +11,9 @@ public class HPBarControl : MonoBehaviour
     }
 
     void Update() {
-        transform.localScale = new Vector3(0f, -playerControl.playerEnergy / 15f, 0f);
+        if (playerControl.playerEnergy >= 0f) {
+            transform.localScale = new Vector3(1f, playerControl.playerEnergy / 15f, 1f);
+        }
+        
     }
 }

@@ -312,4 +312,11 @@ public class PlayerControl : MonoBehaviour
         isAnimationEnd = true;
         isLock = false;
     }
+
+    //플레이어의 에너지가 0이 되면
+    void PlayerEnergy() {
+        if (playerEnergy < 0) {
+            //집에서 일어나고 다음날 되기?
+        }
+    }
 }
