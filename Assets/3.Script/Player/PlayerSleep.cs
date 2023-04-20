@@ -31,8 +31,6 @@ public class PlayerSleep : MonoBehaviour
         if (askSleepUiActivate) {
             AskSleep();   
         }
-        
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -44,7 +42,6 @@ public class PlayerSleep : MonoBehaviour
             UIAskSleep.SetActive(true);
             player.SetActive(false);
             askSleepUiActivate = true;
-            
         }
     }
 

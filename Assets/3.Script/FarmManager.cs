@@ -8,6 +8,9 @@ public class FarmManager : MonoBehaviour
     //Save dropped item data
     [HideInInspector]public List<GameObject> droppedItem = new List<GameObject>();
 
+    //Farm Map
+    FarmMap farmMap;
+
     //dirt
     [SerializeField]private Tilemap dirtTileMap;
     [SerializeField]private TileBase hoeDirt;
@@ -15,11 +18,11 @@ public class FarmManager : MonoBehaviour
 
     //seed
     [SerializeField]private Tilemap seedTileMap;
-    [SerializeField]private TileBase seedTile;
+    [SerializeField]private List<TileBase> seedTile = new List<TileBase>();
     
 
-    void SpawnItem(){
-        
+    void Start() {
+        farmMap = gameObject.GetComponent<FarmMap>();
     }
 
     public void ChangeHoeDirt(Vector3 playerPos, int direction) {
@@ -78,17 +81,53 @@ public class FarmManager : MonoBehaviour
         Vector3Int playerPosInt = dirtTileMap.LocalToCell(playerPos); //Vector3Int로 변환
         switch (direction) {
             case 1: //right
-                seedTileMap.SetTile(playerPosInt + new Vector3Int(-2, -1, 0), seedTile);
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-2, -1, 0), seedTile[0]);
                 break;
             case 2:
-                seedTileMap.SetTile(playerPosInt + new Vector3Int(-4, -1, 0), seedTile);
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-4, -1, 0), seedTile[0]);
                 break;
             case 3:
-                seedTileMap.SetTile(playerPosInt + new Vector3Int(-3, 0, 0), seedTile);
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-3, 0, 0), seedTile[0]);
                 break;
             case 4:
-                seedTileMap.SetTile(playerPosInt + new Vector3Int(-3, -2, 0), seedTile);
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-3, -2, 0), seedTile[0]);
                 break;
+        }
+    }
+
+    public void GrowningCrops() {
+        for (int i = 0; i < 26; i++) {
+            for (int j = 0; j < 43; j++) {
+                if (farmMap.seedGrowing[i, j] > 0) {
+                    farmMap.seedGrowing[i, j]++; //1 증가
+
+                    //좌표에 맞는 위치
+                    int x = 9 + j; //9 + j
+                    int y = 30 - i; //29 - i
+                    Vector3Int mapCellPos = new Vector3Int(x, y, 0);
+                    
+                    //작물 타일 바꾸기
+                    seedTileMap.SetTile(mapCellPos, seedTile[farmMap.seedGrowing[i, j] - 1]);
+                }
+            }
+        }
+        ChangeWaterDirtToHoeDirt();
+    }
+
+    public void ChangeWaterDirtToHoeDirt() {
+        for (int i = 0; i < 26; i++) {
+            for (int j = 0; j < 43; j++) {
+                if (farmMap.farmResData[i, j].Equals(6)) { //물 준 땅이면
+                    farmMap.farmResData[i, j] = 5; //물 안준 땅으로 변경
+                    
+                    //좌표에 맞는 위치
+                    int x = 9 + j; //9 + j
+                    int y = 30 - i; //29 - i
+                    Vector3Int mapCellPos = new Vector3Int(x, y, 0);
+
+                    dirtTileMap.SetTile(mapCellPos, hoeDirt);
+                }
+            }
         }
     }
 }

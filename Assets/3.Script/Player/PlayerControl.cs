@@ -269,6 +269,7 @@ public class PlayerControl : MonoBehaviour
             {
                 //씨앗 땅으로 바꾸기
                 farmManager.PlayerSeeding(transform.position, playerDirection);
+                //farmMap.farmResData[posY, posX] = 7; //심었음 표시
                 //FarmMap의 seedGrowing 변경
                 farmMap.seedGrowing[posY, posX] = 1;
                 //씨앗 개수 줄이기

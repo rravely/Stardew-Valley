@@ -21,6 +21,7 @@ public class InventoryManager : MonoBehaviour
 
     void Update() {
         if (Input.inputString != null) {
+            Debug.Log(Input.inputString);
             bool isNumber = int.TryParse(Input.inputString, out int number);
             if (isNumber && number > 0 && number < 10) {
                 ChangeSelectedSlot(number - 1);
