@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 39883057}
   - component: {fileID: 39883058}
   - component: {fileID: 39883059}
+  - component: {fileID: 39883060}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -428,6 +429,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.48, y: 0.36}
   m_EdgeRadius: 0
+--- !u!114 &39883060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39883056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1 &40012236
 GameObject:
   m_ObjectHideFlags: 0
@@ -2615,6 +2629,7 @@ GameObject:
   - component: {fileID: 289326197}
   - component: {fileID: 289326198}
   - component: {fileID: 289326199}
+  - component: {fileID: 289326200}
   m_Layer: 0
   m_Name: Chair02
   m_TagString: Untagged
@@ -2715,6 +2730,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.38}
   m_EdgeRadius: 0
+--- !u!114 &289326200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289326196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1 &302709466
 GameObject:
   m_ObjectHideFlags: 0
@@ -4339,6 +4367,7 @@ GameObject:
   - component: {fileID: 589531946}
   - component: {fileID: 589531945}
   - component: {fileID: 589531944}
+  - component: {fileID: 589531947}
   m_Layer: 0
   m_Name: HouseF
   m_TagString: Untagged
@@ -4442,6 +4471,19 @@ Transform:
   m_Father: {fileID: 1196774522}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &589531947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589531943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1 &591192263
 GameObject:
   m_ObjectHideFlags: 0
@@ -38386,6 +38428,7 @@ GameObject:
   - component: {fileID: 1214418804}
   - component: {fileID: 1214418805}
   - component: {fileID: 1214418806}
+  - component: {fileID: 1214418807}
   m_Layer: 0
   m_Name: Shop02
   m_TagString: Untagged
@@ -38485,6 +38528,19 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1214418807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214418803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1 &1248419699
 GameObject:
   m_ObjectHideFlags: 0
@@ -39314,6 +39370,7 @@ GameObject:
   - component: {fileID: 1310060832}
   - component: {fileID: 1310060833}
   - component: {fileID: 1310060834}
+  - component: {fileID: 1310060835}
   m_Layer: 0
   m_Name: House03
   m_TagString: Untagged
@@ -39413,6 +39470,19 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1310060835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310060831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1 &1312280117
 GameObject:
   m_ObjectHideFlags: 0
@@ -39479,6 +39549,7 @@ GameObject:
   - component: {fileID: 1317895812}
   - component: {fileID: 1317895813}
   - component: {fileID: 1317895814}
+  - component: {fileID: 1317895815}
   m_Layer: 0
   m_Name: HouseF02
   m_TagString: Untagged
@@ -39588,6 +39659,19 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1317895815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1317895811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1 &1330889417
 GameObject:
   m_ObjectHideFlags: 0
@@ -93436,6 +93520,7 @@ GameObject:
   - component: {fileID: 1693833887}
   - component: {fileID: 1693833888}
   - component: {fileID: 1693833889}
+  - component: {fileID: 1693833890}
   m_Layer: 0
   m_Name: Chair
   m_TagString: Untagged
@@ -93536,6 +93621,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15, y: 0.38}
   m_EdgeRadius: 0
+--- !u!114 &1693833890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1693833886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1 &1697990628
 GameObject:
   m_ObjectHideFlags: 0
@@ -95187,6 +95285,7 @@ GameObject:
   - component: {fileID: 1871648565}
   - component: {fileID: 1871648567}
   - component: {fileID: 1871648566}
+  - component: {fileID: 1871648568}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -95287,6 +95386,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1871648568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1871648564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1001 &1878549179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96205,6 +96317,7 @@ GameObject:
   - component: {fileID: 2013107937}
   - component: {fileID: 2013107939}
   - component: {fileID: 2013107938}
+  - component: {fileID: 2013107940}
   m_Layer: 0
   m_Name: Fountain
   m_TagString: Untagged
@@ -96296,6 +96409,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2013107940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013107936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1 &2014921130
 GameObject:
   m_ObjectHideFlags: 0
