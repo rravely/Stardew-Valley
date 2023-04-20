@@ -15,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     //tool control
     private Animator toolAnimator;
     private string[] toolName = new string[5] {"Axe", "Hoe", "Pickaxe", "Wateringcan", "Scythe"};
+    [HideInInspector]public float playerEnergy;
 
     //After player animation 
     [HideInInspector]public bool isAnimationEnd = false;
@@ -53,6 +54,8 @@ public class PlayerControl : MonoBehaviour
         farmManager = GameObject.FindWithTag("Farm").GetComponent<FarmManager>();
 
         inventoryManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
+
+        playerEnergy = 15f;
     }
 
     // Update is called once per frame
@@ -133,10 +136,12 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && selectedToolId >= 0 && selectedToolId < 5) //마우스가 눌리고 선택된 아이템이 도구라면
         {
+            playerEnergy--;
             StartCoroutine("PlayerWorkAnimation_co");
         }
         else if (Input.GetMouseButtonDown(0) && selectedToolId >= 5) //마우스가 눌렸는데 선택된 아이템이 도구가 아니라면
         {
+            playerEnergy--;
             CheckNearResources(); //주변 자원 체크
         }
     }

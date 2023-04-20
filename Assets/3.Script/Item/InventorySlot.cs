@@ -23,7 +23,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             slotItme.clicked = true;
             selectedSquare.gameObject.SetActive(false);
         }
-        
     }
 
     

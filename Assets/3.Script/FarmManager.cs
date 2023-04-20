@@ -19,6 +19,9 @@ public class FarmManager : MonoBehaviour
     //seed
     [SerializeField]private Tilemap seedTileMap;
     [SerializeField]private List<TileBase> seedTile = new List<TileBase>();
+
+    //change coordinate 
+    private int x, y;
     
 
     void Start() {
@@ -102,8 +105,8 @@ public class FarmManager : MonoBehaviour
                     farmMap.seedGrowing[i, j]++; //1 증가
 
                     //좌표에 맞는 위치
-                    int x = 9 + j; //9 + j
-                    int y = 30 - i; //29 - i
+                    x = 9 + j; //9 + j
+                    y = 30 - i; //29 - i
                     Vector3Int mapCellPos = new Vector3Int(x, y, 0);
                     
                     //작물 타일 바꾸기
@@ -111,18 +114,28 @@ public class FarmManager : MonoBehaviour
                 }
             }
         }
-        ChangeWaterDirtToHoeDirt();
+        ChangeDirtState();
     }
 
-    private void ChangeWaterDirtToHoeDirt() {
+    private void ChangeDirtState() {
         for (int i = 0; i < 26; i++) {
             for (int j = 0; j < 43; j++) {
-                if (farmMap.farmResData[i, j].Equals(6)) { //물 준 땅이면
+                if (farmMap.farmResData[i, j].Equals(5)) { //호미질한 땅이면
+                    farmMap.farmResData[i, j] = 0; //아무 것도 없는 땅으로 변경
+
+                    //좌표에 맞는 위치
+                    x = 9 + j; //9 + j
+                    y = 30 - i; //29 - i
+                    Vector3Int mapCellPos = new Vector3Int(x, y, 0);
+
+                    dirtTileMap.SetTile(mapCellPos, null);
+                }
+                else if (farmMap.farmResData[i, j].Equals(6)) { //물 준 땅이면
                     farmMap.farmResData[i, j] = 5; //물 안준 땅으로 변경
                     
                     //좌표에 맞는 위치
-                    int x = 9 + j; //9 + j
-                    int y = 30 - i; //29 - i
+                    x = 9 + j; //9 + j
+                    y = 30 - i; //29 - i
                     Vector3Int mapCellPos = new Vector3Int(x, y, 0);
 
                     dirtTileMap.SetTile(mapCellPos, hoeDirt);
