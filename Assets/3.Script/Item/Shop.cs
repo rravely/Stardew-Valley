@@ -23,10 +23,12 @@ public class Shop : MonoBehaviour
             playerMoney.text = gameManager.player.playerMoney.ToString();
             shop.gameObject.SetActive(true);
             UI.SetActive(false);
-            player.SetActive(false);
             day.gameObject.SetActive(false);
             time.gameObject.SetActive(false);
-            money.gameObject.SetActive(false);
+            money.gameObject.SetActive(false); 
+
+            //여기서 player.SetActive(false); 를 하면 slotitem이 player를 찾지 못한다. 
+            player.transform.position = new Vector3(13f, 9.08f);
 
         }
         if (shop.activeSelf) //shop인 동안

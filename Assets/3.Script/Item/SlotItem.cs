@@ -23,13 +23,13 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private Text itemInfoName, itemInfoDes;
     private Camera itemCamera;
 
-    void Start() 
+    void Awake() 
     {
         //마우스 커서의 위치를 잡기 위하여 toolbar를 가져온다. 
         toolbar = GameObject.FindWithTag("Toolbar").transform;
         playerControl = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 
-        //mouse enter
+        //mouse enter 
         itemInfoUI = GameObject.FindWithTag("ItemInfo");
         itemInfoName = GameObject.FindWithTag("ItemInfoName").GetComponent<Text>();
         itemInfoDes = GameObject.FindWithTag("ItemInfoDes").GetComponent<Text>();
@@ -69,13 +69,15 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     public void OnPointerClick(PointerEventData eventData) { //아이템이 선택되면
         if (eventData.button == PointerEventData.InputButton.Left) {
+            Debug.Log("선택된 도구 id: " + playerControl.selectedToolId);
             if (item.isTool) //선택된 아이템이 도구라면
             {
                 playerControl.selectedToolId = item.id; //플레이어가 선택한 아이템 갱신
             }
             else 
             {
-                playerControl.selectedToolId = -1;
+                playerControl.selectedToolId = item.id; //파스닙 씨앗 처리를 위해..
+                //playerControl.selectedToolId = -1;
             }
             clicked = true;
         }

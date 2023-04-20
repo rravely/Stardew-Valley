@@ -15,6 +15,7 @@ TagManager:
   - ItemInfoDes
   - ItemInfo
   - Farm
+  - Dirt
   layers:
   - Default
   - TransparentFX

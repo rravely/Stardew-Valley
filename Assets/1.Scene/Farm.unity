@@ -868,10 +868,10 @@ EdgeCollider2D:
   - {x: -1.112412, y: 0.094213486}
   - {x: -1.0965366, y: -0.81489635}
   - {x: -0.7380228, y: -0.80313015}
-  - {x: -0.7108898, y: -0.67591953}
-  - {x: -0.7214613, y: -0.35216188}
-  - {x: -0.48239708, y: -0.35088873}
-  - {x: -0.4875145, y: -0.67171216}
+  - {x: -0.7040224, y: -0.8029692}
+  - {x: -0.6699543, y: -0.8088536}
+  - {x: -0.5029993, y: -0.79727936}
+  - {x: -0.5046835, y: -0.81593084}
   - {x: -0.3769226, y: -0.80329275}
   - {x: 0.36319542, y: -0.80020666}
   - {x: 0.36114025, y: -0.52543354}
@@ -2515,6 +2515,7 @@ GameObject:
   m_Component:
   - component: {fileID: 260693654}
   - component: {fileID: 260693655}
+  - component: {fileID: 260693656}
   m_Layer: 0
   m_Name: spring_town_31 (1)
   m_TagString: Untagged
@@ -2575,9 +2576,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1637371499
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: 740441577
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1620542991, guid: 6d6bd321a36ae44738d074653a86323b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2589,63 +2590,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &280549752
-PrefabInstance:
+--- !u!114 &260693656
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1257258877}
-    m_Modifications:
-    - target: {fileID: 8256597549905043041, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_Name
-      value: tree
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 4.892
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.6160724
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.027355827
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260693653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1 &289326196
 GameObject:
   m_ObjectHideFlags: 0
@@ -2787,7 +2744,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1257258877}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &302709469
 BoxCollider2D:
@@ -3051,11 +3008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d1a0874b2fdc44508492e362fbffca8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &372393338 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8256597549905043043, guid: 79b7b8a9f35be460188b7dec964ff5ae, type: 3}
-  m_PrefabInstance: {fileID: 280549752}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &380500122
 GameObject:
   m_ObjectHideFlags: 0
@@ -3638,7 +3590,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461164812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.95, y: 2.941, z: 0}
+  m_LocalPosition: {x: 11.33, y: 3.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3661,6 +3613,7 @@ MonoBehaviour:
   workDirection: 0
   selectedToolId: -1
   isAnimationEnd: 0
+  dirtTileMap: {fileID: 1995055927}
 --- !u!114 &461164816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20301,7 +20254,7 @@ GameObject:
   - component: {fileID: 929387752}
   - component: {fileID: 929387751}
   m_Layer: 0
-  m_Name: Resource
+  m_Name: Seed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20315,7 +20268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929387749}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.49, y: -0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20360,9 +20313,9 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 354731179
+  m_SortingLayer: 1
+  m_SortingOrder: 3
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -20877,6 +20830,7 @@ GameObject:
   m_Component:
   - component: {fileID: 959140187}
   - component: {fileID: 959140188}
+  - component: {fileID: 959140189}
   m_Layer: 0
   m_Name: spring_town_31
   m_TagString: Untagged
@@ -20937,9 +20891,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1637371499
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: 740441577
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1620542991, guid: 6d6bd321a36ae44738d074653a86323b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -20951,6 +20905,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &959140189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959140186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1 &962856665
 GameObject:
   m_ObjectHideFlags: 0
@@ -38703,7 +38670,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 372393338}
   - {fileID: 302709468}
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -38724,6 +38690,8 @@ MonoBehaviour:
   dirtTileMap: {fileID: 1995055927}
   hoeDirt: {fileID: 11400000, guid: 307773d5e96ba4163b040053353d8fd4, type: 2}
   waterDirt: {fileID: 11400000, guid: cee66ac8d0bb44aed935acb968059665, type: 2}
+  seedTileMap: {fileID: 929387752}
+  seedTile: {fileID: 11400000, guid: 5d6763c551e254436a61c635b3ee1fd2, type: 2}
 --- !u!114 &1257258879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38736,6 +38704,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f0ba30beb67942e28a08fcd48a69a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tilemap: {fileID: 1995055927}
   resPrefabList:
   - {fileID: 1762209694453632116, guid: c3d6eb5f04fcf4696b51291b30506fcf, type: 3}
   - {fileID: 2965535378819319915, guid: 1b92f20efa5164f348a93ed13abbd2a2, type: 3}
@@ -38835,6 +38804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1263952961}
   - component: {fileID: 1263952962}
+  - component: {fileID: 1263952963}
   m_Layer: 0
   m_Name: spring_town_51
   m_TagString: Untagged
@@ -38909,6 +38879,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1263952963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263952960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: 0.5
 --- !u!1001 &1276066489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39805,6 +39788,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1354461445}
   - component: {fileID: 1354461446}
+  - component: {fileID: 1354461447}
   m_Layer: 0
   m_Name: spring_town_34
   m_TagString: Untagged
@@ -39865,9 +39849,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1637371499
-  m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingLayerID: 740441577
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: -1597888385, guid: 6d6bd321a36ae44738d074653a86323b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -39879,6 +39863,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1354461447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1354461444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deepSize: -1
 --- !u!1001 &1355724508
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96116,7 +96113,7 @@ GameObject:
   - component: {fileID: 1995055926}
   m_Layer: 0
   m_Name: Dirt
-  m_TagString: Untagged
+  m_TagString: Dirt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

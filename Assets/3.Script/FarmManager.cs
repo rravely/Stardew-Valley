@@ -12,6 +12,10 @@ public class FarmManager : MonoBehaviour
     [SerializeField]private Tilemap dirtTileMap;
     [SerializeField]private TileBase hoeDirt;
     [SerializeField]private TileBase waterDirt;
+
+    //seed
+    [SerializeField]private Tilemap seedTileMap;
+    [SerializeField]private TileBase seedTile;
     
 
     void SpawnItem(){
@@ -61,6 +65,29 @@ public class FarmManager : MonoBehaviour
                 break;
             case 4:
                 dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, -2, 0), waterDirt);
+                break;
+        }
+    }
+
+    public void PlayerSeeding(Vector3 playerPos, int direction) {
+        float x = playerPos.x;
+        float y = playerPos.y - 0.1f; //다리 쪽으로 바꾸기
+        playerPos = new Vector3(x, y, y);
+
+        //seed tile map 갱신
+        Vector3Int playerPosInt = dirtTileMap.LocalToCell(playerPos); //Vector3Int로 변환
+        switch (direction) {
+            case 1: //right
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-2, -1, 0), seedTile);
+                break;
+            case 2:
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-4, -1, 0), seedTile);
+                break;
+            case 3:
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-3, 0, 0), seedTile);
+                break;
+            case 4:
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-3, -2, 0), seedTile);
                 break;
         }
     }

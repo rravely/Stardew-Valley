@@ -63,6 +63,8 @@ public class FarmMap : MonoBehaviour
         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} //25
     };
 
+    [HideInInspector]public int[,] seedGrowing = new int[26, 43];
+
     [SerializeField]private Tilemap tilemap;
     [SerializeField]private List<GameObject> resPrefabList = new List<GameObject>();
 

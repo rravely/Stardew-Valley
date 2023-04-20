@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour
 
     //After player animation 
     public bool isAnimationEnd = false;
+    private bool isLock = false;
 
     //to compare resources position and player
     FarmMap farmMap;
@@ -31,8 +32,6 @@ public class PlayerControl : MonoBehaviour
     enum PLAYERWALKSTATE{right = 5, left = 6, up = 7, down = 8}
     enum PLAYERWORKSTATE{right = 9, left = 10, up = 11, down = 12}
     enum PLAYERWATERSTATE{right = 13, left = 14, up = 15, down = 16}
-    //enum PLAYERWORKSTATE {axe = 0, hoe = 1, pickaxe = 2, wateringcan = 3}
-
   
     void Awake()
     {
@@ -59,59 +58,61 @@ public class PlayerControl : MonoBehaviour
     void ChangeDirection() {
         float x = Input.GetAxisRaw("Horizontal");
         float y = Input.GetAxisRaw("Vertical");
-
-        if (x > 0) //right
-        {
-            //애니메이션 끝나기 전에 움직이면 자원 충돌 조건 성립 안되게
-            isAnimationEnd = false; 
-            animator.SetInteger(playerState, (int)PLAYERWALKSTATE.right);
-            playerDirection = 1;
-            movement2D.MoveTo(new Vector3(x, 0, 0f));
-            
-        }
-        else if (x < 0) // left
-        {
-            isAnimationEnd = false; 
-            animator.SetInteger(playerState, (int)PLAYERWALKSTATE.left);
-            playerDirection = 2;
-            movement2D.MoveTo(new Vector3(x, 0, 0f));
-        }
-        else if (y > 0) //up
-        {
-            isAnimationEnd = false; 
-            animator.SetInteger(playerState, (int)PLAYERWALKSTATE.up);
-            playerDirection = 3;
-            movement2D.MoveTo(new Vector3(0, y, y));
-        }
-        else if (y < 0) //down
-        {
-            isAnimationEnd = false; 
-            animator.SetInteger(playerState, (int)PLAYERWALKSTATE.down);
-            playerDirection = 4;
-            movement2D.MoveTo(new Vector3(0, y, y));
-        }
-        else if (x.Equals(0) && y.Equals(0))
-        {
-            switch (playerDirection)
+        if (isLock == false) {
+            if (x > 0) //right
             {
-                case 1:
-                    animator.SetInteger(playerState, (int)PLAYERIDLESTATE.right);
-                    movement2D.MoveTo(new Vector3(0, 0, 0f));
-                    break;
-                case 2:
-                    animator.SetInteger(playerState, (int)PLAYERIDLESTATE.left);
-                    movement2D.MoveTo(new Vector3(0, 0, 0f));
-                    break;
-                case 3:
-                    animator.SetInteger(playerState, (int)PLAYERIDLESTATE.up);
-                    movement2D.MoveTo(new Vector3(0, 0, 0f));
-                    break;
-                case 4:
-                    animator.SetInteger(playerState, (int)PLAYERIDLESTATE.down);
-                    movement2D.MoveTo(new Vector3(0, 0, 0f));
-                    break;
+                //애니메이션 끝나기 전에 움직이면 자원 충돌 조건 성립 안되게
+                isAnimationEnd = false; 
+                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.right);
+                playerDirection = 1;
+                movement2D.MoveTo(new Vector3(x, 0, 0f));
+            
+            }
+            else if (x < 0) // left
+            {
+                isAnimationEnd = false; 
+                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.left);
+                playerDirection = 2;
+                movement2D.MoveTo(new Vector3(x, 0, 0f));
+            }
+            else if (y > 0) //up
+            {
+                isAnimationEnd = false; 
+                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.up);
+                playerDirection = 3;
+                movement2D.MoveTo(new Vector3(0, y, y));
+            }
+            else if (y < 0) //down
+            {
+                isAnimationEnd = false; 
+                animator.SetInteger(playerState, (int)PLAYERWALKSTATE.down);
+                playerDirection = 4;
+                movement2D.MoveTo(new Vector3(0, y, y));
+          }
+           else if (x.Equals(0) && y.Equals(0))
+            {
+                switch (playerDirection)
+                {
+                    case 1:
+                        animator.SetInteger(playerState, (int)PLAYERIDLESTATE.right);
+                        movement2D.MoveTo(new Vector3(0, 0, 0f));
+                        break;
+                    case 2:
+                        animator.SetInteger(playerState, (int)PLAYERIDLESTATE.left);
+                        movement2D.MoveTo(new Vector3(0, 0, 0f));
+                        break;
+                    case 3:
+                        animator.SetInteger(playerState, (int)PLAYERIDLESTATE.up);
+                        movement2D.MoveTo(new Vector3(0, 0, 0f));
+                        break;
+                    case 4:
+                        animator.SetInteger(playerState, (int)PLAYERIDLESTATE.down);
+                        movement2D.MoveTo(new Vector3(0, 0, 0f));
+                        break;
+                }
             }
         }
+        
     }
 
     void ChangeZSameAsY() {
@@ -122,17 +123,21 @@ public class PlayerControl : MonoBehaviour
 
     void MouseClickForWork()
     {
-        if (Input.GetMouseButtonDown(0) && selectedToolId != -1) //마우스가 눌리고 선택된 아이템이 도구라면
+        if (Input.GetMouseButtonDown(0) && selectedToolId >= 0 && selectedToolId < 5) //마우스가 눌리고 선택된 아이템이 도구라면
         {
             StartCoroutine("PlayerWorkAnimation_co");
+        }
+        else if (Input.GetMouseButtonDown(0) && selectedToolId >= 5) //마우스가 눌렸는데 선택된 아이템이 도구가 아니라면
+        {
+            CheckNearResources(); //주변 자원 체크
         }
     }
 
     IEnumerator PlayerWorkAnimation_co() { //플레이어 일하는 애니메이션 재생
         yield return new WaitForSeconds(0.51f);
-
         if (Input.mousePosition.y > 125) //인벤토리 창보다 위
         {
+            isLock = true;
             if (selectedToolId.Equals(3)) { //물뿌리개 사용
                 switch (playerDirection) {
                     case 1:
@@ -178,7 +183,7 @@ public class PlayerControl : MonoBehaviour
 
 
     void PlayerIDLE() { //애니메이션 끝나면 그 방향 바라보고 있도록
-        toolAnimator.SetInteger(toolName[selectedToolId], 5);
+        toolAnimator.SetInteger(toolName[selectedToolId], 5); //selectedToolId가 4이상이면 null....
         switch (workDirection) 
         {
             case 1: 
@@ -232,7 +237,7 @@ public class PlayerControl : MonoBehaviour
     }
 
     //파밍 조건
-    void PlayerFarming(int posX, int posY) 
+    void PlayerFarming(int posX, int posY) //매개변수는 맵 좌표
     {
         if (farmMap.farmMap[posY, posX].Equals(0)) 
         {
@@ -255,19 +260,19 @@ public class PlayerControl : MonoBehaviour
                 //물준 땅으로 변경
                 farmMap.farmResData[posY, posX] = 6;
             }
-        }
-    }
-
-    //씨앗 뿌리기
-    void PlayerSeeding(int posX, int posY) {
-        if (farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6)) //호미질한 땅이거나 물 준 땅이면 씨앗 심기 가능
-        {
-
+            else if (selectedToolId.Equals(12) && farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6)) 
+            {
+                //씨앗 땅으로 바꾸기
+                farmManager.PlayerSeeding(transform.position, playerDirection);
+                //FarmMap의 seedGrowing 변경
+                farmMap.seedGrowing[posY, posX] = 1;
+            }
         }
     }
 
     //플레이어의 애니메이션 끝에 추가하여 충돌한 물체가 확인할 수 있게 함
     void CheckAnimationEnd() {
         isAnimationEnd = true;
+        isLock = false;
     }
 }

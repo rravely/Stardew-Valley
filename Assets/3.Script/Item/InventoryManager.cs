@@ -15,29 +15,27 @@ public class InventoryManager : MonoBehaviour
         ChangeSelectedSlot(0);
     }
 
-/*
+
     void Update() {
-        //선택한 slot이 null이 아니고 이미 선택되어진게 아니라면
-        for (int i = 0; i < inventorySlots.Length; i++) {
-            SlotItem slotItem = inventorySlots[i].GetComponentInChildren<SlotItem>();
-            if (slotItem.clicked) {
-                inventorySlots[i].Selected();
+        if (Input.inputString != null) {
+            bool isNumber = int.TryParse(Input.inputString, out int number);
+            if (isNumber && number > 0 && number < 10) {
+                ChangeSelectedSlot(number - 1);
+            } else if (Input.GetKeyDown(KeyCode.Alpha0)) {
+                ChangeSelectedSlot(9);
+            } else if (Input.GetKeyDown(KeyCode.Minus)) {
+                ChangeSelectedSlot(10);
+            } else if (Input.GetKeyDown(KeyCode.Plus)) {
+                ChangeSelectedSlot(11);
             }
-            else{
-                inventorySlots[i].Selected();
-            }
-        }
+        } 
     }
-    */
+    
 
     void ChangeSelectedSlot(int newValue)
     {
-    
-
-
         if (selectedSlot >= 0) {
             inventorySlots[selectedSlot].Deselected();
-            
         }
         InventorySlot slot = inventorySlots[newValue];
         SlotItem itemInSlot = slot.GetComponentInChildren<SlotItem>();
