@@ -83,8 +83,10 @@ public class ShopItemManager : MonoBehaviour, IDropHandler
     }
 
     public void OnDrop(PointerEventData eventData) {
-        gameManager.player.playerMoney += eventData.pointerDrag.GetComponent<SlotItem>().count * eventData.pointerDrag.GetComponent<SlotItem>().item.cost;
-        Destroy(eventData.pointerDrag);
+        if (!eventData.pointerDrag.GetComponent<SlotItem>().item.isTool) { //도구가 아니라면 팔기
+            gameManager.player.playerMoney += eventData.pointerDrag.GetComponent<SlotItem>().count * eventData.pointerDrag.GetComponent<SlotItem>().item.cost;
+            Destroy(eventData.pointerDrag);
+        }
     }
 
     //플레이어 돈 갱신

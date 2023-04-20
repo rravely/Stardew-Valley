@@ -98,15 +98,9 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     }
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (shop.isPlayerInShop.Equals(false)) {
-            transform.GetChild(0).GetComponent<Text>().enabled = true; //드래그를 놓으면 아이템 개수 다시 보이기
-            transform.SetParent(parentAfterDrag); //다시 부모 객체 설정
-            image.raycastTarget = true;
-        }
-        else {
-            shop.itemCount = count;
-            shop.itemCost = item.cost;
-        }
+        transform.GetChild(0).GetComponent<Text>().enabled = true; //드래그를 놓으면 아이템 개수 다시 보이기
+        transform.SetParent(parentAfterDrag); //다시 부모 객체 설정
+        image.raycastTarget = true;
     }
 
 }
