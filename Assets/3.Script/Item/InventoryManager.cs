@@ -11,7 +11,10 @@ public class InventoryManager : MonoBehaviour
     private int maxStackedItems = 9;
     private int selectedSlot = -1;
 
+    private PlayerControl playerControl;
+
     void Start() {
+        playerControl = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
         ChangeSelectedSlot(0);
     }
 
@@ -42,6 +45,9 @@ public class InventoryManager : MonoBehaviour
         if (itemInSlot != null) {
             inventorySlots[newValue].Selected();
             selectedSlot = newValue;
+            Debug.Log("선택한 슬롯: " + itemInSlot.item.id);
+            Debug.Log(playerControl);
+            playerControl.selectedToolId = itemInSlot.item.id;
         }
         
     }

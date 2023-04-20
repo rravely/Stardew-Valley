@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour
     private string[] toolName = new string[5] {"Axe", "Hoe", "Pickaxe", "Wateringcan", "Scythe"};
 
     //After player animation 
-    public bool isAnimationEnd = false;
+    [HideInInspector]public bool isAnimationEnd = false;
     private bool isLock = false;
 
     //to compare resources position and player

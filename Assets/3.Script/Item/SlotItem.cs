@@ -66,8 +66,9 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         itemInfoUI.transform.position = new Vector3(0f, -1000f, 0f);
     }
 
-
+    
     public void OnPointerClick(PointerEventData eventData) { //아이템이 선택되면
+    /*
         if (eventData.button == PointerEventData.InputButton.Left) {
             Debug.Log("선택된 도구 id: " + playerControl.selectedToolId);
             if (item.isTool) //선택된 아이템이 도구라면
@@ -81,6 +82,7 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             }
             clicked = true;
         }
+        */
     }
 
     public void OnBeginDrag(PointerEventData eventData) //드래그 시작

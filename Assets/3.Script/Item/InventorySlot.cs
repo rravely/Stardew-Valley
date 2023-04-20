@@ -11,7 +11,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public void Selected() //선택되면
     {
         Transform selectedSquare = transform.GetChild(0).GetChild(1); //아이템의 자식 객체인 selectedSquare 가져오기
-        Debug.Log(selectedSquare.gameObject);
         SlotItem slotItme = transform.GetChild(0).gameObject.GetComponent<SlotItem>();
         selectedSquare.gameObject.SetActive(true);
     }
