@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class FarmMap : MonoBehaviour
 {
-    public int[,] farmMap = new int[26, 43] {
+    [HideInInspector]public int[,] farmMap = new int[26, 43] {
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, //0 
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, //1
         {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, //2 
@@ -33,7 +34,7 @@ public class FarmMap : MonoBehaviour
         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} //25
     };
     
-    public int[,] farmResData = new int[26, 43] {
+    [HideInInspector]public int[,] farmResData = new int[26, 43] {
         {0, 1, 2, 1, 1, 0, 2, 3, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, //0 
         {0, 0, 0, 2, 2, 0, 0, 0, 0, 0, 3, 4, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, //1
         {0, 0, 2, 3, 1, 2, 2, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}, //2 
@@ -62,10 +63,11 @@ public class FarmMap : MonoBehaviour
         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} //25
     };
 
+    [SerializeField]private Tilemap tilemap;
     [SerializeField]private List<GameObject> resPrefabList = new List<GameObject>();
 
     void start() {
-        //MakeRandomMap();
+        MakeRandomMap();
     }
 
     public void MakeGroundData() {
@@ -81,14 +83,12 @@ public class FarmMap : MonoBehaviour
             for (int j = 0; j < 43; j++) {
                 if (farmMap[i, j].Equals(0) && farmResData[i, j] > 0) { //가능한 곳이라면
                     //좌표에 맞는 위치
-                    float x = 1.95f + j * 0.15f;
-                    float y = 4.625f - i * 0.15f;
+                    int x = 9 + j; //9 + j
+                    int y = 30 - i; //29 - i
+                    Vector3Int mapCellPos = new Vector3Int(x, y, 0);
                     
-                    Debug.Log(x + ", " + y);
-                    GameObject obj = Instantiate(resPrefabList[farmResData[i, j] - 1], new Vector3(x, y + 0.075f, 0f), Quaternion.identity);
+                    GameObject obj = Instantiate(resPrefabList[farmResData[i, j] - 1], tilemap.GetCellCenterWorld(mapCellPos), Quaternion.identity);
                     obj.transform.SetParent(this.transform);
-                    
-                    
                 }
             }
         }

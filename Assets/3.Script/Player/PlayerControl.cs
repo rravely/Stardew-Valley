@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerControl : MonoBehaviour
     //to compare resources position and player
     FarmMap farmMap;
     FarmManager farmManager;
+    [SerializeField]private Tilemap dirtTileMap;
 
     private SpriteRenderer spriteRenderer; 
     private float playerPosZ; //플레이어와 건물 사이의 z 위치 비교를 위해
@@ -60,6 +62,8 @@ public class PlayerControl : MonoBehaviour
 
         if (x > 0) //right
         {
+            //애니메이션 끝나기 전에 움직이면 자원 충돌 조건 성립 안되게
+            isAnimationEnd = false; 
             animator.SetInteger(playerState, (int)PLAYERWALKSTATE.right);
             playerDirection = 1;
             movement2D.MoveTo(new Vector3(x, 0, 0f));
@@ -67,18 +71,21 @@ public class PlayerControl : MonoBehaviour
         }
         else if (x < 0) // left
         {
+            isAnimationEnd = false; 
             animator.SetInteger(playerState, (int)PLAYERWALKSTATE.left);
             playerDirection = 2;
             movement2D.MoveTo(new Vector3(x, 0, 0f));
         }
         else if (y > 0) //up
         {
+            isAnimationEnd = false; 
             animator.SetInteger(playerState, (int)PLAYERWALKSTATE.up);
             playerDirection = 3;
             movement2D.MoveTo(new Vector3(0, y, y));
         }
         else if (y < 0) //down
         {
+            isAnimationEnd = false; 
             animator.SetInteger(playerState, (int)PLAYERWALKSTATE.down);
             playerDirection = 4;
             movement2D.MoveTo(new Vector3(0, y, y));
@@ -121,12 +128,12 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    IEnumerator PlayerWorkAnimation_co() {
+    IEnumerator PlayerWorkAnimation_co() { //플레이어 일하는 애니메이션 재생
         yield return new WaitForSeconds(0.51f);
-        Debug.Log(Input.mousePosition.y);
+
         if (Input.mousePosition.y > 125) //인벤토리 창보다 위
         {
-            if (selectedToolId.Equals(3)) {
+            if (selectedToolId.Equals(3)) { //물뿌리개 사용
                 switch (playerDirection) {
                     case 1:
                         animator.SetInteger(playerState, (int)PLAYERWATERSTATE.right);
@@ -146,8 +153,8 @@ public class PlayerControl : MonoBehaviour
                         break;
                 }
             }
-            else {
-                switch (playerDirection) {
+            else { // 그 외 도구 사용
+                switch (playerDirection) { 
                     case 1:
                         animator.SetInteger(playerState, (int)PLAYERWORKSTATE.right);
                         toolAnimator.SetInteger(toolName[selectedToolId], (int)PLAYERWORKSTATE.right);
@@ -170,7 +177,7 @@ public class PlayerControl : MonoBehaviour
     } 
 
 
-    void PlayerIDLE() {
+    void PlayerIDLE() { //애니메이션 끝나면 그 방향 바라보고 있도록
         toolAnimator.SetInteger(toolName[selectedToolId], 5);
         switch (workDirection) 
         {
@@ -192,26 +199,39 @@ public class PlayerControl : MonoBehaviour
     void CheckNearResources() //플레이어가 마우스를 선택했을 때 주변에 자원이 있는지 체크
     {
         //현재 플레이어의 좌표 구하기
-        int playerX = (int)((transform.position.x - 1.95f) / 0.15f);
-        int playerY = -(int)((transform.position.y - 4.675f) / 0.15f);
-        switch (playerDirection)
-        {
-            case 1:
-                PlayerFarming(playerX + 1, playerY);
-                break;
-            case 2:
-                Debug.Log(playerX + ", " + playerY);
-                PlayerFarming(playerX - 1, playerY);
-                break;
-            case 3:
-                PlayerFarming(playerX, playerY - 1);
-                break;
-            case 4:
-                PlayerFarming(playerX, playerY + 1);
-                break;
+        float playerPosX = transform.position.x;
+        float playerPosY = transform.position.y - 0.1f;
+        Vector3 playerPos = new Vector3(playerPosX, playerPosY, playerPosY);
+
+        //플레이어의 셀 좌표
+        Vector3Int playerPosInt = dirtTileMap.LocalToCell(playerPos); //Vector3Int로 변환
+        Debug.Log("현재 플레이어 셀 좌표: " + playerPosInt.x + ", " + playerPosInt.y);
+        int playerX = playerPosInt.x - 12;
+        int playerY = Mathf.Abs(playerPosInt.y - 31);
+        //int playerX = (int)((transform.position.x - 1.95f) / 0.15f);
+        //int playerY = -(int)((transform.position.y - 4.675f) / 0.15f);
+        Debug.Log("현재 플레이어 맵 좌표: " + playerY+ ", " + playerX);
+
+        if (playerX >= 0 && playerX < 43 && playerY >= 0 && playerY < 26) {
+            switch (playerDirection)
+            {
+                case 1:
+                    PlayerFarming(playerX + 1, playerY);
+                    break;
+                case 2:
+                    PlayerFarming(playerX - 1, playerY);
+                    break;
+                case 3:
+                    PlayerFarming(playerX, playerY - 1);
+                    break;
+                case 4:
+                    PlayerFarming(playerX, playerY + 1);
+                    break;
+            }
         }
     }
 
+    //파밍 조건
     void PlayerFarming(int posX, int posY) 
     {
         if (farmMap.farmMap[posY, posX].Equals(0)) 
@@ -231,11 +251,22 @@ public class PlayerControl : MonoBehaviour
             else if(farmMap.farmResData[posY, posX].Equals(5) && selectedToolId.Equals(3)) //호미질 된 땅에 물뿌리개 사용했다면
             {
                 //물 준 땅으로 바꾸기
-                farmManager.ChangeWateringDirt(transform.position, playerDirection);
+                //farmManager.ChangeWateringDirt(transform.position, playerDirection);
+                //물준 땅으로 변경
+                farmMap.farmResData[posY, posX] = 6;
             }
         }
     }
 
+    //씨앗 뿌리기
+    void PlayerSeeding(int posX, int posY) {
+        if (farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6)) //호미질한 땅이거나 물 준 땅이면 씨앗 심기 가능
+        {
+
+        }
+    }
+
+    //플레이어의 애니메이션 끝에 추가하여 충돌한 물체가 확인할 수 있게 함
     void CheckAnimationEnd() {
         isAnimationEnd = true;
     }

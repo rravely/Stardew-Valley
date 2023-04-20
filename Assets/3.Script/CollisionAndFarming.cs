@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class CollisionAndFarming : MonoBehaviour
 {   
@@ -16,12 +17,9 @@ public class CollisionAndFarming : MonoBehaviour
     [SerializeField]private GameObject spawnItemPrefab;
     [SerializeField]private List<int> toolId;
 
-    //플레이어 도구 애니메이션
-    private Animator toolAnimator;
-    private string[] toolName = new string[5] {"Axe", "Hoe", "Pickaxe", "Wateringcan", "Scythe"};
-
     //Map Info
     private FarmMap farmMap;
+    private Tilemap dirtTileMap;
     
 
     void Start() {
@@ -30,15 +28,14 @@ public class CollisionAndFarming : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
         inventoryManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
         droppedItem = GameObject.FindWithTag("DroppedItem").transform;
-        toolAnimator = GameObject.FindWithTag("Tool").GetComponent<Animator>();
         farmMap = GameObject.FindWithTag("Farm").GetComponent<FarmMap>();
+        dirtTileMap = GameObject.FindWithTag("Dirt").GetComponent<Tilemap>();
     }
 
     void OnCollisionStay2D(Collision2D collision) {
         //플레이어랑 충돌하고 플레이어가 선택한 도구가 해당 작물과 상호작용
         if (collision.transform.CompareTag("Player") && toolId.Contains(playerControl.selectedToolId) && playerControl.isAnimationEnd == true) 
         {
-            Debug.Log("충돌 후 조건 맞음");
             switch (playerControl.playerDirection) //플레이어가 일하는 방향이
             { 
                 case 1: //right
@@ -71,9 +68,12 @@ public class CollisionAndFarming : MonoBehaviour
     }
 
     void DestroyObject() {
-        animator.SetBool("isRemoved", true); //파괴 애니메이션
-        Destroy(gameObject); //이 오브젝트 파괴
+        //이 오브젝트가 있던 자리 맵 정보에서 0으로 바꾸기
+        Vector3Int objCellPos = dirtTileMap.LocalToCell(transform.position); //일단 셀 좌표로 바꾸기
+        farmMap.farmResData[Mathf.Abs(objCellPos.y - 31), objCellPos.x - 12] = 0; //맵 좌표에 맞게 보정
 
+        Destroy(gameObject); //이 오브젝트 파괴
+        
         //아이템 생성할 좌표
         float x = transform.position.x + 0.01f * Random.Range(0, 10);
         float y = transform.position.y + 0.01f * Random.Range(0, 10);

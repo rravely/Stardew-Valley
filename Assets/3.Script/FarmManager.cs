@@ -19,25 +19,35 @@ public class FarmManager : MonoBehaviour
     }
 
     public void ChangeHoeDirt(Vector3 playerPos, int direction) {
+        float x = playerPos.x;
+        float y = playerPos.y - 0.1f; //다리 쪽으로 바꾸기
+        playerPos = new Vector3(x, y, y);
+
         Vector3Int playerPosInt = dirtTileMap.LocalToCell(playerPos); //Vector3Int로 변환
+        Debug.Log(playerPosInt.x + "," + playerPosInt.y);
+        
         switch (direction) {
             case 1: //right
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-2, -2, 0), hoeDirt);
+                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-2, -1, 0), hoeDirt);
                 break;
             case 2:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-4, -2, 0), hoeDirt);
+                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-4, -1, 0), hoeDirt);
                 break;
             case 3:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, -1, 0), hoeDirt);
+                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, 0, 0), hoeDirt);
                 break;
             case 4:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, -3, 0), hoeDirt);
+                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, -2, 0), hoeDirt);
                 break;
         }
         
     }
 
     public void ChangeWateringDirt(Vector3 playerPos, int direction) {
+        float x = playerPos.x;
+        float y = playerPos.y - 0.1f; //다리 쪽으로 바꾸기
+        playerPos = new Vector3(x, y, y);
+
         Vector3Int playerPosInt = dirtTileMap.LocalToCell(playerPos); //Vector3Int로 변환
         switch (direction) {
             case 1: //right
