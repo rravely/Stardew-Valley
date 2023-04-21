@@ -20,7 +20,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         if (transform.childCount > 0 ) {
             Transform selectedSquare = transform.GetChild(0).GetChild(1);
             SlotItem slotItme = transform.GetChild(0).gameObject.GetComponent<SlotItem>();
-            slotItme.clicked = true;
             selectedSquare.gameObject.SetActive(false);
         }
     }

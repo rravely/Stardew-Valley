@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     private InventoryManager inventoryManager;
     public List<Item> itemToPickup; //초기 저장할 아이템 끌어다 두기
     public SaveData player; //플레이어의 정보를 저장
+
+    [HideInInspector]public bool playerMouseButtonActive; //플레이어가 일하는 동작을 할것인지 확인
      
     
     private Item tempItem;
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour
         player = SaveSystem.Load("Default"); 
         Debug.Log("현재 플레이어: " + player.name);
         Debug.Log("플레이어 소지금 " + player.playerMoney);
+
+        playerMouseButtonActive = true;
     }
 
     void Start()

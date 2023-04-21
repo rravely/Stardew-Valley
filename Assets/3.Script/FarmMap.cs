@@ -63,21 +63,14 @@ public class FarmMap : MonoBehaviour
         {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} //25
     };
 
-    [HideInInspector]public int[,] seedGrowing = new int[26, 43];
+    [HideInInspector]public int[,] parsnipGrowing = new int[26, 43];
+    [HideInInspector]public int[,] beanGrowing = new int[26, 43];
 
     [SerializeField]private Tilemap tilemap;
     [SerializeField]private List<GameObject> resPrefabList = new List<GameObject>();
 
-    void start() {
+    void Start() {
         MakeRandomMap();
-    }
-
-    public void MakeGroundData() {
-        for (int i = 0; i < 26; i++) {
-            for (int j = 0; j < 43; j++) {
-                farmResData[i, j] = 0;
-            }
-        }
     }
 
     public void MakeRandomMap() {

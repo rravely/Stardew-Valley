@@ -17,6 +17,8 @@ TagManager:
   - Farm
   - Dirt
   - Town
+  - DialogName
+  - DialogText
   layers:
   - Default
   - TransparentFX

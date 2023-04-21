@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0e066a981c704d18808cf7f4d574831, type: 3}
+  m_Name: BeanStarter
+  m_EditorClassIdentifier: 
+  id: 14
+  itemName: "\uCF69 \uC885\uC790 "
+  itemDescription: "\uBD04 \uC791\uBB3C. \uC131\uC7A5\uD558\uB824\uBA74 10\uC77C
+    \uC18C\uC694\uB418\uC9C0\uB9CC, \uC218\uD655\uD55C \uD6C4\uC5D0\uB3C4 \uACC4\uC18D
+    \uC791\uBB3C\uC774 \uC0DD\uC0B0\uB429\uB2C8\uB2E4. \uACA9\uC790 \uAD6C\uC870\uBB3C\uC5D0
+    \uAC10\uACA8 \uC790\uB78D\uB2C8\uB2E4."
+  cost: 60
+  icon: {fileID: 21300000, guid: 2798fec86244f49dd889e0c2d661f493, type: 3}
+  stackable: 1
+  isTool: 0

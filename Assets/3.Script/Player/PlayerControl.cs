@@ -17,6 +17,9 @@ public class PlayerControl : MonoBehaviour
     private string[] toolName = new string[5] {"Axe", "Hoe", "Pickaxe", "Wateringcan", "Scythe"};
     [HideInInspector]public float playerEnergy;
 
+    //mouse control
+    private GameManager gameManager;
+
     //After player animation 
     [HideInInspector]public bool isAnimationEnd = false;
     private bool isLock = false;
@@ -31,6 +34,7 @@ public class PlayerControl : MonoBehaviour
 
     //parsnip add
     [SerializeField]private Item parsnipItem;
+    [SerializeField]private Item beanItem;
 
     private SpriteRenderer spriteRenderer; 
     private float playerPosZ; //플레이어와 건물 사이의 z 위치 비교를 위해
@@ -49,6 +53,9 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         ChangeZSameAsY();
+
+        gameManager = GameObject.FindWithTag("GameController").GetComponent<GameManager>();
+
         toolAnimator = GameObject.FindWithTag("Tool").GetComponent<Animator>();
         farmMap = GameObject.FindWithTag("Farm").GetComponent<FarmMap>();
         farmManager = GameObject.FindWithTag("Farm").GetComponent<FarmManager>();
@@ -62,8 +69,8 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         ChangeDirection();
-        ChangeZSameAsY();
         MouseClickForWork();
+        ChangeZSameAsY();
     }
 
     void ChangeDirection() {
@@ -134,12 +141,12 @@ public class PlayerControl : MonoBehaviour
 
     void MouseClickForWork()
     {
-        if (Input.GetMouseButtonDown(0) && selectedToolId >= 0 && selectedToolId < 5) //마우스가 눌리고 선택된 아이템이 도구라면
+        if (Input.GetMouseButtonDown(0) && selectedToolId >= 0 && selectedToolId < 5 && gameManager.playerMouseButtonActive) //마우스가 눌리고 선택된 아이템이 도구라면
         {
             playerEnergy--;
             StartCoroutine("PlayerWorkAnimation_co");
         }
-        else if (Input.GetMouseButtonDown(0) && selectedToolId >= 5) //마우스가 눌렸는데 선택된 아이템이 도구가 아니라면
+        else if (Input.GetMouseButtonDown(0) && selectedToolId >= 5 && gameManager.playerMouseButtonActive) //마우스가 눌렸는데 선택된 아이템이 도구가 아니라면
         {
             playerEnergy--;
             CheckNearResources(); //주변 자원 체크
@@ -252,7 +259,7 @@ public class PlayerControl : MonoBehaviour
     //파밍 조건
     void PlayerFarming(int posX, int posY) //매개변수는 맵 좌표
     {
-        Debug.Log(farmMap.seedGrowing[posY, posX]);
+        Debug.Log(farmMap.parsnipGrowing[posY, posX]);
         if (farmMap.farmMap[posY, posX].Equals(0)) 
         {
             if (farmMap.farmResData[posY, posX] > 0 && farmMap.farmResData[posY, posX] < 5) //나뭇가지, 돌, 잡초, 나무
@@ -267,11 +274,11 @@ public class PlayerControl : MonoBehaviour
                 //땅팠다고 저장
                 farmMap.farmResData[posY, posX] = 5;
             }
-            else if (farmMap.seedGrowing[posY, posX].Equals(5)) //파스닙 열리면
+            else if (farmMap.parsnipGrowing[posY, posX].Equals(5)) //파스닙 열리면
             {
                 Debug.Log("수확하기");
                 //땅 정보 초기화
-                farmMap.seedGrowing[posY, posX] = 0; //씨 정보 사라짐
+                farmMap.parsnipGrowing[posY, posX] = 0; //씨 정보 사라짐
                 
                 //tool은 empty
                 toolAnimator.SetInteger(toolName[selectedToolId], 5);
@@ -280,6 +287,23 @@ public class PlayerControl : MonoBehaviour
                 inventoryManager.AddItem(parsnipItem);
 
                 //파스닙 얻은 자리 seedTileMap 리셋
+                farmManager.ResetDirt(transform.position, playerDirection);
+            }
+            else if (farmMap.beanGrowing[posY, posX].Equals(11) || farmMap.beanGrowing[posY, posX].Equals(14)) //완두콩 열리면
+            {
+                Debug.Log("수확하기");
+                //땅 정보 초기화
+                if (farmMap.beanGrowing[posY, posX].Equals(14)) { //재수확이면
+                    farmMap.beanGrowing[posY, posX] = 11; 
+                }
+                
+                //tool은 empty
+                toolAnimator.SetInteger(toolName[selectedToolId], 5);
+
+                //완두콩
+                inventoryManager.AddItem(beanItem);
+
+                //완두콩 얻은 자리 seedTileMap 바꾸기
                 farmManager.ResetDirt(transform.position, playerDirection);
             }
             else if(farmMap.farmResData[posY, posX].Equals(5) && selectedToolId.Equals(3)) //호미질 된 땅에 물뿌리개 사용했다면
@@ -294,8 +318,22 @@ public class PlayerControl : MonoBehaviour
                 //씨앗 땅으로 바꾸기
                 farmManager.PlayerSeeding(transform.position, playerDirection);
 
-                //FarmMap의 seedGrowing 변경
-                farmMap.seedGrowing[posY, posX] = 1;
+                //FarmMap의 parsnipGrowing 변경
+                farmMap.parsnipGrowing[posY, posX] = 1;
+
+                //씨앗 개수 줄이기
+                //InventoryManager로부터 선택된 슬롯을 가져오고 그 슬롯의 자식 객체인 아이템의 count 변수 가져와서 줄이기! 
+                SlotItem slotItem = inventoryManager.inventorySlots[inventoryManager.selectedSlot].GetComponentInChildren<SlotItem>();
+                slotItem.count -= 1;
+                slotItem.RefreshCount();
+            }
+            else if (selectedToolId.Equals(14) && farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6)) 
+            {
+                //격자 땅으로 바꾸기
+                farmManager.PlayerBeanFarm(transform.position, playerDirection);
+
+                //FarmMap의 parsnipGrowing 변경
+                farmMap.beanGrowing[posY, posX] = 1;
 
                 //씨앗 개수 줄이기
                 //InventoryManager로부터 선택된 슬롯을 가져오고 그 슬롯의 자식 객체인 아이템의 count 변수 가져와서 줄이기! 
