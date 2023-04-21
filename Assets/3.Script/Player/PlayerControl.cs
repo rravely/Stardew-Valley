@@ -259,7 +259,7 @@ public class PlayerControl : MonoBehaviour
     //파밍 조건
     void PlayerFarming(int posX, int posY) //매개변수는 맵 좌표
     {
-        Debug.Log(farmMap.parsnipGrowing[posY, posX]);
+        Debug.Log(selectedToolId);
         if (farmMap.farmMap[posY, posX].Equals(0)) 
         {
             if (farmMap.farmResData[posY, posX] > 0 && farmMap.farmResData[posY, posX] < 5) //나뭇가지, 돌, 잡초, 나무
@@ -293,9 +293,7 @@ public class PlayerControl : MonoBehaviour
             {
                 Debug.Log("수확하기");
                 //땅 정보 초기화
-                if (farmMap.beanGrowing[posY, posX].Equals(14)) { //재수확이면
-                    farmMap.beanGrowing[posY, posX] = 11; 
-                }
+                farmMap.beanGrowing[posY, posX] = 12; 
                 
                 //tool은 empty
                 toolAnimator.SetInteger(toolName[selectedToolId], 5);
@@ -304,7 +302,7 @@ public class PlayerControl : MonoBehaviour
                 inventoryManager.AddItem(beanItem);
 
                 //완두콩 얻은 자리 seedTileMap 바꾸기
-                farmManager.ResetDirt(transform.position, playerDirection);
+                farmManager.ResetBean(transform.position, playerDirection);
             }
             else if(farmMap.farmResData[posY, posX].Equals(5) && selectedToolId.Equals(3)) //호미질 된 땅에 물뿌리개 사용했다면
             {
@@ -313,7 +311,7 @@ public class PlayerControl : MonoBehaviour
                 //물준 땅으로 변경
                 farmMap.farmResData[posY, posX] = 6;
             }
-            else if (selectedToolId.Equals(12) && farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6)) 
+            else if (selectedToolId.Equals(12) && (farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6))) 
             {
                 //씨앗 땅으로 바꾸기
                 farmManager.PlayerSeeding(transform.position, playerDirection);
@@ -327,7 +325,7 @@ public class PlayerControl : MonoBehaviour
                 slotItem.count -= 1;
                 slotItem.RefreshCount();
             }
-            else if (selectedToolId.Equals(14) && farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6)) 
+            else if (selectedToolId.Equals(14) && (farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6))) 
             {
                 //격자 땅으로 바꾸기
                 farmManager.PlayerBeanFarm(transform.position, playerDirection);

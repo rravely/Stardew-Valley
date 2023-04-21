@@ -210,4 +210,27 @@ public class FarmManager : MonoBehaviour
                 break;
         }
     }
+
+    public void ResetBean(Vector3 playerPos, int direction) {
+        float x = playerPos.x;
+        float y = playerPos.y - 0.1f; //다리 쪽으로 바꾸기
+        playerPos = new Vector3(x, y, y);
+
+        //seed tile map 갱신
+        Vector3Int playerPosInt = seedTileMap.LocalToCell(playerPos); //Vector3Int로 변환
+        switch (direction) {
+            case 1: //right
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-2, -1, 0), beanTile[11]);
+                break;
+            case 2:
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-4, -1, 0), beanTile[11]);
+                break;
+            case 3:
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-3, 0, 0), beanTile[11]);
+                break;
+            case 4:
+                seedTileMap.SetTile(playerPosInt + new Vector3Int(-3, -2, 0), beanTile[11]);
+                break;
+        }
+    }
 }
