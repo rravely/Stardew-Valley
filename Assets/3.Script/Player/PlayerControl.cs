@@ -15,7 +15,10 @@ public class PlayerControl : MonoBehaviour
     //tool control
     private Animator toolAnimator;
     private string[] toolName = new string[5] {"Axe", "Hoe", "Pickaxe", "Wateringcan", "Scythe"};
+
+    //player sleep
     [HideInInspector]public float playerEnergy;
+    [SerializeField]private GameObject playerSleepArea;
 
     //mouse control
     private GameManager gameManager;
@@ -71,6 +74,10 @@ public class PlayerControl : MonoBehaviour
         ChangeDirection();
         MouseClickForWork();
         ChangeZSameAsY();
+
+        if (playerEnergy.Equals(0)) {
+            playerSleepArea.GetComponent<PlayerSleep>().WakeUp();
+        }
     }
 
     void ChangeDirection() {
@@ -327,7 +334,7 @@ public class PlayerControl : MonoBehaviour
             }
             else if (selectedToolId.Equals(14) && (farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6))) 
             {
-                //격자 땅으로 바꾸기
+                //작물 땅으로 바꾸기
                 farmManager.PlayerBeanFarm(transform.position, playerDirection);
 
                 //FarmMap의 parsnipGrowing 변경

@@ -164,7 +164,7 @@ public class FarmManager : MonoBehaviour
     private void ChangeDirtState() {
         for (int i = 0; i < 26; i++) {
             for (int j = 0; j < 43; j++) {
-                if (farmMap.farmResData[i, j].Equals(5) && farmMap.parsnipGrowing[i, j].Equals(0)) { //호미질한 땅인데 씨가 자라지 않으면
+                if (farmMap.farmResData[i, j].Equals(5) && (farmMap.parsnipGrowing[i, j].Equals(0) || farmMap.beanGrowing[i, j].Equals(0))) { //호미질한 땅인데 씨가 자라지 않으면
                     farmMap.farmResData[i, j] = 0; //아무 것도 없는 땅으로 변경
 
                     //좌표에 맞는 위치

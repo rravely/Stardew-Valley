@@ -5,22 +5,30 @@ using UnityEngine.UI;
 
 public class PlayerSleep : MonoBehaviour
 {
+    //for sleep
     [SerializeField] private DayTimeControl dayControl;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject UIAskSleep;
     [SerializeField] private GameObject Yes;
     [SerializeField] private GameObject No;
 
+    //ask sleep
     private Text yes;
     private Text no;
 
     string playerAnswer = "";
 
+    //for growing crops
     private FarmManager farmManager;
 
     private bool askSleepUiActivate = false;
     private GameObject toolbar;
     
+    //for playerHP
+    private PlayerControl playerControl;
+
+    //fading
+    [SerializeField]private GameObject dark;
 
     void Awake() {
         toolbar = GameObject.FindWithTag("Toolbar");
@@ -28,7 +36,7 @@ public class PlayerSleep : MonoBehaviour
         no = No.GetComponent<Text>();
 
         farmManager = GameObject.FindWithTag("Farm").GetComponent<FarmManager>();
-
+        playerControl = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
     }
 
     void Update() {
@@ -65,18 +73,7 @@ public class PlayerSleep : MonoBehaviour
         }
         if (returnKey) {
             if (playerAnswer.Equals("yes")) {
-                //하루 지나기
-                dayControl.currentDay++;
-                dayControl.currentTime = 0;
-
-                toolbar.SetActive(true);
-                UIAskSleep.SetActive(false);
-                player.SetActive(true);
-                askSleepUiActivate = false;
-
-                //작물 자라기
-                farmManager.GrowningCrops();
-
+                WakeUp();
             }
             else if (playerAnswer.Equals("no")) 
             {
@@ -87,5 +84,28 @@ public class PlayerSleep : MonoBehaviour
             }
             player.transform.position = new Vector3(player.transform.position.x - 0.01f, player.transform.position.y, player.transform.position.z);
         }   
+    }
+
+    public void WakeUp() {
+        //fade in and out
+        dark.SetActive(true);
+
+        //플레이어 위치 이동
+        GameObject.FindWithTag("Player").transform.position = new Vector3(5.082f, 8.52f, 8.37f);
+
+        //하루 지나기
+        dayControl.currentDay++;
+        dayControl.currentTime = 0;
+
+        toolbar.SetActive(true);
+        UIAskSleep.SetActive(false);
+        player.SetActive(true);
+        askSleepUiActivate = false;
+
+        //작물 자라기
+        farmManager.GrowningCrops();
+
+        //hp 채우기
+        playerControl.playerEnergy = 15f;
     }
 }
