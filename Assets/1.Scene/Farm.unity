@@ -3735,7 +3735,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461164812}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.082, y: 8.52, z: 0}
+  m_LocalPosition: {x: 5.36, y: 2.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39342,7 +39342,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   droppedItem: []
   dirtTileMap: {fileID: 1995055927}
-  hoeDirt: {fileID: 11400000, guid: 307773d5e96ba4163b040053353d8fd4, type: 2}
+  hoeDirt:
+  - {fileID: 11400000, guid: 307773d5e96ba4163b040053353d8fd4, type: 2}
+  - {fileID: 11400000, guid: 4fe21daf38f3e4b0f9f33b24ba710979, type: 2}
+  - {fileID: 11400000, guid: 91dd9d9eec9c34a37890e461d2726403, type: 2}
+  - {fileID: 11400000, guid: bb75df920a709458ebfe12cb4c008354, type: 2}
+  - {fileID: 11400000, guid: c06c69b3dc87344009df7364e3f0f0b4, type: 2}
+  - {fileID: 11400000, guid: 1b248ea1990634187ac9f88baa74fc23, type: 2}
+  - {fileID: 11400000, guid: 1c8e4f9750f0e4b13af1ba48db416dcb, type: 2}
+  - {fileID: 11400000, guid: 78a29fc2a87a64663b8a4a06a27ff884, type: 2}
+  - {fileID: 11400000, guid: a495f5a3d26eb468da293a233906cdb4, type: 2}
+  - {fileID: 11400000, guid: 06eb55c990efc4add9bd821522ad6336, type: 2}
+  - {fileID: 11400000, guid: 53d965ef05c57475680df83511443c2e, type: 2}
+  - {fileID: 11400000, guid: 7917fa5930ec2460e9dcb692c65806d9, type: 2}
+  - {fileID: 11400000, guid: bfa746c8e1a974e37ae57a1995c1b7c7, type: 2}
+  - {fileID: 11400000, guid: 67db98fe9e367451ab347b22ca20101e, type: 2}
+  - {fileID: 11400000, guid: abe52ac6fe3c047459e8b74bcd2bf34b, type: 2}
+  - {fileID: 11400000, guid: 979b23e78acbb4a21a5ea1a8611eff0c, type: 2}
   waterDirt: {fileID: 11400000, guid: cee66ac8d0bb44aed935acb968059665, type: 2}
   seedTileMap: {fileID: 929387752}
   seedTile:

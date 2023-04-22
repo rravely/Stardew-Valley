@@ -240,8 +240,6 @@ public class PlayerControl : MonoBehaviour
         Debug.Log("현재 플레이어 셀 좌표: " + playerPosInt.x + ", " + playerPosInt.y);
         int playerX = playerPosInt.x - 12;
         int playerY = Mathf.Abs(playerPosInt.y - 31);
-        //int playerX = (int)((transform.position.x - 1.95f) / 0.15f);
-        //int playerY = -(int)((transform.position.y - 4.675f) / 0.15f);
         Debug.Log("현재 플레이어 맵 좌표: " + playerY+ ", " + playerX);
 
         if (playerX >= 0 && playerX < 43 && playerY >= 0 && playerY < 26) {
@@ -280,6 +278,7 @@ public class PlayerControl : MonoBehaviour
 
                 //땅팠다고 저장
                 farmMap.farmResData[posY, posX] = 5;
+                //farmManager.RefreshHoeDirt(posY, posX);
             }
             else if (farmMap.parsnipGrowing[posY, posX].Equals(5)) //파스닙 열리면
             {
