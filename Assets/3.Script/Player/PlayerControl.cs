@@ -279,12 +279,8 @@ public class PlayerControl : MonoBehaviour
                 farmMap.farmResData[posY, posX] = 5;
 
                 //땅파기 전 확인
-                farmManager.ResetDirt(posY, posX, 5);
+                farmManager.ResetDirt(posY, posX, 5, "Hoe");
 
-                //땅파기
-                //farmManager.ChangeDirt(transform.position, playerDirection, tileBase);
-
-                
             } else if (farmMap.parsnipGrowing[posY, posX].Equals(5)) { //파스닙 열리면
                 Debug.Log("수확하기");
                 //땅 정보 초기화
@@ -313,9 +309,9 @@ public class PlayerControl : MonoBehaviour
                 farmManager.ResetBean(transform.position, playerDirection);
             } else if(farmMap.farmResData[posY, posX].Equals(5) && selectedToolId.Equals(3)) {//호미질 된 땅에 물뿌리개 사용했다면
                 //물 준 땅으로 바꾸기
-                farmManager.ChangeWateringDirt(transform.position, playerDirection);
-                //물준 땅으로 변경
                 farmMap.farmResData[posY, posX] = 6;
+                //물준 땅으로 변경
+                farmManager.ResetDirt(posY, posX, 6, "Water");
             } else if (selectedToolId.Equals(12) && farmMap.beanGrowing[posY, posX].Equals(0) && (farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6))) { //파스닙 씨앗 뿌리기
                 //씨앗 땅으로 바꾸기
                 farmManager.PlayerSeeding(transform.position, playerDirection);

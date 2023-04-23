@@ -223,6 +223,126 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &24728683
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 24728684}
+  - component: {fileID: 24728686}
+  - component: {fileID: 24728685}
+  m_Layer: 0
+  m_Name: WaterDirt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &24728684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24728683}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1831710485}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!483693784 &24728685
+TilemapRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24728683}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 354731179
+  m_SortingLayer: 1
+  m_SortingOrder: 3
+  m_ChunkSize: {x: 32, y: 32, z: 32}
+  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_MaxChunkCount: 16
+  m_MaxFrameAge: 16
+  m_SortOrder: 0
+  m_Mode: 0
+  m_DetectChunkCullingBounds: 0
+  m_MaskInteraction: 0
+--- !u!1839735485 &24728686
+Tilemap:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24728683}
+  m_Enabled: 1
+  m_Tiles: {}
+  m_AnimatedTiles: {}
+  m_TileAssetArray: []
+  m_TileSpriteArray: []
+  m_TileMatrixArray: []
+  m_TileColorArray: []
+  m_TileObjectToInstantiateArray: []
+  m_AnimationFrameRate: 1
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Origin: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0, y: 0, z: 1}
+  m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
+  m_TileOrientation: 0
+  m_TileOrientationMatrix:
+    e00: 1
+    e01: 0
+    e02: 0
+    e03: 0
+    e10: 0
+    e11: 1
+    e12: 0
+    e13: 0
+    e20: 0
+    e21: 0
+    e22: 1
+    e23: 0
+    e30: 0
+    e31: 0
+    e32: 0
+    e33: 1
 --- !u!1 &34515533
 GameObject:
   m_ObjectHideFlags: 0
@@ -21356,7 +21476,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1831710485}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!483693784 &929387751
 TilemapRenderer:
@@ -21398,7 +21518,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 354731179
   m_SortingLayer: 1
-  m_SortingOrder: 3
+  m_SortingOrder: 4
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -39725,7 +39845,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   droppedItem: []
-  dirtTileMap: {fileID: 1995055927}
+  hoeDirtTileMap: {fileID: 1995055927}
+  waterDirtTileMap: {fileID: 24728686}
   hoeDirt:
   - {fileID: 11400000, guid: 307773d5e96ba4163b040053353d8fd4, type: 2}
   - {fileID: 11400000, guid: 4fe21daf38f3e4b0f9f33b24ba710979, type: 2}
@@ -39743,7 +39864,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 67db98fe9e367451ab347b22ca20101e, type: 2}
   - {fileID: 11400000, guid: abe52ac6fe3c047459e8b74bcd2bf34b, type: 2}
   - {fileID: 11400000, guid: 979b23e78acbb4a21a5ea1a8611eff0c, type: 2}
-  waterDirt: {fileID: 11400000, guid: cee66ac8d0bb44aed935acb968059665, type: 2}
+  waterDirt:
+  - {fileID: 11400000, guid: cee66ac8d0bb44aed935acb968059665, type: 2}
+  - {fileID: 11400000, guid: a8d39ed4c34a14320896461a83800c1c, type: 2}
+  - {fileID: 11400000, guid: 57ef18d8f12d74a50939dc11d6c3b53f, type: 2}
+  - {fileID: 11400000, guid: 2f635bdf131874e8bbb27a0ed8b8e855, type: 2}
+  - {fileID: 11400000, guid: c244af92c12aa4f74b02c70c4310f933, type: 2}
+  - {fileID: 11400000, guid: e1104095eed394e3f934d31e118f1afb, type: 2}
+  - {fileID: 11400000, guid: a9fcc1600638d4256821eba0b1f4bd54, type: 2}
+  - {fileID: 11400000, guid: 51869015982ce4c4583c79f350aada32, type: 2}
+  - {fileID: 11400000, guid: d6de494d115ba4dccb47e8cbb1c03419, type: 2}
+  - {fileID: 11400000, guid: d4b165a5f349f43b0898a50e45236e55, type: 2}
+  - {fileID: 11400000, guid: 976a1a450cebe4636b1a744639a8de77, type: 2}
+  - {fileID: 11400000, guid: 79ca4e695ef7a45dfb76c6edef325e45, type: 2}
+  - {fileID: 11400000, guid: 71d6667453d32445c82c7cc4299c9d91, type: 2}
+  - {fileID: 11400000, guid: 836d978d399ec4a8589721faa091997d, type: 2}
+  - {fileID: 11400000, guid: 9eb9daf0be7db40d1b86d1b038094103, type: 2}
+  - {fileID: 11400000, guid: ae406cf66dbc34af888f2f972e0da3d8, type: 2}
   seedTileMap: {fileID: 929387752}
   seedTile:
   - {fileID: 11400000, guid: 5d6763c551e254436a61c635b3ee1fd2, type: 2}
@@ -96322,6 +96459,7 @@ Transform:
   - {fileID: 1378877492}
   - {fileID: 1024181948}
   - {fileID: 1995055925}
+  - {fileID: 24728684}
   - {fileID: 929387750}
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -97570,7 +97708,7 @@ GameObject:
   - component: {fileID: 1995055927}
   - component: {fileID: 1995055926}
   m_Layer: 0
-  m_Name: Dirt
+  m_Name: HoeDirt
   m_TagString: Dirt
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
