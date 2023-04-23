@@ -27,6 +27,7 @@ public class PlayerSleep : MonoBehaviour
     //for playerHP
     private PlayerControl playerControl;
 
+
     //fading
     [SerializeField]private GameObject dark;
 
@@ -91,7 +92,7 @@ public class PlayerSleep : MonoBehaviour
         dark.SetActive(true);
 
         //플레이어 위치 이동
-        GameObject.FindWithTag("Player").transform.position = new Vector3(5.082f, 8.52f, 8.37f);
+        player.transform.position = new Vector3(5.082f, 8.52f, 8.37f);
 
         //하루 지나기
         dayControl.currentDay++;

@@ -74,13 +74,13 @@ public class CollisionAndFarming : MonoBehaviour
 
         Destroy(gameObject); //이 오브젝트 파괴
         
-        //아이템 생성할 좌표
-        float x = transform.position.x + 0.01f * Random.Range(0, 10);
-        float y = transform.position.y + 0.01f * Random.Range(0, 10);
         //아이템 생성
         for (int i = 0; i < SpawnItemCount; i++) {
-        GameObject spawnItem = Instantiate(spawnItemPrefab, new Vector3(x, y, transform.position.z), Quaternion.identity); //아이템 바닥에 생성
-        spawnItem.transform.SetParent(droppedItem); //생성한 아이템이 DroppedItem에 상속되도록
+            //아이템 생성할 좌표
+            float x = transform.position.x + 0.01f * Random.Range(0, 20);
+            float y = transform.position.y + 0.01f * Random.Range(0, 20);
+            GameObject spawnItem = Instantiate(spawnItemPrefab, new Vector3(x, y, transform.position.z), Quaternion.identity); //아이템 바닥에 생성
+            spawnItem.transform.SetParent(droppedItem); //생성한 아이템이 DroppedItem에 상속되도록
         }
         playerControl.workDirection = 0;
     }

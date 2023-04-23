@@ -51,6 +51,7 @@ public class PlayerControl : MonoBehaviour
     {
         movement2D = transform.GetComponent<Movement2D>();
         animator = transform.GetComponent<Animator>();
+        isLock = false;
     }
 
     void Start()
@@ -81,9 +82,10 @@ public class PlayerControl : MonoBehaviour
     }
 
     void ChangeDirection() {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
+        
         if (isLock == false) {
+            float x = Input.GetAxisRaw("Horizontal");
+            float y = Input.GetAxisRaw("Vertical");
             if (x > 0) //right
             {
                 //애니메이션 끝나기 전에 움직이면 자원 충돌 조건 성립 안되게
@@ -152,6 +154,7 @@ public class PlayerControl : MonoBehaviour
         {
             playerEnergy--;
             StartCoroutine("PlayerWorkAnimation_co");
+            //isLock = true;
         }
         else if (Input.GetMouseButtonDown(0) && selectedToolId >= 5 && gameManager.playerMouseButtonActive) //마우스가 눌렸는데 선택된 아이템이 도구가 아니라면
         {
@@ -270,8 +273,7 @@ public class PlayerControl : MonoBehaviour
             if (farmMap.farmResData[posY, posX] > 0 && farmMap.farmResData[posY, posX] < 5) //나뭇가지, 돌, 잡초, 나무
             {
                         
-            }
-            else if(farmMap.farmResData[posY, posX].Equals(0) && selectedToolId.Equals(1)) //아무것도 없는 땅이고 잡은 도구가 호미라면
+            } else if(farmMap.farmResData[posY, posX].Equals(0) && selectedToolId.Equals(1)) //아무것도 없는 땅이고 잡은 도구가 호미라면
             {
                 //땅파기
                 farmManager.ChangeHoeDirt(transform.position, playerDirection);
@@ -279,9 +281,7 @@ public class PlayerControl : MonoBehaviour
                 //땅팠다고 저장
                 farmMap.farmResData[posY, posX] = 5;
                 //farmManager.RefreshHoeDirt(posY, posX);
-            }
-            else if (farmMap.parsnipGrowing[posY, posX].Equals(5)) //파스닙 열리면
-            {
+            } else if (farmMap.parsnipGrowing[posY, posX].Equals(5)) { //파스닙 열리면
                 Debug.Log("수확하기");
                 //땅 정보 초기화
                 farmMap.parsnipGrowing[posY, posX] = 0; //씨 정보 사라짐
@@ -294,9 +294,7 @@ public class PlayerControl : MonoBehaviour
 
                 //파스닙 얻은 자리 seedTileMap 리셋
                 farmManager.ResetDirt(transform.position, playerDirection);
-            }
-            else if (farmMap.beanGrowing[posY, posX].Equals(11) || farmMap.beanGrowing[posY, posX].Equals(14)) //완두콩 열리면
-            {
+            } else if (farmMap.beanGrowing[posY, posX].Equals(11) || farmMap.beanGrowing[posY, posX].Equals(14)) {//완두콩 열리면
                 Debug.Log("수확하기");
                 //땅 정보 초기화
                 farmMap.beanGrowing[posY, posX] = 12; 
@@ -309,16 +307,12 @@ public class PlayerControl : MonoBehaviour
 
                 //완두콩 얻은 자리 seedTileMap 바꾸기
                 farmManager.ResetBean(transform.position, playerDirection);
-            }
-            else if(farmMap.farmResData[posY, posX].Equals(5) && selectedToolId.Equals(3)) //호미질 된 땅에 물뿌리개 사용했다면
-            {
+            } else if(farmMap.farmResData[posY, posX].Equals(5) && selectedToolId.Equals(3)) {//호미질 된 땅에 물뿌리개 사용했다면
                 //물 준 땅으로 바꾸기
                 farmManager.ChangeWateringDirt(transform.position, playerDirection);
                 //물준 땅으로 변경
                 farmMap.farmResData[posY, posX] = 6;
-            }
-            else if (selectedToolId.Equals(12) && (farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6))) 
-            {
+            } else if (selectedToolId.Equals(12) && farmMap.beanGrowing[posY, posX].Equals(0) && (farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6))) { //파스닙 씨앗 뿌리기
                 //씨앗 땅으로 바꾸기
                 farmManager.PlayerSeeding(transform.position, playerDirection);
 
@@ -330,17 +324,25 @@ public class PlayerControl : MonoBehaviour
                 SlotItem slotItem = inventoryManager.inventorySlots[inventoryManager.selectedSlot].GetComponentInChildren<SlotItem>();
                 slotItem.count -= 1;
                 slotItem.RefreshCount();
-            }
-            else if (selectedToolId.Equals(14) && (farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6))) 
-            {
+            } else if (selectedToolId.Equals(14) && farmMap.parsnipGrowing[posY, posX].Equals(0) && (farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6))) { //완두콩 작물 심기
                 //작물 땅으로 바꾸기
                 farmManager.PlayerBeanFarm(transform.position, playerDirection);
 
                 //FarmMap의 parsnipGrowing 변경
                 farmMap.beanGrowing[posY, posX] = 1;
 
-                //씨앗 개수 줄이기
+                //작물 아이템 개수 줄이기
                 //InventoryManager로부터 선택된 슬롯을 가져오고 그 슬롯의 자식 객체인 아이템의 count 변수 가져와서 줄이기! 
+                SlotItem slotItem = inventoryManager.inventorySlots[inventoryManager.selectedSlot].GetComponentInChildren<SlotItem>();
+                slotItem.count -= 1;
+                slotItem.RefreshCount();
+            } else if (selectedToolId.Equals(11) && (farmMap.farmResData[posY, posX].Equals(5) || farmMap.farmResData[posY, posX].Equals(6))) { //잔디 스타터
+                //잔디 생성
+
+                //farmMap의 farmResData변경
+                farmMap.farmResData[posY, posX] = 10; //10은 잔디
+
+                //잔디 스타터 개수 줄이기
                 SlotItem slotItem = inventoryManager.inventorySlots[inventoryManager.selectedSlot].GetComponentInChildren<SlotItem>();
                 slotItem.count -= 1;
                 slotItem.RefreshCount();
@@ -351,6 +353,7 @@ public class PlayerControl : MonoBehaviour
 
     //플레이어의 애니메이션 끝에 추가하여 충돌한 물체가 확인할 수 있게 함
     void CheckAnimationEnd() {
+        toolAnimator.SetInteger(toolName[selectedToolId], 0);
         isAnimationEnd = true;
         isLock = false;
     }
