@@ -40,4 +40,5 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             slotItem.parentAfterDrag = transform; //이 슬롯에 드래그한 아이템 놓기
         }
     }
+
 }

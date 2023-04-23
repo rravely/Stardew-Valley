@@ -13,7 +13,6 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     //public PlayerControl playerControl;
 
     //for click, drag events in inventory
-    [HideInInspector] public bool clicked = false;
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public Transform currentParent;
     [HideInInspector] public int count = 1;
@@ -30,7 +29,6 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         //마우스 커서의 위치를 잡기 위하여 toolbar를 가져온다. 
         toolbar = GameObject.FindWithTag("Toolbar").transform;
-        //playerControl = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
 
         //mouse enter 
         itemInfoUI = GameObject.FindWithTag("ItemInfo");

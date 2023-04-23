@@ -944,7 +944,7 @@ GameObject:
   - component: {fileID: 86011459}
   m_Layer: 5
   m_Name: Inventory
-  m_TagString: Inventory
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3668,6 +3668,7 @@ GameObject:
   - component: {fileID: 461164819}
   - component: {fileID: 461164822}
   - component: {fileID: 461164823}
+  - component: {fileID: 461164824}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -3848,6 +3849,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.1}
   serializedVersion: 2
   m_Radius: 0.06
+--- !u!114 &461164824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461164812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b19fc34470a4895865846d1c6da888, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolbar: {fileID: 797587014}
+  inventory: {fileID: 86011457}
+  inventoryToolbar: {fileID: 915778346}
+  inventoryRemain: {fileID: 1850419241}
 --- !u!1 &488752796
 GameObject:
   m_ObjectHideFlags: 0
@@ -7754,7 +7771,7 @@ GameObject:
   - component: {fileID: 915778348}
   m_Layer: 5
   m_Name: ToolbarPanel
-  m_TagString: Untagged
+  m_TagString: InventoryToolbar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7817,7 +7834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.8018868, g: 0.59385014, b: 0.59385014, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -96023,7 +96040,7 @@ GameObject:
   - component: {fileID: 1850419243}
   m_Layer: 5
   m_Name: RemainInventory
-  m_TagString: Untagged
+  m_TagString: InventoryRemain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96110,7 +96127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.368325, g: 0.65184975, b: 0.8396226, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

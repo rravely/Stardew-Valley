@@ -19,7 +19,8 @@ TagManager:
   - Town
   - DialogName
   - DialogText
-  - Inventory
+  - InventoryToolbar
+  - InventoryRemain
   layers:
   - Default
   - TransparentFX
