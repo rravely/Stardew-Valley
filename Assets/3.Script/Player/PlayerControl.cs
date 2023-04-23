@@ -275,12 +275,16 @@ public class PlayerControl : MonoBehaviour
                         
             } else if(farmMap.farmResData[posY, posX].Equals(0) && selectedToolId.Equals(1)) //아무것도 없는 땅이고 잡은 도구가 호미라면
             {
-                //땅파기
-                farmManager.ChangeHoeDirt(transform.position, playerDirection);
-
                 //땅팠다고 저장
                 farmMap.farmResData[posY, posX] = 5;
-                //farmManager.RefreshHoeDirt(posY, posX);
+
+                //땅파기 전 확인
+                farmManager.ResetDirt(posY, posX, 5);
+
+                //땅파기
+                //farmManager.ChangeDirt(transform.position, playerDirection, tileBase);
+
+                
             } else if (farmMap.parsnipGrowing[posY, posX].Equals(5)) { //파스닙 열리면
                 Debug.Log("수확하기");
                 //땅 정보 초기화
