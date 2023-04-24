@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 04c557aaa3a724c3781d323ee93017f7
+guid: 7eb785747f24d4c3fa861ec131b44c56
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: energy_hp_bar_0
+      name: UI_Exit_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 45
-        height: 180
+        width: 212
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f61a70c9794d14c50aa8b744e161e71e
-      internalID: 876189866
+      spriteID: 738d5f70d37d94ca0bd3231c8067e408
+      internalID: 1673093118
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energy_hp_bar_1
+      name: UI_Exit_1
       rect:
         serializedVersion: 2
-        x: 50
+        x: 212
         y: 0
-        width: 40
-        height: 180
+        width: 212
+        height: 104
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,8 +164,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8fb77541d85943cc95550e6b5b9cb51
-      internalID: 1562881440
+      spriteID: ab8aec816248d45fc86d73e5265e7fe3
+      internalID: 656710474
       vertices: []
       indices: 
       edges: []
@@ -181,8 +181,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      energy_hp_bar_0: 876189866
-      energy_hp_bar_1: 1562881440
+      UI_Exit_0: 1673093118
+      UI_Exit_1: 656710474
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

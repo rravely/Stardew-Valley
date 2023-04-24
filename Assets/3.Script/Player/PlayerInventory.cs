@@ -8,6 +8,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField]private GameObject inventory;
     [SerializeField]private GameObject inventoryToolbar;
     [SerializeField]private GameObject inventoryRemain;
+    [SerializeField]private GameObject menuButton;
 
     //mouse control
     private GameManager gameManager;
@@ -25,15 +26,17 @@ public class PlayerInventory : MonoBehaviour
 
     
     private void InventoryButton() {
-        if (Input.GetKeyDown("i")) {
+        if (Input.GetKeyDown("i") ) {
             inputICount++;
         }
-        if ((inputICount % 2).Equals(0)) {
-            CloseInventory();
-            gameManager.playerMouseButtonActive = true;
-        } else {
+        if ((inputICount % 2).Equals(1) && gameManager.menuLock.Equals(false)) {
             OpenInventory();
             gameManager.playerMouseButtonActive = false;
+            gameManager.menuLock = true;
+        } else if ((inputICount % 2).Equals(0) && gameManager.menuLock.Equals(true)){
+            CloseInventory();
+            gameManager.playerMouseButtonActive = true;
+            gameManager.menuLock = false;
         }
     }
 
@@ -41,6 +44,7 @@ public class PlayerInventory : MonoBehaviour
     private void OpenInventory() {
         toolbar.SetActive(false);
         inventory.SetActive(true);
+        menuButton.SetActive(true);
         
         //toolbar에 있는 slot 옮기기
         while (toolbar.transform.childCount > 0) {
@@ -59,6 +63,7 @@ public class PlayerInventory : MonoBehaviour
     private void CloseInventory() {
         toolbar.SetActive(true);
         inventory.SetActive(false);
+        menuButton.SetActive(false);
 
         //toolbar에 있는 slot 옮기기
         while (inventoryToolbar.transform.childCount > 0) {
