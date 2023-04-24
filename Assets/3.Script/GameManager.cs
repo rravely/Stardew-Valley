@@ -9,8 +9,11 @@ public class GameManager : MonoBehaviour
     public SaveData player; //플레이어의 정보를 저장
 
     [HideInInspector]public bool playerMouseButtonActive; //플레이어가 일하는 동작을 할것인지 확인
-
     [HideInInspector]public bool menuLock; //인벤토리 메뉴 잠금
+
+    //제작한 아이템 드래그
+    [HideInInspector]public bool dragCraftItem;
+    [HideInInspector]public Item craftItem;
      
     
     private Item tempItem;
@@ -23,6 +26,7 @@ public class GameManager : MonoBehaviour
 
         playerMouseButtonActive = true;
         menuLock = false;
+        dragCraftItem = false;
     }
 
     void Start()

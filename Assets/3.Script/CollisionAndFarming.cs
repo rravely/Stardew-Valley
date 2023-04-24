@@ -67,6 +67,14 @@ public class CollisionAndFarming : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collider) {
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+    }
+    
+    void OnTriggerExit2D(Collider2D collider) {
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+    }
+
     void DestroyObject() {
         //이 오브젝트가 있던 자리 맵 정보에서 0으로 바꾸기
         Vector3Int objCellPos = dirtTileMap.LocalToCell(transform.position); //일단 셀 좌표로 바꾸기

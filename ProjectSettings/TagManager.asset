@@ -21,6 +21,7 @@ TagManager:
   - DialogText
   - InventoryToolbar
   - InventoryRemain
+  - Canvas
   layers:
   - Default
   - TransparentFX

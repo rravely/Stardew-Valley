@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8256597549905043045}
   - component: {fileID: 8256597549905043044}
   - component: {fileID: 8256597549905043047}
+  - component: {fileID: 121166074289565206}
   m_Layer: 0
   m_Name: tree
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8256597549905043041}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.281, y: 2.628, z: 0}
+  m_LocalPosition: {x: 7.281, y: 2.628, z: 2.628}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -131,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ca692daa6cb4b578ea3d229134857a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deepSize: 1
 --- !u!95 &8256597549905043047
 Animator:
   serializedVersion: 5
@@ -152,3 +154,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &121166074289565206
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256597549905043041}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0020712316, y: 0.54}
+  m_Size: {x: 0.45, y: 0.6}
+  m_Direction: 0

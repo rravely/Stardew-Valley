@@ -115,4 +115,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 4604492437885571652, guid: 73033a52edb2d46e090515e636c1b47d, type: 3}
-  itemPrefab: {fileID: 3752961559730200231, guid: 81c748c12d1cd4a7bb7697e7d9fd1a5a, type: 3}

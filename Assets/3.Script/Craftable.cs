@@ -2,6 +2,8 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Craftable : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class Craftable : MonoBehaviour
     [SerializeField]private List<Item> resourceItems;
     private Dictionary<int, int> resourceItemDict = new Dictionary<int, int>();
 
+    //result item
+    [Header("Result")]
+    [SerializeField]private Item item;
+
     //inventory
     [Header("Inventory")]
     [SerializeField]private GameObject inventoryPanel;
@@ -17,12 +23,22 @@ public class Craftable : MonoBehaviour
 
     //change alpha
     private bool craftableResult;
+    
+    //for mouse double click
+    float interval = 0.25f;
+    float doubleClickedTime = -1.0f;
+    bool isDoubleClicked = false;
+
+    //Add item in inventory
+    private InventoryManager inventoryManager;
 
     void Start() {
         for (int i = 0; i < 36; i++) {
             inventorySlots.Add(inventoryPanel.transform.GetChild(i)); //panel에 있는 슬롯들 리스트에 추가
         }
         ChangeItemListToDict();
+        
+        inventoryManager = GameObject.FindWithTag("InventoryManager").GetComponent<InventoryManager>();
     }
 
     void Update() {
@@ -32,6 +48,13 @@ public class Craftable : MonoBehaviour
         }
         else {
             ChangeAlpha(0);
+        }
+
+        if (isDoubleClicked) {
+            Debug.Log("더블클릭");
+            isDoubleClicked = false;
+
+            MakeCraft();
         }
     }
 
@@ -73,4 +96,23 @@ public class Craftable : MonoBehaviour
             GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
         }
     }
+
+    public void OnMouseUp() {
+        if((Time.time - doubleClickedTime) < interval)
+        {
+            isDoubleClicked = true;
+            doubleClickedTime = -1.0f;
+        }
+        else
+        {
+            isDoubleClicked = false;
+            doubleClickedTime = Time.time;
+        }
+    }
+
+    private void MakeCraft() {
+        //더블클릭하면 해당 아이템 제작
+        inventoryManager.AddItem(item);
+    }
+
 }

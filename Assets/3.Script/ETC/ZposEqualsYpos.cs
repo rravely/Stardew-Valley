@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZposEqualsYpos : MonoBehaviour
 {
     [SerializeField]private float deepSize = 0.5f;
-    void Start()
+    void Update()
     {
         float x = transform.position.x;
         float y = transform.position.y;

@@ -10,15 +10,12 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public Image image; 
     public Text countText;
     public Transform toolbar;
-    //public PlayerControl playerControl;
+    public Transform canvas;
 
     //for click, drag events in inventory
     [HideInInspector] public Transform parentAfterDrag;
     [HideInInspector] public Transform currentParent;
     [HideInInspector] public int count = 1;
-
-    //for drag events in shop
-    private Shop shop;
 
     //for mouse enter event
     private GameObject itemInfoUI;
@@ -28,7 +25,8 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     void Awake() 
     {
         //마우스 커서의 위치를 잡기 위하여 toolbar를 가져온다. 
-        toolbar = GameObject.FindWithTag("Toolbar").transform;
+        //toolbar = GameObject.FindWithTag("Toolbar").transform;
+        canvas = GameObject.FindWithTag("Canvas").transform;
 
         //mouse enter 
         itemInfoUI = GameObject.FindWithTag("ItemInfo");
@@ -37,8 +35,6 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         itemCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         itemInfoUI.transform.position = new Vector3(0f,-1000f,0f);
 
-        //for drag in shop
-        shop = GameObject.FindWithTag("Town").GetComponent<Shop>();
     }
 
     void Update() {
@@ -90,8 +86,8 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     {
         transform.GetChild(0).GetComponent<Text>().enabled = false; //드래그 중에는 아이템의 개수 보여지지 않기
         //마우스 커서의 위치가 정확하지 않아서 그만큼 보정
-        float x = toolbar.TransformPoint(Input.mousePosition).x - 3.43f;
-        float y = toolbar.TransformPoint(Input.mousePosition).y - 0.247f;
+        float x = canvas.TransformPoint(Input.mousePosition).x - 3.43f;
+        float y = canvas.TransformPoint(Input.mousePosition).y - 1.85f; //- 0.247f
         transform.position = new Vector3(x, y, 0f);
     }
     public void OnEndDrag(PointerEventData eventData)
