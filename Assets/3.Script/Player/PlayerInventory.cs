@@ -8,6 +8,8 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField]private GameObject inventory;
     [SerializeField]private GameObject inventoryToolbar;
     [SerializeField]private GameObject inventoryRemain;
+    [SerializeField]private GameObject craftMenu;
+    [SerializeField]private GameObject exitMenu;
     [SerializeField]private GameObject menuButton;
 
     //mouse control
@@ -63,6 +65,8 @@ public class PlayerInventory : MonoBehaviour
     private void CloseInventory() {
         toolbar.SetActive(true);
         inventory.SetActive(false);
+        craftMenu.SetActive(false);
+        exitMenu.SetActive(false);
         menuButton.SetActive(false);
 
         //toolbar에 있는 slot 옮기기

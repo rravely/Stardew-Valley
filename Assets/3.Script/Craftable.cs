@@ -36,7 +36,8 @@ public class Craftable : MonoBehaviour
     }
 
     private void ChangeItemListToDict() {
-        //입력된 리스트에서 중복된 값을 딕셔너리로 정리
+        //입력된 리스트에서 중복된 값을 딕셔너리로 정리 
+        //중복된 것만 확인해주므로 재료가 하나 들어갈 경우 코드 추가 필요
         var result = resourceItems.GroupBy(x => x.id)
                         .Where(g => g.Count() > 1)
                         .ToDictionary(x => x.Key, x => x.Count());
@@ -53,6 +54,7 @@ public class Craftable : MonoBehaviour
                 SlotItem itemInSlot = inventorySlot.GetComponentInChildren<SlotItem>();
                 if (itemInSlot != null && itemInSlot.item.id == item.Key && itemInSlot.count >= item.Value) { //딕셔너리에 있는 아이템이 인벤토리 슬롯에 존재하고 그 개수가 충분하면
                     result.Add(0); //0더하기
+                    break;
                 } 
             }
         }

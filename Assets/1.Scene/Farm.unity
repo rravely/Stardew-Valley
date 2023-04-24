@@ -1061,8 +1061,9 @@ GameObject:
   m_Component:
   - component: {fileID: 81357922}
   - component: {fileID: 81357923}
+  - component: {fileID: 81357924}
   m_Layer: 0
-  m_Name: Craftables_Grass
+  m_Name: Craftables_Plant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1135,6 +1136,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &81357924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81357921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a36bb3ec161e469999f1a40014470b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceItems:
+  - {fileID: 11400000, guid: 1ae69a2c44f5348dba64beddc720251f, type: 2}
+  - {fileID: 11400000, guid: 1ae69a2c44f5348dba64beddc720251f, type: 2}
+  - {fileID: 11400000, guid: 1ae69a2c44f5348dba64beddc720251f, type: 2}
+  inventoryPanel: {fileID: 765149769}
 --- !u!1 &86011457
 GameObject:
   m_ObjectHideFlags: 0
@@ -4420,6 +4438,8 @@ MonoBehaviour:
   inventory: {fileID: 86011457}
   inventoryToolbar: {fileID: 915778346}
   inventoryRemain: {fileID: 1850419241}
+  craftMenu: {fileID: 1331198311}
+  exitMenu: {fileID: 458466219}
   menuButton: {fileID: 1206433819}
 --- !u!1 &488752796
 GameObject:
@@ -8045,6 +8065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 820734953}
   - component: {fileID: 820734954}
+  - component: {fileID: 820734955}
   m_Layer: 0
   m_Name: Craftables_Scarecrow
   m_TagString: Untagged
@@ -8119,6 +8140,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &820734955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820734952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a36bb3ec161e469999f1a40014470b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceItems:
+  - {fileID: 11400000, guid: 5b266eba889ef4783903b5f721ff4fc3, type: 2}
+  - {fileID: 11400000, guid: 5b266eba889ef4783903b5f721ff4fc3, type: 2}
+  - {fileID: 11400000, guid: d94fcc9d151174ca0bf0cbec1238e070, type: 2}
+  - {fileID: 11400000, guid: d94fcc9d151174ca0bf0cbec1238e070, type: 2}
+  - {fileID: 11400000, guid: 1ae69a2c44f5348dba64beddc720251f, type: 2}
+  - {fileID: 11400000, guid: 1ae69a2c44f5348dba64beddc720251f, type: 2}
+  inventoryPanel: {fileID: 765149769}
 --- !u!1001 &830621322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41582,14 +41623,13 @@ GameObject:
   - component: {fileID: 1331198314}
   - component: {fileID: 1331198313}
   - component: {fileID: 1331198312}
-  - component: {fileID: 1331198315}
   m_Layer: 5
   m_Name: Craft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1331198312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41652,18 +41692,6 @@ RectTransform:
   m_AnchoredPosition: {x: -2, y: -2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1331198315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1331198311}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a36bb3ec161e469999f1a40014470b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1354461444
 GameObject:
   m_ObjectHideFlags: 0
@@ -93906,6 +93934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1508007736}
   - component: {fileID: 1508007737}
+  - component: {fileID: 1508007738}
   m_Layer: 0
   m_Name: Craftables_Chest
   m_TagString: Untagged
@@ -93980,6 +94009,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1508007738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1508007735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a36bb3ec161e469999f1a40014470b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceItems:
+  - {fileID: 11400000, guid: 5b266eba889ef4783903b5f721ff4fc3, type: 2}
+  - {fileID: 11400000, guid: 5b266eba889ef4783903b5f721ff4fc3, type: 2}
+  - {fileID: 11400000, guid: 5b266eba889ef4783903b5f721ff4fc3, type: 2}
+  inventoryPanel: {fileID: 765149769}
 --- !u!1 &1512437229
 GameObject:
   m_ObjectHideFlags: 0

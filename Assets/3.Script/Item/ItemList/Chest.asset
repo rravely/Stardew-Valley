@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e066a981c704d18808cf7f4d574831, type: 3}
   m_Name: Chest
   m_EditorClassIdentifier: 
-  id: 0
-  itemName: 
-  itemDescription: 
-  cost: 0
-  icon: {fileID: 0}
+  id: 16
+  itemName: "\uBCF4\uAD00\uD568 "
+  itemDescription: "\uC544\uC774\uD15C\uC744 \uC800\uC7A5\uD560 \uC218 \uC788\uB294
+    \uACF5\uAC04."
+  cost: 15
+  icon: {fileID: -549377364, guid: 80c527b3304aa4eebbba7c0a34a75f5d, type: 3}
   stackable: 1
   isTool: 0
-  isCraft: 0
+  isCraft: 1

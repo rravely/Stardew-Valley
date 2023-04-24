@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e066a981c704d18808cf7f4d574831, type: 3}
   m_Name: Plant
   m_EditorClassIdentifier: 
-  id: 0
-  itemName: 
-  itemDescription: 
-  cost: 0
-  icon: {fileID: 0}
+  id: 18
+  itemName: "\uC2DD\uBB3C "
+  itemDescription: "\uC12C\uC720\uB85C \uB9CC\uB4E4 \uC218 \uC788\uB294 \uC2DD\uBB3C. "
+  cost: 200
+  icon: {fileID: -762150348, guid: 80c527b3304aa4eebbba7c0a34a75f5d, type: 3}
   stackable: 1
   isTool: 0
-  isCraft: 0
+  isCraft: 1
