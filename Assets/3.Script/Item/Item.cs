@@ -12,4 +12,5 @@ public class Item : ScriptableObject
     public Sprite icon;
     public bool stackable = true;
     public bool isTool = false;
+    public bool isCraft = false;
 }
