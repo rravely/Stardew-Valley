@@ -1064,6 +1064,7 @@ GameObject:
   - component: {fileID: 81357924}
   - component: {fileID: 81357927}
   - component: {fileID: 81357926}
+  - component: {fileID: 81357928}
   m_Layer: 0
   m_Name: Craftables_Plant
   m_TagString: Untagged
@@ -1199,6 +1200,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 81357921}
   m_CullTransparentMesh: 1
+--- !u!70 &81357928
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81357921}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.05}
+  m_Size: {x: 0.15999998, y: 0.28}
+  m_Direction: 0
 --- !u!1 &86011457
 GameObject:
   m_ObjectHideFlags: 0
@@ -8352,6 +8369,7 @@ GameObject:
   - component: {fileID: 820734955}
   - component: {fileID: 820734958}
   - component: {fileID: 820734957}
+  - component: {fileID: 820734959}
   m_Layer: 0
   m_Name: Craftables_Scarecrow
   m_TagString: Untagged
@@ -8490,6 +8508,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820734952}
   m_CullTransparentMesh: 1
+--- !u!70 &820734959
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820734952}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.08000023}
+  m_Size: {x: 0.15999998, y: 0.31999996}
+  m_Direction: 0
 --- !u!1001 &830621322
 PrefabInstance:
   m_ObjectHideFlags: 0

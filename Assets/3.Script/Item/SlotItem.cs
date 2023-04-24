@@ -9,7 +9,6 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     public Item item; 
     public Image image; 
     public Text countText;
-    public Transform toolbar;
     public Transform canvas;
 
     //for click, drag events in inventory
@@ -24,8 +23,7 @@ public class SlotItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
 
     void Awake() 
     {
-        //마우스 커서의 위치를 잡기 위하여 toolbar를 가져온다. 
-        //toolbar = GameObject.FindWithTag("Toolbar").transform;
+        //마우스 커서의 위치를 잡기 위하여 canvas를 가져온다. 
         canvas = GameObject.FindWithTag("Canvas").transform;
 
         //mouse enter 

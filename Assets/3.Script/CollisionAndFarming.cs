@@ -87,7 +87,7 @@ public class CollisionAndFarming : MonoBehaviour
             //아이템 생성할 좌표
             float x = transform.position.x + 0.01f * Random.Range(0, 20);
             float y = transform.position.y + 0.01f * Random.Range(0, 20);
-            GameObject spawnItem = Instantiate(spawnItemPrefab, new Vector3(x, y, transform.position.z), Quaternion.identity); //아이템 바닥에 생성
+            GameObject spawnItem = Instantiate(spawnItemPrefab, new Vector3(x, y, y - 0.1f), Quaternion.identity); //아이템 바닥에 생성
             spawnItem.transform.SetParent(droppedItem); //생성한 아이템이 DroppedItem에 상속되도록
         }
         playerControl.workDirection = 0;

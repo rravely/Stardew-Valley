@@ -55,6 +55,7 @@ public class Craftable : MonoBehaviour
             isDoubleClicked = false;
 
             MakeCraft();
+            ItemSubstract();
         }
     }
 
@@ -113,6 +114,21 @@ public class Craftable : MonoBehaviour
     private void MakeCraft() {
         //더블클릭하면 해당 아이템 제작
         inventoryManager.AddItem(item);
+    }
+
+    private void ItemSubstract() {
+        //아이템 제거
+        foreach (KeyValuePair<int, int> item in resourceItemDict) 
+        {
+            for (int i = 0; i < inventorySlots.Count; i++) {
+                Transform inventorySlot = inventorySlots[i];
+                SlotItem itemInSlot = inventorySlot.GetComponentInChildren<SlotItem>();
+                if (itemInSlot != null && itemInSlot.item.id == item.Key && itemInSlot.count >= item.Value) { //딕셔너리에 있는 아이템이 인벤토리 슬롯에 존재하고 그 개수가 충분하면
+                    itemInSlot.count -= item.Value;
+                    break;
+                } 
+            }
+        }
     }
 
 }
