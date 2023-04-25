@@ -105,6 +105,7 @@ public class PlayerSleep : MonoBehaviour
 
         //작물 자라기
         farmManager.GrowningCrops();
+        //farmManager.ChangeDirtTomorrow();
 
         //hp 채우기
         playerControl.playerEnergy = 15f;

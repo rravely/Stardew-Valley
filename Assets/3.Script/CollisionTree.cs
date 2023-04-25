@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class CollisionAndFarming : MonoBehaviour
+public class CollisionTree : MonoBehaviour
 {   
     //플레이어
     private GameObject player;
@@ -32,7 +32,7 @@ public class CollisionAndFarming : MonoBehaviour
         dirtTileMap = GameObject.FindWithTag("Dirt").GetComponent<Tilemap>();
     }
 
-    void OnTriggerStay2D(Collider2D collision) {
+    void OnCollisionStay2D(Collision2D collision) {
         //플레이어랑 충돌하고 플레이어가 선택한 도구가 해당 작물과 상호작용
         if (collision.transform.CompareTag("Player") && toolId.Contains(playerControl.selectedToolId) && playerControl.isAnimationEnd == true) 
         {
@@ -67,6 +67,13 @@ public class CollisionAndFarming : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D collider) {
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.5f);
+    }
+    
+    void OnTriggerExit2D(Collider2D collider) {
+        GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1f);
+    }
 
     void DestroyObject() {
         //이 오브젝트가 있던 자리 맵 정보에서 0으로 바꾸기

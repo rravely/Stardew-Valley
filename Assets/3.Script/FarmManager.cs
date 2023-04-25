@@ -37,29 +37,6 @@ public class FarmManager : MonoBehaviour
         hoeDirtDir = new List<int>();
     }
 
-    public void ChangeHoeDirt(Vector3 playerPos, int direction) {
-        float x = playerPos.x;
-        float y = playerPos.y - 0.1f; //다리 쪽으로 바꾸기
-        playerPos = new Vector3(x, y, y);
-
-        Vector3Int playerPosInt = dirtTileMap.LocalToCell(playerPos); //Vector3Int로 변환
-        
-        switch (direction) {
-            case 1: //right
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-2, -1, 0), hoeDirt[0]);
-                break;
-            case 2:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-4, -1, 0), hoeDirt[0]);
-                break;
-            case 3:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, 0, 0), hoeDirt[0]);
-                break;
-            case 4:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, -2, 0), hoeDirt[0]);
-                break;
-        }
-        
-    }
 
     public void ChangeDirt(Vector3 playerPos, int direction, TileBase tileBase) {
         float x = playerPos.x;
@@ -176,29 +153,6 @@ public class FarmManager : MonoBehaviour
         }
     }
 
-
-    public void ChangeWateringDirt(Vector3 playerPos, int direction) {
-        float x = playerPos.x;
-        float y = playerPos.y - 0.1f; //다리 쪽으로 바꾸기
-        playerPos = new Vector3(x, y, y);
-
-        Vector3Int playerPosInt = dirtTileMap.LocalToCell(playerPos); //Vector3Int로 변환
-        switch (direction) {
-            case 1: //right
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-2, -1, 0), waterDirt[0]);
-                break;
-            case 2:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-4, -1, 0), waterDirt[0]);
-                break;
-            case 3:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, 0, 0), waterDirt[0]);
-                break;
-            case 4:
-                dirtTileMap.SetTile(playerPosInt + new Vector3Int(-3, -2, 0), waterDirt[0]);
-                break;
-        }
-    }
-
     public void PlayerSeeding(Vector3 playerPos, int direction) {
         float x = playerPos.x;
         float y = playerPos.y - 0.1f; //다리 쪽으로 바꾸기
@@ -295,7 +249,9 @@ public class FarmManager : MonoBehaviour
                     y = 30 - i; //29 - i
                     Vector3Int mapCellPos = new Vector3Int(x, y, 0);
 
-                    dirtTileMap.SetTile(mapCellPos, null);
+                    //dirtTileMap.SetTile(mapCellPos, null);
+                    hoeDirtTileMap.SetTile(mapCellPos, null);
+
                 }
                 else if (farmMap.farmResData[i, j].Equals(6)) { //물 준 땅이면
                     farmMap.farmResData[i, j] = 5; //물 안준 땅으로 변경
@@ -305,8 +261,17 @@ public class FarmManager : MonoBehaviour
                     y = 30 - i; //29 - i
                     Vector3Int mapCellPos = new Vector3Int(x, y, 0);
 
-                    dirtTileMap.SetTile(mapCellPos, hoeDirt[0]);
+                    waterDirtTileMap.SetTile(mapCellPos, null);
+                    ResetDirt(i, j, 5, "Hoe");
                 }
+            }
+        }
+    }
+
+    public void ChangeDirtTomorrow() {
+        for (int i = 1; i < 24; i++) {
+            for (int j = 1; j < 41; j++) {
+                ResetDirt(i, j, 5, "Hoe");
             }
         }
     }
